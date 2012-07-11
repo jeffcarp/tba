@@ -1,0 +1,124 @@
+/* Global
+===================================*/
+ul {
+  margin: 0;
+  list-style: none;
+}
+a {
+  color: #0db5db;
+  font-weight: bold;
+}
+a:hover {
+  color: #0a8dab;
+}
+
+/* Layout
+===================================*/
+#wrap {
+  width: 600px;
+  margin: 128px auto 0;
+}
+#content {
+}
+
+/* Header
+===================================*/
+header {
+  margin: 0 0 24px;
+  h1 {
+    font-size: 24px;
+    letter-spacing: -1px;
+    padding: 0 0 6px;
+    margin: 0 0 24px;
+    border-bottom: solid 1px #ccc;
+  }
+  ul {
+    li {
+      margin: 0 12px 0 0;
+      float: left;   
+    }
+  }
+}
+
+/* Content
+===================================*/
+
+
+section {
+  margin: 0 0 24px;
+}
+section p {
+  font-size: 14px;
+}
+section ul {
+  margin: 0 0 12px 24px;
+  list-style-type: disc;
+  font-size: 14px;
+}
+section li {
+  margin: 0 0 6px;
+}
+
+.error_explanation {
+  padding: 12px 0 0;
+  margin: 0 0 12px;
+  background-color: #f7384a;
+  color: white;
+  p {
+    display: block;
+    padding: 0 0 12px;
+  }
+}
+
+/* Compose
+===================================*/
+form.compose textarea {
+  display: block;
+  width: 586px;
+  padding: 6px;
+  font-size: 14px;
+}
+form.compose #submit {
+  text-align: center;
+}
+
+/* Footer
+===================================*/
+footer {
+  margin: 24px 0 0;
+  padding: 12px 0;
+  border-top: solid 1px #ccc;
+}
+
+/* Page Specific
+===================================*/
+.home_index {
+  text-align: center;
+  h2 {
+    font-size: 24px;
+    margin: 64px 0;
+    padding: 24px 0;
+    background-color: #a9ebfa;
+  }
+  ul {
+    width: 60%;
+    margin: 0 auto 48px;
+    text-align: left;
+    list-style: disc;
+    font-size: 16px;
+    li {
+      margin: 0 0 4px;
+    }
+  }
+  h3 {
+    font-size: 13px;
+    margin: 0 0 12px;
+  }
+  form {
+    margin: 0 0 64px;
+  }
+  .field {
+    margin: 0 0 12px;
+  }
+}
+

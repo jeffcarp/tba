@@ -1,14 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Shanghai</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
+  <title>The Better Announcements</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+ <div id="wrap">
+    <header>
+      <% unless @hide_navigation %>
+        <ul id="nav" class="clearfix">
+          <li><a href="/settings">Home</a></li>
+          <li><a href="/settings/compose">Compose</a></li>
+          <li><a href="/settings/compose">gccarpen@colby.edu</a></li>
+        </ul>
+      <% end %>
+      <h1>The Better Announcements</h1>
+    </header>
+    <div id="content">
+      <%= yield %>
+    </div>
+    <footer>
+      <p><strong>The Better Announcements</strong> are made by <a href="mailto:jmkalin@colby.edu">John Kalin '13</a> and <a href="mailto:gcarpenterv@gmail.com">Jeff Carpenter '12</a>, and you.</p>
+    </footer>
+  </div>
 </body>
 </html>
