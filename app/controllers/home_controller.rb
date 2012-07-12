@@ -6,6 +6,7 @@ class HomeController < ApplicationController
   end
   
   def success
+    @hide_navigation = true
   end
   
   def compose
@@ -14,12 +15,14 @@ class HomeController < ApplicationController
     @issue = Issue.upcoming_issue
   
     # Check if user has already made a post for this edition
-    @post = Post.find(:first, :conditions => ['user_id=? AND issue_id=?', current_user.id, @issue.id]) 
+    @post = Post.find(:first, :conditions => ['user_id=? AND issue_id=?', current_user.id, @issue.id])
     
-    @already = true if @post 
-
-    # If not, assign new post  
-    @post ||= current_user.posts.new
+    if @post    
+      @already = true  
+    else
+      @post = current_user.posts.new
+      @issue.posts << @post
+    end    
     
     render 'home/compose'
   end
@@ -30,7 +33,7 @@ class HomeController < ApplicationController
 
   def debug_email
     @user = User.find_by_email "gccarpen@colby.edu"
-    render :layout => false, :template => 'user_mailer/welcome'
+    render :layout => false, :template => 'user_mailer/welcome_email'
   end
 
   def auth

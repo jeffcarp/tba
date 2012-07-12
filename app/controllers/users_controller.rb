@@ -48,13 +48,13 @@ class UsersController < ApplicationController
     if @user.save
   
       # Send them an email
-      UserMailer.welcome_email(params[:user][:email]).deliver
+      UserMailer.welcome_email(@user).deliver
     
       # Redirect to success page
       redirect_to '/success'
     else
-    
       # Go back home with errors
+      @hide_navigation = true
       render :template => 'home/index'
     end
   end

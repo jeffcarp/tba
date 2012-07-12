@@ -3,6 +3,7 @@ Shanghai::Application.routes.draw do
 
   resources :users
   resources :posts
+  resources :issues
 
   get '/success' => 'home#success', :as => 'success'
   get '/debug_email' => 'home#debug_email'

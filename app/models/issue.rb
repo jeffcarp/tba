@@ -7,6 +7,9 @@ class Issue < ActiveRecord::Base
   end
   
   def self.create_next
+    new_issue = Issue.new
+    new_issue.publish_date = self.upcoming_issue.publish_date + 1.days
+    new_issue.save
   end
   
   def self.send_announcements
@@ -22,6 +25,10 @@ class Issue < ActiveRecord::Base
       puts "Sending announcement to "+user.email
       UserMailer.the_announcements(user, @issue).deliver
     end
+    
+    # Mark this issue as sent
+    @issue.published = true
+    @issue.save
   end
   
 end
