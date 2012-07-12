@@ -38,10 +38,12 @@ class UsersController < ApplicationController
   end
 
   # POST /users
-  # POST /users.json
   def create
     @user = User.new(params[:user])
   
+    # Make them a hash
+    @user.salt = Digest::MD5.hexdigest(params[:user][:email])
+
     # Send them to success page
     if @user.save
   

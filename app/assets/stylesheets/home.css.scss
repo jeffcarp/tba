@@ -19,6 +19,7 @@ a:hover {
   margin: 128px auto 0;
 }
 #content {
+  padding: 64px 0;
 }
 
 /* Header
@@ -34,7 +35,7 @@ header {
   }
   ul {
     li {
-      margin: 0 12px 0 0;
+      margin: 0 12px 24px 0;
       float: left;   
     }
   }

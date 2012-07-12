@@ -12,7 +12,7 @@ class PostsController < ApplicationController
 
   # GET /posts/1
   # GET /posts/1.json
-  def show
+  def show 
     @post = Post.find(params[:id])
 
     respond_to do |format|
@@ -22,14 +22,13 @@ class PostsController < ApplicationController
   end
 
   # GET /posts/new
-  # GET /posts/new.json
   def new
-    @post = Post.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @post }
-    end
+    # Check if user has already made a post for this edition
+    
+    # If so, grab that post
+    
+    # If not, 
+    @post = current_user.posts.create
   end
 
   # GET /posts/1/edit
