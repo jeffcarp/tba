@@ -3,19 +3,25 @@ class Issue < ActiveRecord::Base
   has_many :posts
   
   def self.upcoming_issue
-    Issue.find(:first, :conditions => ["published=?", false], :order => 'publish_date DESC')
+    Issue.find(:first, :conditions => ["published=?", false], :order => 'publish_date ASC')
   end
   
-  def self.create_next
+  def self.create_next   
     new_issue = Issue.new
     new_issue.publish_date = self.upcoming_issue.publish_date + 1.days
     new_issue.save
+    return new_issue
   end
   
   def self.send_announcements
-    
+        
     # Get next issue
     @issue = self.upcoming_issue
+    
+    # Make sure issue's date is today.
+    if (@issue.publish_date != Date.today)
+      return false
+    end
     
     # Errbody in the club get mails
     @users = User.all

@@ -7,6 +7,6 @@ task :send_announcements => :environment do
 end
 
 task :create_next_issue => :environment do
-  Issue.create_next
-  puts "Created next issue."
+  @issue = Issue.create_next
+  puts "Created next issue publishing " + @issue.publish_date.strftime('%F')
 end

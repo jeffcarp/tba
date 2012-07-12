@@ -10,7 +10,7 @@
   <p>Edit your submission</p>  
 <% else %>
   
-  <h3>Publish Date: <%= @issue.publish_date.strftime('%F') %></h3>
+  <h3>Composing post for <%= @issue.publish_date.strftime('%F') %>, also known as tomorrow.</h3>
   
   <%= render 'posts/form' %>
   
