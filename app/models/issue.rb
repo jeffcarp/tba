@@ -37,4 +37,15 @@ class Issue < ActiveRecord::Base
     @issue.save
   end
   
+  def self.create_week_from_scratch
+    date = Date.today
+    (0..6).each do |i|
+      issue = Issue.new
+      issue.publish_date = date
+      issue.save
+      puts "Created next issue publishing " + issue.publish_date.strftime('%F')
+      date = date + 1.days
+    end
+  end
+  
 end

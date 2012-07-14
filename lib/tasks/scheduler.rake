@@ -10,3 +10,7 @@ task :create_next_issue => :environment do
   @issue = Issue.create_next
   puts "Created next issue publishing " + @issue.publish_date.strftime('%F')
 end
+
+task :create_week_from_scratch => :environment do
+  Issue.create_week_from_scratch
+end

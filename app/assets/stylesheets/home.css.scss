@@ -16,7 +16,7 @@ a:hover {
 ===================================*/
 #wrap {
   width: 600px;
-  margin: 128px auto 0;
+  margin: 64px auto 0;
 }
 #content {
   padding: 64px 0;
@@ -37,6 +37,12 @@ header {
     li {
       margin: 0 12px 24px 0;
       float: left;   
+      a.admin {
+        color: #333;
+        &:hover{
+          color: #666;
+        }
+      }
     }
   }
 }

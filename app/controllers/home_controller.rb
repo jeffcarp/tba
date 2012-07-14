@@ -13,16 +13,15 @@ class HomeController < ApplicationController
   
     # Get upcoming edition
     @issue = Issue.upcoming_issue
-  
+
     # Check if user has already made a post for this edition
     @post = Post.find(:first, :conditions => ['user_id=? AND issue_id=?', current_user.id, @issue.id])
     
     if @post    
       @already = true  
     else
-      @post = current_user.posts.new
-      @issue.posts << @post
-    end    
+      @post = Post.new
+    end
     
     render 'home/compose'
   end
