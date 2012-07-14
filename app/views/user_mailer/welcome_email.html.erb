@@ -15,8 +15,7 @@
       Thanks for being one of the first to join <strong>The Better Announcements</strong>, we're glad to have you with us.
     </p>
     <p style="margin: 0 0 24px;">
-      <% url_prefix = 'http://'+request.host+':'+request.port.to_s+'/' %>
-      From this email (and all subsequent ones) you can access your <a href="<%= url_prefix %>auth?e=<%= u @user.email %>&s=<%= u @user.salt %>&l=<%= u '/settings' %>">settings</a> or send an <a href="<%= url_prefix %>auth?e=<%= u @user.email %>&s=<%= u @user.salt %>&l=<%= u '/compose' %>">announcement</a>.
+      From this email (and all subsequent ones) you can access your <a href="<%= @url_prefix %>auth?e=<%= u @user.email %>&s=<%= u @user.salt %>&l=<%= u '/settings' %>">settings</a> or send an <a href="<%= @url_prefix %>auth?e=<%= u @user.email %>&s=<%= u @user.salt %>&l=<%= u '/compose' %>">announcement</a>.
     </p>
 <!--
     <p style="margin: 0 0 24px;">

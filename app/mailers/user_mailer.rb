@@ -3,6 +3,7 @@ class UserMailer < ActionMailer::Base
   
   def welcome_email(user)
     @user = user
+    @url_prefix = 'http://'+request.host+':'+request.port.to_s+'/'
     mail(:to => @user.email, :subject => "Welcome to The Better Announcements!")
   end
   
