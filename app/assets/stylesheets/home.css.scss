@@ -11,6 +11,18 @@ a {
 a:hover {
   color: #0a8dab;
 }
+h2 {
+  font-size: 18px;
+  color: #333;
+  line-height: 24px;
+  margin: 0 0 18px;
+  &.green {
+    color: #0fad3d;
+  }
+}
+.notice {
+  margin: 0 0 18px;
+}
 
 /* Layout
 ===================================*/
@@ -36,12 +48,18 @@ header {
   ul {
     li {
       margin: 0 12px 24px 0;
-      float: left;   
+      float: left;  
+      a {
+        padding: 0 0 4px;
+      } 
       a.admin {
-        color: #333;
+        color: #888;
         &:hover{
-          color: #666;
+          color: #bbb;
         }
+      }
+      a.current {
+        border-bottom: solid 2px;
       }
     }
   }
@@ -79,13 +97,24 @@ section li {
 
 /* Compose
 ===================================*/
-form.compose textarea {
+form .field {
+  margin: 0 0 18px;
+}
+form input[type='text'] {
   display: block;
-  width: 586px;
+  width: 584px;
+  padding: 6px;
+  font-size: 18px;
+  border: solid 2px #ccc;
+}
+form textarea {
+  display: block;
+  border: solid 2px #ccc;
+  width: 584px;
   padding: 6px;
   font-size: 14px;
 }
-form.compose #submit {
+form #submit {
   text-align: center;
 }
 

@@ -1,5 +1,15 @@
-<h1>New post</h1>
+<% if @already %>
+  <h2 class="green">Post scheduled for <%= @issue.publish_date.strftime('%B %-d, %Y') %></h2>
+<% else %>
+  <h2>Composing post for tomorrow, <%= @issue.publish_date.strftime('%B %-d, %Y') %></h2>
+<% end %>
 
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+  
 <%= render 'form' %>
 
-<%= link_to 'Back', posts_path %>
+
+
+

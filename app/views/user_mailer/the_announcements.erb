@@ -9,16 +9,7 @@
     <h2 style="font-size: 14px; color: #555; text-align: center;"><%= @issue.publish_date.strftime("%F") %></h2>
   </div>
   
-  <% @issue.posts.each do |post| %>
-  <div class="announcement">
-    <div class="title" style="padding: 10px; color: white; background-color: #0c28a4;">
-      <h2 style="font-size: 16px; margin: 0; padding: 0;"><%= post.user.email %> - <%= post.title %></h2>
-    </div>
-    <div class="body" style="padding: 10px;">
-      <p style="font-size: 13px; line-height: 18px;"><%= post.content %></p>
-    </div>
-  </div>
-  <% end %>
+  <%= render :partial => "user_mailer/post", :collection => @issue.posts %>
   
   <!-- note: add settings and compose links -->
   

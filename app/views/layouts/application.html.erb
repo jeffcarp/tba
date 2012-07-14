@@ -5,6 +5,15 @@
   <title>The Better Announcements</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
+
+<!--
+  <script type="text/javascript">
+    $(function(){
+      $("input:checkbox").iphoneStyle();
+    });
+  </script>
+-->
+
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -12,11 +21,11 @@
     <header>
       <% if current_user %>
         <ul id="nav" class="clearfix">
-          <li><a href="/">Home</a></li>
-          <li><a href="/compose">Compose</a></li>
-          <li><a href="/settings"><%= current_user.email %></a></li>
+          <li><a href="/compose" class="<%= underline '/compose' %>">Compose</a></li>
+          <li><a href="/settings" class="<%= underline '/settings' %>"><%= current_user.email %></a></li>
+          <li><a href="/logout" class="admin">Log out</a></li>
           <% if current_user.email == 'gccarpen@colby.edu' %>
-            <li><%= link_to 'Issues', issues_path, :class => 'admin' %></li>
+            <li><a href="/issues" class="admin <%= underline '/issues' %>">Issues</a></li>
           <% end %>
         </ul>
       <% end %>

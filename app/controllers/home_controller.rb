@@ -9,30 +9,20 @@ class HomeController < ApplicationController
     @hide_navigation = true
   end
   
-  def compose
-  
-    # Get upcoming edition
-    @issue = Issue.upcoming_issue
-
-    # Check if user has already made a post for this edition
-    @post = Post.find(:first, :conditions => ['user_id=? AND issue_id=?', current_user.id, @issue.id])
-    
-    if @post    
-      @already = true  
-    else
-      @post = Post.new
-    end
-    
-    render 'home/compose'
-  end
-  
   def settings
     render 'home/settings'
   end
 
   def debug_email
+    if params[:email] == 'the_announcements'
+      template = params[:email]
+      @issue = Issue.upcoming_issue
+    else
+      template = 'welcome_email'
+    end
+  
     @user = User.find_by_email "gccarpen@colby.edu"
-    render :layout => false, :template => 'user_mailer/welcome_email'
+    render :layout => false, :template => 'user_mailer/'+template
   end
 
   def auth
