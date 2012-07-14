@@ -46,7 +46,9 @@ class UsersController < ApplicationController
 
     # Send them to success page
     if @user.save
-  
+      # Get url_prefix
+      @url_prefix = 'http://'+request.host+':'+request.port.to_s+'/'
+      
       # Send them an email
       UserMailer.welcome_email(@user).deliver
     
