@@ -15,8 +15,18 @@
     <%= f.text_field :title, :placeholder => "Title" %>
   </div>
   <div class="field">
-    <%= f.text_area :content, :placeholder => "Your post" %>
+    <%= f.text_area :content, :placeholder => "Your post", :maxlength => 500, :id => 'post_content' %>
   </div>
+  <% if @post.content %>
+    <% char_count = 500 - @post.content.length %>
+    <% if (char_count <= 150) %>
+      <div id="char_counter"><p style="color: hsl(0, 100%, <%= ((150 - char_count)/3) %>%)"><%= char_count %></p></div>
+    <% else %>
+      <div id="char_counter"><%= char_count %></div>
+    <% end %>
+  <% else %>
+    <div id="char_counter">500</div>
+  <% end %>   
   <div class="field">
     <%= f.hidden_field :user_id, :value => current_user.id %>
     <%= f.hidden_field :issue_id, :value => @issue.id %>

@@ -8,6 +8,7 @@
 
   <% if @checkboxes %>
     <%= javascript_include_tag "ios-checkboxes" %>
+    <%= stylesheet_link_tag    "ios-checkboxes" %>
     <script type="text/javascript">
       $(window).load(function() {
         $('input:checkbox').iphoneStyle();

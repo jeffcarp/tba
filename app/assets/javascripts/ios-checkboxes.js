@@ -101,7 +101,30 @@
       });
     };
     iOSCheckbox.prototype.onDragEnd = function(event, x) {
-      var p;
+      var p;      
+      
+      // Hey! You there! If you see this, can you teach me how to put this
+      // function in main.js?
+      var user_id = $('#receive_checkbox').data('user-id')
+      if ($('#receive_checkbox').attr('checked') == 'checked') {
+        var receive = false
+      } else {
+        var receive = true
+      }
+      $.ajax({
+        type: 'put',
+        url: '/users/'+user_id+'.json',
+        data: { 
+          id: user_id,
+          receive: receive
+        },
+        dataType: 'json'        
+        }).done(function(data) {
+          console.log( "Data Saved: " + data );
+        });
+
+      // Resume normal code
+
       if (iOSCheckbox.currentlyClicking !== this.handle) {
         return;
       }
