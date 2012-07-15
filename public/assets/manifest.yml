@@ -1,5 +1,7 @@
 ---
 bg.png: bg-b2dd3615b9b705f8c0481be14dc0b98d.png
 rails.png: rails-be8732dac73d845ac5b142c8fb5f9fb0.png
-application.js: application-363316399c9b02b9eb98cd1b13517abd.js
-application.css: application-17523d5671d5271312d94f9bfe14b595.css
+application.js: application-2ab13cf54affdd8040bfac267d8c35d3.js
+ios-checkboxes.js: ios-checkboxes-6877260cda86380a0385a84c01ed80ba.js
+application.css: application-aaf8d1810bfc8c679c26b1357846a81a.css
+ios-checkboxes.css: ios-checkboxes-402b32ee3097d5f5383ac172fe03fbbc.css
