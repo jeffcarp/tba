@@ -178,9 +178,42 @@ footer {
     font-size: 13px;
     margin: 0 0 12px;
   }
-  form {
+}
+
+/* Responsive
+===================================*/
+@media screen and (max-width: 624px) {
+
+  #wrap {
+    width: 94%;
+    margin: 12px auto; 
   }
-  .field {
+  #content {
+    padding: 24px 0;
   }
+  header h1 {
+    font-size: 24px;
+  }
+  h2 {
+    width: 93%;
+    margin: 0 auto 18px;
+  }
+  form input[type='text'] {
+    width: 90%;
+    margin: 0 auto;
+  }
+  form textarea {
+    width: 90%;
+    margin: 0 auto;
+  }
+  form #char_counter {
+    text-align: center;
+  }
+  #submit {
+    text-align: center;
+  }
+  html { 
+    -webkit-text-size-adjust:none; 
+  } 
 }
 

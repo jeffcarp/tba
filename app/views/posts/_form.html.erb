@@ -31,7 +31,7 @@
     <%= f.hidden_field :user_id, :value => current_user.id %>
     <%= f.hidden_field :issue_id, :value => @issue.id %>
   </div>
-  <div class="field">
+  <div class="field" id="submit">
     <%= f.submit "Save announcement" %>
   </div>
   <% if @already %>
