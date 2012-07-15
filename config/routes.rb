@@ -10,7 +10,9 @@ Shanghai::Application.routes.draw do
   get '/debug_email' => 'home#debug_email'
   get '/auth' => 'home#auth', :as => 'auth'
   get '/settings' => 'home#settings', :as => 'settings'
-  get '/compose' => 'posts#new', :as => 'compose'
+  get '/compose' => 'posts#compose', :as => 'compose'
+  
+  post '/' => 'users#create', :as => 'home'
 
 #   get '/auth' => 'home#auth', :constraints => lambda{ |req| !req.params[:l].blank? }
 

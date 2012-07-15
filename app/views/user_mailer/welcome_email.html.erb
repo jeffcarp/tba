@@ -15,14 +15,21 @@
       Thanks for being one of the first to join <strong>The Better Announcements</strong>, we're glad to have you with us.
     </p>
     <p style="margin: 0 0 24px;">
-      From this email (and all subsequent ones) you can access your <a href="<%= @url_prefix %>auth?e=<%= u @user.email %>&s=<%= u @user.salt %>&l=<%= u '/settings' %>">settings</a> or send an <a href="<%= @url_prefix %>auth?e=<%= u @user.email %>&s=<%= u @user.salt %>&l=<%= u '/compose' %>">announcement</a>.
+      <% 
+      if Rails.env == 'development'
+        uri_prefix = 'http://localhost:3000/'
+      else
+        uri_prefix = 'http://shanghai.herokuapp.com/'
+      end
+      %>
+      From this email (and all subsequent ones) you can access your <a href="<%= uri_prefix %>auth?e=<%= u @user.email %>&s=<%= u @user.salt %>&l=<%= u '/settings' %>">settings</a> or send an <a href="<%= uri_prefix %>auth?e=<%= u @user.email %>&s=<%= u @user.salt %>&l=<%= u '/compose' %>">announcement</a>.
     </p>
 <!--
     <p style="margin: 0 0 24px;">
       Here's how to <a href="">unsubscribe</a> from the old general announcements.
     </p>
 -->
-    <p style="margin: 24px; font-size: 12px; color: #888;">Stay classy, Colby College.</p>
+    <p style="margin: 24px; font-size: 12px; color: #888;">You stay classy, Colby College.</p>
 
   </div>  
 

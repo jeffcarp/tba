@@ -6,13 +6,14 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
 
-<!--
-  <script type="text/javascript">
-    $(function(){
-      $("input:checkbox").iphoneStyle();
-    });
-  </script>
--->
+  <% if @checkboxes %>
+    <%= javascript_include_tag "ios-checkboxes" %>
+    <script type="text/javascript">
+      $(window).load(function() {
+        $('input:checkbox').iphoneStyle();
+      });
+    </script>
+  <% end %>
 
   <%= csrf_meta_tags %>
 </head>

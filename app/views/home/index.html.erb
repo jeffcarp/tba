@@ -1,5 +1,9 @@
 <div class="home_index">
 
+  <% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
+
   <h2>A sensible alternative to The General Announcements for Colby students and faculty.</h2>
   
   <ul>
@@ -7,7 +11,7 @@
     <li>Easy reply button in email.</li>
   </ul>
   
-  <%= form_for(@user) do |f| %>
+  <%= form_for(@user, :url => :home) do |f| %>
   
     <% if @user.errors.any? %>
       <div class="error_explanation">

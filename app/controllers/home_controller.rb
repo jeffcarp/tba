@@ -1,5 +1,7 @@
 class HomeController < ApplicationController
 
+  before_filter :authenticate, :only => [:settings]
+
   def index
     @hide_navigation = true
     @user = User.new
@@ -10,6 +12,7 @@ class HomeController < ApplicationController
   end
   
   def settings
+    @checkboxes = true
     render 'home/settings'
   end
 
@@ -20,7 +23,8 @@ class HomeController < ApplicationController
     else
       template = 'welcome_email'
     end
-  
+
+    @url_prefix = 'http://shanghai.herokuapp.com/'  
     @user = User.find_by_email "gccarpen@colby.edu"
     render :layout => false, :template => 'user_mailer/'+template
   end

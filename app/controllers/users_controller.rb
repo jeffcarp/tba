@@ -1,38 +1,5 @@
 class UsersController < ApplicationController
-  # GET /users
-  # GET /users.json
-  def index
-    @users = User.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @users }
-    end
-  end
-
-  # GET /users/1
-  # GET /users/1.json
-  def show
-    @user = User.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @user }
-    end
-  end
-
-  # GET /users/new
-  # GET /users/new.json
-  def new
-    @user = User.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @user }
-    end
-  end
-
-  # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
   end
@@ -47,7 +14,8 @@ class UsersController < ApplicationController
     # Send them to success page
     if @user.save
       # Get url_prefix
-      @url_prefix = 'http://'+request.host+':'+request.port.to_s+'/'
+#       @url_prefix = 'http://'+request.host+':'+request.port.to_s+'/'
+      @url_prefix = 'http://shanghai.herokuapp.com/'
       
       # Send them an email
       UserMailer.welcome_email(@user).deliver

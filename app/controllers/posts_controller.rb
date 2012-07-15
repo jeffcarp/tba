@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
 
-  def new
+  before_filter :authenticate
+
+  def compose
     # Get upcoming edition
     @issue = Issue.upcoming_issue
 
@@ -9,8 +11,10 @@ class PostsController < ApplicationController
     
     if @post    
       @already = true  
+      render :action => 'new', :template => 'posts/compose'
     else
       @post = Post.new
+      render :action => 'edit', :template => 'posts/compose'
     end
   end
 
@@ -19,7 +23,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to :compose, notice: 'Post was successfully created.' }
+        format.html { redirect_to :compose, notice: 'Announcement was successfully created.' }
       else
         format.html { render action: "new" }
       end
@@ -28,7 +32,11 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    redirect_to :compose, :notice => "Announcement was successfully updated."
+    if @post.update_attributes(params[:post])
+      redirect_to :compose, :notice => "Announcement was successfully updated."
+    else
+      redirect_to :compose, :notice => "Sorry, there was a problem saving your post."
+    end
   end
 
   def destroy
