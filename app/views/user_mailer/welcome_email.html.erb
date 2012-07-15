@@ -22,7 +22,7 @@
         uri_prefix = 'http://shanghai.herokuapp.com/'
       end
       %>
-      From this email (and all subsequent ones) you can access your <a href="<%= uri_prefix %>auth?e=<%= u @user.email %>&s=<%= u @user.salt %>&l=<%= u '/settings' %>">settings</a> or send an <a href="<%= uri_prefix %>auth?e=<%= u @user.email %>&s=<%= u @user.salt %>&l=<%= u '/compose' %>">announcement</a>.
+      From this email (and all subsequent ones) you can <a href="<%= uri_prefix %>auth?e=<%= u @user.email %>&s=<%= u @user.salt %>&l=<%= u '/settings' %>">change</a> your settings or <a href="<%= uri_prefix %>auth?e=<%= u @user.email %>&s=<%= u @user.salt %>&l=<%= u '/compose' %>">send</a> an announcement.
     </p>
 <!--
     <p style="margin: 0 0 24px;">
