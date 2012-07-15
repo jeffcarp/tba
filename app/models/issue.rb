@@ -28,7 +28,6 @@ class Issue < ActiveRecord::Base
 
     # Cast them off in every direction
     @users.each do |user|
-      puts "Sending announcement to "+user.email
       UserMailer.the_announcements(user, @issue).deliver
     end
     

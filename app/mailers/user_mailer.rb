@@ -9,7 +9,10 @@ class UserMailer < ActionMailer::Base
   def the_announcements(user, issue)
     @user = user
     @issue = issue
-    mail(:to => @user.email, :subject => "The Better Announcements, " + @issue.publish_date.strftime('%B %-d, %Y'))
+    if @user.receive
+      puts "Sending announcement to "+ @user.email
+      mail(:to => @user.email, :subject => "The Better Announcements, " + @issue.publish_date.strftime('%B %-d, %Y'))
+    end
   end
 
 end
