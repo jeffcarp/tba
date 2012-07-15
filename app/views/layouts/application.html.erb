@@ -21,16 +21,18 @@
 <body>
  <div id="wrap">
     <header>
-      <% if current_user %>
-        <ul id="nav" class="clearfix">
+      <ul id="nav" class="clearfix">
+        <% if current_user %>
           <li><a href="/compose" class="<%= underline '/compose' %>">Compose</a></li>
           <li><a href="/settings" class="<%= underline '/settings' %>"><%= current_user.email %></a></li>
           <li><a href="/logout" class="admin">Log out</a></li>
           <% if current_user.email == 'gccarpen@colby.edu' %>
             <li><a href="/issues" class="admin <%= underline '/issues' %>">Issues</a></li>
           <% end %>
-        </ul>
-      <% end %>
+        <% else %>
+          <li>&nbsp;</li>
+        <% end %>
+      </ul>
       <h1>The Better Announcements</h1>
     </header>
     <div id="content">

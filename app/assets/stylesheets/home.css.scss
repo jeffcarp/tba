@@ -159,16 +159,17 @@ footer {
   text-align: center;
   h2 {
     font-size: 24px;
-    margin: 0 0 24px;
+    line-height: 32px;
+    margin: 0 0 48px;
     padding: 24px 0;
     background-color: #a9ebfa;
   }
   ul {
-    width: 60%;
+    width: 66%;
     margin: 0 auto 48px;
     text-align: left;
     list-style: disc;
-    font-size: 16px;
+    font-size: 18px;
     li {
       margin: 0 0 4px;
     }
@@ -178,10 +179,8 @@ footer {
     margin: 0 0 12px;
   }
   form {
-    margin: 0 0 64px;
   }
   .field {
-    margin: 0 0 12px;
   }
 }
 
