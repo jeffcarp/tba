@@ -18,6 +18,11 @@ class Issue < ActiveRecord::Base
     # Get next issue
     @issue = self.upcoming_issue
     
+    # If no posts, don't send
+    if (!@issue.posts)
+      return false
+    end
+    
     # Make sure issue's date is today.
     if (@issue.publish_date != Date.today)
       return false
