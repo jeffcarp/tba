@@ -1,46 +1,45 @@
 class Issue < ActiveRecord::Base
   attr_accessible :publish_date
   has_many :posts
-  
+
   def self.upcoming_issue
     Issue.find(:first, :conditions => ["published=?", false], :order => 'publish_date ASC')
   end
-  
-  def self.create_next   
-    new_issue = Issue.new
-    new_issue.publish_date = self.upcoming_issue.publish_date + 1.days
-    new_issue.save
-    return new_issue
-  end
-  
-  def self.send_announcements
-        
-    # Get next issue
-    @issue = self.upcoming_issue
-    
-    # If no posts, don't send
-    if (!@issue.posts)
-      return false
-    end
-    
-    # Make sure issue's date is today.
-    if (@issue.publish_date != Date.today)
-      return false
-    end
-    
-    # Errbody in the club get mails
-    @users = User.all
 
-    # Cast them off in every direction
+  def self.create_next
+    issue = Issue.new
+    issue.publish_date = self.upcoming_issue.publish_date + 1.days
+    issue.save
+    return issue
+  end
+
+  def self.mark_as_published
+    self.published = true
+    if self.save
+      return self
+    else
+      return false
+    end
+  end
+
+  def self.send_announcements
+    puts "Sending announcements..."
+
+    @users = User.all
+    @issue = self.upcoming_issue
+
+    return false if !@issue.posts.any?
+    return false if @issue.publish_date != Date.today
+
     @users.each do |user|
       UserMailer.the_announcements(user, @issue).deliver
     end
-    
-    # Mark this issue as sent
-    @issue.published = true
-    @issue.save
+
+    @issue.mark_as_published
+
+    puts "Done sending all announcements."
   end
-  
+
   def self.create_week_from_scratch
     date = Date.today
     (0..6).each do |i|
@@ -51,5 +50,5 @@ class Issue < ActiveRecord::Base
       date = date + 1.days
     end
   end
-  
+
 end
