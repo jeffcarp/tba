@@ -3,7 +3,7 @@ class Issue < ActiveRecord::Base
   has_many :posts
 
   def self.upcoming_issue
-    Issue.find(:first, :conditions => ["published=?", false], :order => 'publish_date ASC')
+    Issue.find(:first, :conditions => ["published=?", false], :order => 'publish_date DESC')
   end
 
   def self.create_next
