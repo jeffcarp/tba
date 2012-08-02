@@ -8,7 +8,8 @@ class Issue < ActiveRecord::Base
 
   def self.create_next
     issue = Issue.new
-    issue.publish_date = self.upcoming_issue.publish_date + 1.days
+    furthest_issue = Issue.find(:first, :order => 'publish_date DESC')
+    issue.publish_date = furthest_issue.publish_date + 1.days
     issue.save
     return issue
   end
