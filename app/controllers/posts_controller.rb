@@ -3,14 +3,20 @@ class PostsController < ApplicationController
   before_filter :authenticate
 
   def compose
+    # If they don't have a name, tell them to make one
+    if !current_user.name
+      redirect_to :settings, notice: "Hey, you need to fill in your name before you post anything."
+      return
+    end
+
     # Get upcoming edition
     @issue = Issue.upcoming_issue
 
     # Check if user has already made a post for this edition
     @post = Post.find(:first, :conditions => ['user_id=? AND issue_id=?', current_user.id, @issue.id])
-    
-    if @post    
-      @already = true  
+
+    if @post
+      @already = true
       render :action => 'new', :template => 'posts/compose'
     else
       @post = Post.new

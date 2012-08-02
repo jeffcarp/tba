@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   # POST /users
   def create
     @user = User.new(params[:user])
-  
+
     # Make them a hash
     @user.salt = Digest::MD5.hexdigest(params[:user][:email])
 
@@ -16,10 +16,10 @@ class UsersController < ApplicationController
       # Get url_prefix
 #       @url_prefix = 'http://'+request.host+':'+request.port.to_s+'/'
       @url_prefix = 'http://shanghai.herokuapp.com/'
-      
+
       # Send them an email
       UserMailer.welcome_email(@user).deliver
-    
+
       # Redirect to success page
       redirect_to '/success'
     else
@@ -39,14 +39,10 @@ class UsersController < ApplicationController
       @user.receive = params[:receive]
     end
 
-    respond_to do |format|
-      if @user.update_attributes(params[:user])
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    if @user.update_attributes(params[:user])
+      redirect_to :settings
+    else
+      redirect_to :settings, notice: 'There was a problem saving.'
     end
   end
 

@@ -3,7 +3,7 @@ class Issue < ActiveRecord::Base
   has_many :posts
 
   def self.upcoming_issue
-    Issue.find(:first, :conditions => ["published=?", false], :order => 'publish_date DESC')
+    Issue.find(:first, :conditions => ["published=?", false], :order => 'publish_date ASC')
   end
 
   def self.create_next
@@ -14,7 +14,7 @@ class Issue < ActiveRecord::Base
     return issue
   end
 
-  def self.mark_as_published
+  def mark_as_published
     self.published = true
     if self.save
       return self
@@ -27,16 +27,17 @@ class Issue < ActiveRecord::Base
     puts "Sending announcements..."
 
     @users = User.all
-    @issue = self.upcoming_issue
+    @issue = Issue.upcoming_issue
+
+    return false if @issue.publish_date != Date.today
+
+    @issue.mark_as_published
 
     return false if !@issue.posts.any?
-    return false if @issue.publish_date != Date.today
 
     @users.each do |user|
       UserMailer.the_announcements(user, @issue).deliver
     end
-
-    @issue.mark_as_published
 
     puts "Done sending all announcements."
   end
