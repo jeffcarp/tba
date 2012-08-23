@@ -5,30 +5,16 @@
   <% end %>
 
   <h2>A sensible alternative to The General Announcements for Colby students and faculty.</h2>
-  
+
   <ul>
     <li>One post per person, per day. 500 character limit.</li>
     <li>Easy reply button in email.</li>
   </ul>
-  
-  <%= form_for(@user, :url => :home) do |f| %>
-  
-    <% if @user.errors.any? %>
-      <div class="error_explanation">
-        <% @user.errors.full_messages.each do |msg| %>
-          <p><%= msg %></p>
-        <% end %>
-      </div>
-    <% end %>
-    
-    <div class="field">
-      <%= f.text_field :email, :placeholder => 'bro.adams@colby.edu' %>
-    </div>
-    
-    <div class="actions">
-      <%= f.submit 'Sign Up' %>
-    </div>
-    
-  <% end %>
+
+  <div class="google_button">
+    <a href="/auth/google/">
+      <%= image_tag "google_login.png" %>
+    </a>
+  </div>
 
 </div>

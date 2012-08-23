@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120715012535) do
+ActiveRecord::Schema.define(:version => 20120821035234) do
 
   create_table "issues", :force => true do |t|
     t.date     "publish_date"
@@ -37,6 +37,8 @@ ActiveRecord::Schema.define(:version => 20120715012535) do
     t.string   "salt"
     t.boolean  "receive",    :default => true
     t.boolean  "admin",      :default => false
+    t.string   "provider"
+    t.string   "uid"
   end
 
 end

@@ -12,12 +12,12 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br />
+    <%= f.label :name, "Name (full name required)" %><br />
     <%= f.text_field :name %>
   </div>
-  <div class="field">
+  <div class="field disabled">
     <%= f.label :email %><br />
-    <%= f.text_field :email %>
+    <%= f.text_field :email, :disabled => 'disabled' %>
   </div>
   <div class="actions">
     <%= f.submit "Save"  %>

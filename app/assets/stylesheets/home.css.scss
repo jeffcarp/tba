@@ -53,10 +53,10 @@ header {
   ul {
     li {
       margin: 0 12px 24px 0;
-      float: left;  
+      float: left;
       a {
         padding: 0 0 4px;
-      } 
+      }
       a.admin {
         color: #888;
         &:hover{
@@ -127,6 +127,10 @@ form #submit {
 form #char_counter {
   font-weight: bold;
 }
+form .disabled input {
+  color: #666;
+  background-color: #eee;
+}
 
 /* Settings
 ===================================*/
@@ -186,7 +190,7 @@ footer {
 
   #wrap {
     width: 94%;
-    margin: 12px auto; 
+    margin: 12px auto;
   }
   #content {
     padding: 24px 0;
@@ -215,8 +219,8 @@ footer {
   .setting label {
     font-size: 12px;
   }
-  html { 
-    -webkit-text-size-adjust:none; 
-  } 
+  html {
+    -webkit-text-size-adjust:none;
+  }
 }
 

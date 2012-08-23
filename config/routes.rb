@@ -1,5 +1,8 @@
 Shanghai::Application.routes.draw do
 
+  match '/auth/:provider/callback', :to => 'sessions#create'
+  match "/logout" => "sessions#destroy", :as => :signout
+
   resources :users
   resources :posts
   resources :issues
@@ -11,7 +14,7 @@ Shanghai::Application.routes.draw do
   get '/auth' => 'home#auth', :as => 'auth'
   get '/settings' => 'home#settings', :as => 'settings'
   get '/compose' => 'posts#compose', :as => 'compose'
-  
+
   post '/' => 'users#create', :as => 'home'
 
 #   get '/auth' => 'home#auth', :constraints => lambda{ |req| !req.params[:l].blank? }
