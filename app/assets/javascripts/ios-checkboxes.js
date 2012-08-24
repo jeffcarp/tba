@@ -116,7 +116,8 @@
         url: '/users/'+user_id+'.json',
         data: {
           id: user_id,
-          receive: receive
+          receive: receive,
+          async: 1
         },
         dataType: 'json'
         }).done(function(data) {

@@ -24,6 +24,11 @@
     <p>You are an admin.</p>
     <% end %>
   </div>
+  <div class="field">
+    <% if !@user.canpost %>
+    <p>Since you have a non-colby.edu address, you can receive the announcements but cannot post to them.</p>
+    <% end %>
+  </div>
   <div class="actions">
     <%= f.submit "Save"  %>
   </div>

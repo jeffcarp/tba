@@ -31,10 +31,17 @@ class UsersController < ApplicationController
     end
 
     if @user.update_attributes(params[:user])
-      render nothing: true
-      # redirect_to :settings
+      if request.xhr?
+        render nothing: true
+      else
+        redirect_to :settings
+      end
     else
-      # redirect_to :settings, notice: 'There was a problem saving.'
+      if request.xhr?
+        render nothing: true
+      else
+        redirect_to :settings, notice: 'There was a problem saving.'
+      end
     end
   end
 
