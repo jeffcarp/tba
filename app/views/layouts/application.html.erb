@@ -16,6 +16,8 @@
     </script>
   <% end %>
 
+  <%= analytics_init local: Rails.env.development? %>
+
   <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0" />
   <%= csrf_meta_tags %>
 </head>

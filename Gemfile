@@ -22,3 +22,5 @@ gem 'jquery-rails'
 
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
+
+gem 'google-analytics-rails'
