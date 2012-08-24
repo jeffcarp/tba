@@ -5,3 +5,4 @@ end
 OmniAuth.config.on_failure do |env|
   [302, {'Location' => '/', 'Content-Type'=> 'text/html'}, []]
 end
+
