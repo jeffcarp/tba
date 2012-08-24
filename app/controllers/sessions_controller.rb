@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     unless @user = User.find_by_provider_and_uid(auth["provider"], auth["uid"])
 
       # To catch and convert legacy users!
-      if @user = User.find_by_email auth["info"]["email"]
+      if (@user = User.find_by_email auth["info"]["email"])
         @user.canpost = true
         @user.provider = auth["provider"]
         @user.uid = auth["uid"]
