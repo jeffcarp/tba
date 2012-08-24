@@ -1,7 +1,7 @@
 <div class="home_index">
 
   <% if flash[:notice] %>
-    <div class="notice"><%= flash[:notice] %></div>
+    <!-- <div class="notice"><%= flash[:notice] %></div> -->
   <% end %>
 
   <h2>A sensible alternative to The General Announcements for Colby students and faculty.</h2>
@@ -12,8 +12,9 @@
   </ul>
 
   <div class="google_button">
-    <a href="/auth/google/">
-      <%= image_tag "google_login.png" %>
+    <a href="/auth/google_oauth2/" class="google_login">
+      Login with Google
+      <!-- <%= image_tag "google_login.png" %> -->
     </a>
   </div>
 

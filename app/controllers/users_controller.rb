@@ -40,9 +40,10 @@ class UsersController < ApplicationController
     end
 
     if @user.update_attributes(params[:user])
-      redirect_to :settings
+      render nothing: true
+      # redirect_to :settings
     else
-      redirect_to :settings, notice: 'There was a problem saving.'
+      # redirect_to :settings, notice: 'There was a problem saving.'
     end
   end
 

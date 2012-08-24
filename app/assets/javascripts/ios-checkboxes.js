@@ -101,8 +101,8 @@
       });
     };
     iOSCheckbox.prototype.onDragEnd = function(event, x) {
-      var p;      
-      
+      var p;
+
       // Hey! You there! If you see this, can you teach me how to put this
       // function in main.js?
       var user_id = $('#receive_checkbox').data('user-id')
@@ -114,11 +114,11 @@
       $.ajax({
         type: 'put',
         url: '/users/'+user_id+'.json',
-        data: { 
+        data: {
           id: user_id,
           receive: receive
         },
-        dataType: 'json'        
+        dataType: 'json'
         }).done(function(data) {
           console.log( "Data Saved: " + data );
         });

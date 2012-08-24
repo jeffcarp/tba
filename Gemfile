@@ -20,4 +20,5 @@ end
 
 gem 'jquery-rails'
 
-gem 'omniauth-google'
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
