@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :name, :salt
+  attr_accessible :email, :name
   has_many :posts
 
   # validates_uniqueness_of :email, :message => "%{value} has already been registered. To log into your account, follow the login link in an email from us."
@@ -17,6 +17,11 @@ class User < ActiveRecord::Base
       user.uid = auth["uid"]
       user.email = auth["info"]["email"]
       user.name = auth["info"]["name"]
+
+      if user.email.include? '@colby.edu'
+        user.canpost = true
+      end
+
     end
   end
 end

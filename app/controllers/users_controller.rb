@@ -8,18 +8,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
 
-    # Make them a hash
-    @user.salt = Digest::MD5.hexdigest(params[:user][:email])
-
     # Send them to success page
     if @user.save
       # Get url_prefix
-#       @url_prefix = 'http://'+request.host+':'+request.port.to_s+'/'
-      @url_prefix = 'http://shanghai.herokuapp.com/'
-
-      # Send them an email
-      UserMailer.welcome_email(@user).deliver
-
       # Redirect to success page
       redirect_to '/success'
     else

@@ -26,7 +26,9 @@
     <header>
       <ul id="nav" class="clearfix">
         <% if current_user %>
-          <li><a href="/compose" class="<%= underline '/compose' %>">Compose</a></li>
+          <% if current_user.canpost %>
+            <li><a href="/compose" class="<%= underline '/compose' %>">Compose</a></li>
+          <% end %>
           <% if current_user.name %>
             <li><a href="/settings" class="<%= underline '/settings' %>"><%= current_user.name %></a></li>
           <% else %>

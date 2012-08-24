@@ -9,6 +9,11 @@ class PostsController < ApplicationController
       return
     end
 
+    if !current_user.canpost
+      redirect_to :settings, notice: "Sorry, you must have a colby.edu email address to post."
+      return
+    end
+
     # Get upcoming edition
     @issue = Issue.upcoming_issue
 

@@ -10,19 +10,12 @@
   </div>
 
   <%= render :partial => "user_mailer/post", :collection => @issue.posts %>
-  
+
   <!-- note: add settings and compose links -->
-  
+
     <p style="margin: 0 0 24px;">
-      <% 
-      if Rails.env == 'development'
-        uri_prefix = 'http://localhost:3000/'
-      else
-        uri_prefix = 'http://shanghai.herokuapp.com/'
-      end
-      %>
-      From this email (and all subsequent ones) you can <a href="<%= uri_prefix %>auth?e=<%= u @user.email %>&s=<%= u @user.salt %>&l=<%= u '/settings' %>">change</a> your settings or <a href="<%= uri_prefix %>auth?e=<%= u @user.email %>&s=<%= u @user.salt %>&l=<%= u '/compose' %>">send</a> an announcement.
+      <a href="<%= @uri_prefix %>">Login to The Better Announcements.</a>
     </p>
-  
+
   </body>
 </html>

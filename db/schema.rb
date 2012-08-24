@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120821035234) do
+ActiveRecord::Schema.define(:version => 20120824054702) do
 
   create_table "issues", :force => true do |t|
     t.date     "publish_date"
@@ -34,11 +34,11 @@ ActiveRecord::Schema.define(:version => 20120821035234) do
     t.string   "email"
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
-    t.string   "salt"
     t.boolean  "receive",    :default => true
     t.boolean  "admin",      :default => false
     t.string   "provider"
     t.string   "uid"
+    t.boolean  "canpost",    :default => false
   end
 
 end
