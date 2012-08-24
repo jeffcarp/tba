@@ -11,10 +11,6 @@ class User < ActiveRecord::Base
   #     :message => "must be @colby.edu."
   #   }
 
-  def self.find_by_provider_and_uid(provider, uid)
-    User.find(:first, conditions: ['provider = ? AND uid = ?', provider, uid])
-  end
-
   def self.create_with_omniauth(auth)
     create! do |user|
       user.provider = auth["provider"]
