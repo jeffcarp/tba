@@ -1,7 +1,10 @@
 /* Global
 ===================================*/
 body {
-  background: url(image_path('bg.png'));
+  background: url(image_path('bg2.png'));
+  font-family: "Open Sans", sans-serif;
+  color: #444;
+
 }
 ul {
   margin: 0;
@@ -43,29 +46,33 @@ h2 {
 ===================================*/
 header {
   margin: 0 0 24px;
+  text-align: center;
+  color: #fff;
+  background-color: #333;
+  padding: 24px 0;
+  border-bottom: solid 1px white;
   h1 {
-    font-size: 28px;
+    font-weight: 800;
+    font-size: 36px;
     letter-spacing: -1px;
-    padding: 0 0 6px;
-    margin: 0 0 24px;
-    border-bottom: solid 1px #ccc;
+    text-transform: uppercase;
+    margin: 0 0 12px;
+    text-shadow: 0 0px 2px black;
   }
-  ul {
-    li {
-      margin: 0 12px 24px 0;
-      float: left;
-      a {
-        padding: 0 0 4px;
+  nav {
+    font-family: helvetica;
+    font-size: 13px;
+    a {
+      margin: 0 12px 0 0;
+    }
+    a.admin {
+      color: #888;
+      &:hover{
+        color: #bbb;
       }
-      a.admin {
-        color: #888;
-        &:hover{
-          color: #bbb;
-        }
-      }
-      a.current {
-        border-bottom: solid 2px;
-      }
+    }
+    a.current {
+      border-bottom: solid 2px;
     }
   }
 }
@@ -162,11 +169,11 @@ footer {
 .home_index {
   text-align: center;
   h2 {
-    font-size: 24px;
-    line-height: 32px;
+    font-size: 18px/32px;
+    color: #777;
+    font-weight: normal;
     margin: 0 0 48px;
     padding: 24px 0;
-    background-color: #a9ebfa;
   }
   ul {
     width: 66%;
@@ -181,6 +188,28 @@ footer {
   h3 {
     font-size: 13px;
     margin: 0 0 12px;
+  }
+}
+
+#content {
+  h1, h2, h3, h4, h5 {
+    color: #444;
+    margin: 0 0 18px;
+  }
+  h1 {
+    font-size: 32px;
+  }
+  h2 {
+  }
+  h3 {
+  }
+  p {
+    font-size: 14px;
+    line-height: 20px;
+    margin: 0 0 18px;
+  }
+  section {
+    margin: 0 0 48px;
   }
 }
 
@@ -211,7 +240,7 @@ background-repeat: repeat-x;
 border-color: #3480FE #3480FE #0157E4;
 color: white;
 text-shadow: 0 -1px 1px #013388;
-font-family: "PT Sans",sans-serif;
+font-family: "PT Sans", sans-serif;
   &:hover  {
     color: white;
     transition-delay: 0.5s;

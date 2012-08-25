@@ -1,3 +1,5 @@
+<h1>Issues</h1>
+
 <% @issues.each do |issue| %>
   <%= issue.publish_date.strftime('%F') %><br />
   <%= pluralize issue.posts.count, 'post' %><br />

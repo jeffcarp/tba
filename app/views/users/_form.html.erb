@@ -11,9 +11,9 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name, "Name (full name required)" %><br />
-    <%= f.text_field :name %>
+  <div class="field disabled">
+    <%= f.label :name, "Name" %><br />
+    <%= f.text_field :name, :disabled => 'disabled' %>
   </div>
   <div class="field disabled">
     <%= f.label :email %><br />
@@ -25,6 +25,9 @@
     <% end %>
   </div>
   <div class="field">
+
+    <p>Both your name and email cannot be edited. If there's a problem, drop us a line.</p>
+
     <% if !@user.canpost %>
     <p>Since you have a non-colby.edu address, you can receive the announcements but cannot post to them.</p>
     <% end %>

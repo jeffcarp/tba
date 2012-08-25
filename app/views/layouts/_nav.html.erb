@@ -1,0 +1,15 @@
+<% if current_user.canpost %>
+  <a href="/compose" class="<%= underline '/compose' %>">Compose</a>
+<% end %>
+
+
+<a href="/settings" class="<%= underline '/settings' %>"><%= current_user.name %></a>
+
+<a href="/guide" class="<%= underline '/guide' %>">Guide</a>
+
+<a href="/logout" class="admin">Log out</a>
+
+<% if current_user.admin %>
+  <a href="/issues" class="admin <%= underline '/issues' %>">Issues</a>
+  <a href="/stats" class="admin <%= underline '/stats' %>">Stats</a>
+<% end %>

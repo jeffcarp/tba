@@ -18,32 +18,23 @@
 
   <%= analytics_init local: Rails.env.development? %>
 
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,800' rel='stylesheet' type='text/css'>
+
   <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0" />
   <%= csrf_meta_tags %>
 </head>
 <body>
- <div id="wrap">
-    <header>
-      <ul id="nav" class="clearfix">
-        <% if current_user %>
-          <% if current_user.canpost %>
-            <li><a href="/compose" class="<%= underline '/compose' %>">Compose</a></li>
-          <% end %>
-          <% if current_user.name %>
-            <li><a href="/settings" class="<%= underline '/settings' %>"><%= current_user.name %></a></li>
-          <% else %>
-            <li><a href="/settings" class="<%= underline '/settings' %>"><%= current_user.email %></a></li>
-          <% end %>
-          <li><a href="/logout" class="admin">Log out</a></li>
-          <% if current_user.admin %>
-            <li><a href="/issues" class="admin <%= underline '/issues' %>">Issues</a></li>
-          <% end %>
-        <% else %>
-          <li>&nbsp;</li>
-        <% end %>
-      </ul>
-      <h1>The Better Announcements</h1>
-    </header>
+  <header>
+    <h1>The Better Announcements</h1>
+    <nav>
+      <% if current_user %>
+        <%= render partial: 'layouts/nav' %>
+      <% else %>
+        <span>An alternative to the general announcements for Colby kids.</span>
+      <% end %>
+    </nav>
+  </header>
+  <div id="wrap">
     <div id="content">
       <%= yield %>
     </div>

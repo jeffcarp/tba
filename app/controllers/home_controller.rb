@@ -1,14 +1,18 @@
 class HomeController < ApplicationController
 
-  before_filter :authenticate, :only => [:settings]
+  before_filter :authenticate, :only => [:settings, :guide]
 
   def index
-    @hide_navigation = true
-    @user = User.new
   end
 
-  def success
-    @hide_navigation = true
+  def guide
+    # Wu Tang!
+  end
+
+  def stats
+    @users_count = User.all.count
+    @users_receive_count = User.find(:all, conditions: ['receive=?', true]).count
+    @users_receive_ratio = ((@users_receive_count.to_f / @users_count.to_f) * 100).to_i
   end
 
   def settings
