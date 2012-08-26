@@ -39,7 +39,7 @@ h2 {
   margin: 64px auto 0;
 }
 #content {
-  padding: 64px 0;
+  padding: 48px 0;
 }
 
 /* Header
@@ -62,6 +62,7 @@ header {
   }
   nav {
     font-size: 13px;
+    font-family: "Helvetica", "Arial", sans-serif;
     a {
       padding: 0 0 2px;
       margin: 0 12px 0 0;
@@ -80,7 +81,44 @@ header {
 
 /* Content
 ===================================*/
-
+#content {
+  h1, h2, h3, h4, h5 {
+    color: #444;
+    margin: 0 0 18px;
+  }
+  h1 {
+    font-size: 32px;
+  }
+  h2 {
+  }
+  h3 {
+  }
+  p {
+    font-size: 14px;
+    line-height: 20px;
+    margin: 0 0 18px;
+  }
+  section {
+    margin: 0 0 48px;
+  }
+  table {
+    width: 100%;
+    tr {
+      background-color: #a9ebfa;
+    }
+    th {
+      padding: 18px;
+      font-size: 16px;
+    }
+    td {
+      padding: 12px;
+      font-size: 14px;
+    }
+    td.weekend {
+      background-color: #69dcf6;
+    }
+  }
+}
 
 section {
   margin: 0 0 24px;
@@ -160,6 +198,7 @@ form .disabled input {
 /* Footer
 ===================================*/
 footer {
+  font-family: "Helvetica", "Arial", sans-serif;
   margin: 24px 0 0;
   padding: 12px 0;
   border-top: solid 1px #ccc;
@@ -167,69 +206,33 @@ footer {
 
 /* Page Specific
 ===================================*/
-.home_index {
+#content .home_index {
   text-align: center;
-  h2 {
-    font-size: 18px/32px;
-    color: #777;
-    font-weight: normal;
-    margin: 0 0 48px;
-    padding: 24px 0;
-  }
-  ul {
-    width: 66%;
-    margin: 0 auto 48px;
-    text-align: left;
-    list-style: disc;
+  .hook {
     font-size: 18px;
-    li {
-      margin: 0 0 4px;
-    }
+    line-height: 24px;
+    margin: 0 0 64px;
   }
   h3 {
+    font-size: 26px;
+  }
+  h4 {
+    font-weight: normal;
+    font-size: 16px;
+  }
+  .to_guide {
+    margin: 42px 0 24px;
+  }
+  .google_button {
+    padding: 12px 0;
+    margin: 64px 0 6px;
+  }
+  .elaboration {
     font-size: 13px;
-    margin: 0 0 12px;
   }
 }
 
-#content {
-  h1, h2, h3, h4, h5 {
-    color: #444;
-    margin: 0 0 18px;
-  }
-  h1 {
-    font-size: 32px;
-  }
-  h2 {
-  }
-  h3 {
-  }
-  p {
-    font-size: 14px;
-    line-height: 20px;
-    margin: 0 0 18px;
-  }
-  section {
-    margin: 0 0 48px;
-  }
-  table {
-    width: 100%;
-    tr {
-      background-color: #a9ebfa;
-    }
-    th {
-      padding: 18px;
-      font-size: 16px;
-    }
-    td {
-      padding: 12px;
-      font-size: 14px;
-    }
-    td.weekend {
-      background-color: #69dcf6;
-    }
-  }
-}
+
 
 /* One-off
 ===================================*/

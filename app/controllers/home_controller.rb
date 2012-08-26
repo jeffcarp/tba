@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
 
-  before_filter :authenticate, :only => [:settings, :guide]
+  before_filter :authenticate, :only => [:settings]
 
   def index
   end
