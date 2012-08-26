@@ -6,6 +6,8 @@ Shanghai::Application.configure do
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
 
+  config.serve_static_assets = false
+
   # Log error messages when you accidentally call methods on nil.
   config.whiny_nils = true
 
@@ -31,7 +33,7 @@ Shanghai::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
-  
+
   config.action_mailer.raise_delivery_errors = true
   ActionMailer::Base.smtp_settings = {
     :address        => 'smtp.sendgrid.net',
@@ -42,5 +44,5 @@ Shanghai::Application.configure do
     :domain         => 'heroku.com'
   }
   ActionMailer::Base.delivery_method = :smtp
-  
+
 end

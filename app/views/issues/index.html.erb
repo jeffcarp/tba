@@ -1,7 +1,20 @@
 <h1>Issues</h1>
 
-<% @issues.each do |issue| %>
-  <%= issue.publish_date.strftime('%F') %><br />
-  <%= pluralize issue.posts.count, 'post' %><br />
-  published: <%= issue.published %><br /><br /><br />
-<% end %>
+<table>
+  <tr>
+    <th>Publish Date</th>
+    <th>Posts</th>
+    <th>Published?</th>
+  </tr>
+
+  <% @issues.each do |issue| %>
+    <tr>
+      <td class="<%= 'weekend' if issue.publish_date.strftime('%u').to_i > 5 %>"><%= issue.publish_date.strftime('%e %B') %> <strong><%= issue.publish_date.strftime('%A') %></strong></td>
+      <td><%= pluralize issue.posts.count, 'post' %></td>
+      <!-- style="background-color: hsl(191, <%= (issue.posts.count*500)+50 %>%, 82%);" -->
+      <td class="<%= 'weekend' if issue.published %>"><%= issue.published %></td>
+    </tr>
+  <% end %>
+
+</table>
+
