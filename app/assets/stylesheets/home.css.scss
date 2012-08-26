@@ -2,7 +2,7 @@
 ===================================*/
 body {
   background: url(image_path('bg2.png'));
-  font-family: "PT Sans", sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
   color: #444;
 
 }
@@ -58,10 +58,12 @@ header {
     text-transform: uppercase;
     margin: 0 0 12px;
     text-shadow: 0 0px 2px black;
+    font-family: "Open Sans", sans-serif;
   }
   nav {
     font-size: 13px;
     a {
+      padding: 0 0 2px;
       margin: 0 12px 0 0;
     }
     a.admin {
@@ -209,6 +211,23 @@ footer {
   }
   section {
     margin: 0 0 48px;
+  }
+  table {
+    width: 100%;
+    tr {
+      background-color: #a9ebfa;
+    }
+    th {
+      padding: 18px;
+      font-size: 16px;
+    }
+    td {
+      padding: 12px;
+      font-size: 14px;
+    }
+    td.weekend {
+      background-color: #69dcf6;
+    }
   }
 }
 
