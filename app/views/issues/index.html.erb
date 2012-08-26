@@ -12,7 +12,11 @@
       <td class="<%= 'weekend' if issue.publish_date.strftime('%u').to_i > 5 %>"><%= issue.publish_date.strftime('%e %B') %> <strong><%= issue.publish_date.strftime('%A') %></strong></td>
       <td><%= pluralize issue.posts.count, 'post' %></td>
       <!-- style="background-color: hsl(191, <%= (issue.posts.count*500)+50 %>%, 82%);" -->
-      <td class="<%= 'weekend' if issue.published %>"><%= issue.published %></td>
+      <% if issue.posts.count == 0 && issue.published == true %>
+        <td>skipped</td>
+      <% else %>
+        <td class="<%= 'weekend' if issue.published %>"><%= issue.published %></td>
+      <% end %>
     </tr>
   <% end %>
 
