@@ -11,7 +11,7 @@
 
   <% @users.each do |user| %>
     <tr>
-        <td><%= user.name %><br /><%= user.email %></td>
+        <td><strong><%= user.name %></strong><br /><%= user.email %></td>
         <td><%= user.created_at.strftime('%b %-d') %></td>
         <td class="<%= 'weekend' if user.canpost %>"><%= user.canpost %></td>
         <td class="<%= 'weekend' if user.receive %>"><%= user.receive %></td>

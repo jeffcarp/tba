@@ -8,7 +8,9 @@ class HomeController < ApplicationController
   def guide
   end
 
-  # Wu Tang!
+  def dashboard
+    @issue = Issue.todays_issue
+  end
 
   def stats
     @users_count = User.all.count
@@ -36,3 +38,5 @@ class HomeController < ApplicationController
   end
 
 end
+
+# Wu Tang!

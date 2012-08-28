@@ -1,3 +1,13 @@
+class LoggedInConstraint
+  def initialize(value)
+    @value = value
+  end
+
+  def matches?(request)
+    request.session.key?("user_id") == @value
+  end
+end
+
 Shanghai::Application.routes.draw do
 
   match '/auth/:provider/callback', :to => 'sessions#create'
@@ -21,5 +31,8 @@ Shanghai::Application.routes.draw do
 
 #   get '/auth' => 'home#auth', :constraints => lambda{ |req| !req.params[:l].blank? }
 
-  root :to => 'home#index'
+  root :to => "home#index", :constraints => LoggedInConstraint.new(false)
+  root :to => "home#dashboard", :constraints => LoggedInConstraint.new(true)
+
+  # root :to => 'home#index'
 end

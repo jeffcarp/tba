@@ -6,6 +6,10 @@ class Issue < ActiveRecord::Base
     Issue.find(:first, :conditions => ["published=?", false], :order => 'publish_date ASC')
   end
 
+  def self.todays_issue
+    Issue.find(:first, :conditions => ["publish_date=?", Date.today.strftime()])
+  end
+
   def self.create_next
     issue = Issue.new
     furthest_issue = Issue.find(:first, :order => 'publish_date DESC')

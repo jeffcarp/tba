@@ -30,7 +30,6 @@ a:hover {
   margin: 64px auto 0;
 }
 #content {
-  padding: 48px 0;
 }
 
 /* Header
@@ -232,8 +231,11 @@ footer {
     font-size: 13px;
   }
 }
-
-
+#content .home_dashboard {
+  .title h2 {
+    color: white;
+  }
+}
 
 /* One-off
 ===================================*/
@@ -288,7 +290,19 @@ border-color: #3480FE #3480FE #0157E4;
     margin: 12px auto;
   }
   #content {
-    padding: 24px 0;
+    table {
+      tr {
+        th {
+          padding: 12px 0;
+          font-size: 12px;
+        }
+        td {
+          padding: 12px 4px;
+          font-size: 12px;
+          text-align: center;
+        }
+      }
+    }
   }
   header {
     h1 {
