@@ -1,5 +1,11 @@
 class UsersController < ApplicationController
 
+  before_filter :authenticate_admin
+
+  def index
+    @users = User.order('created_at DESC')
+  end
+
   def edit
     @user = User.find(params[:id])
   end

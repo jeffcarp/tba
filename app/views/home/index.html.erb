@@ -1,18 +1,23 @@
 <div class="home_index">
 
-  <div class="hook">Let's face it: the General Announcements aren't as good as they could be. Here's how we're making the better announcements.</div>
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+
+
+  <div class="hook">Let's face it: the General Announcements aren't as good as they could be. That's why we made The Better Announcements. Here's why they're better:</div>
+
+  <h3>You don’t have to read a novel</h3>
+  <h4>500 character limit forces everyone to be concise and get to the point.</h4>
 
   <h3>You don’t receive 4 emails a day</h3>
   <h4>One email a day. Each person can post only once.</h4>
 
-  <h3>You don’t have to read a novel</h3>
-  <h4>500 character limit forces you to be concise and get to the point.</h4>
+  <h3>There's no question whether they're civil</h3>
+  <h4>We reserve the right to moderate uncivil people.</h4>
 
-  <h3>Conversation is easier.</h3>
-  <h4>Easy reply button in email.</h4>
-
-  <h3>We’re not the administration.</h3>
-  <h4>We're two students who love Colby and want to solve a problem</h4>
+  <h3>We're two students committed to solving a problem</h3>
+  <h4>Join us and we'll make Colby a better place.</h4>
 
   <!-- <p class="to_guide">We want your feedback. Check our <%= link_to 'Guide', :guide %> to see more of what we're all about.</p> -->
 

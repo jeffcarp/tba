@@ -4,16 +4,16 @@
 </head>
 <body style="font-family: 'Helvetica-Neue', 'Helvetica', 'Arial', sans-serif;">
 
-  <div class="header" style="margin: 0 0 40px;">
-    <h1 style="font-size: 36px; color: #222; text-align: center;">The Better Announcements</h1>
-    <h2 style="font-size: 14px; color: #555; text-align: center;"><%= @issue.publish_date.strftime('%B %-d, %Y') %></h2>
+  <div class="header" style="margin: 0 0 40px; padding: 10px; background-color: #031c34;">
+    <h1 style="font-size: 36px; color: #fff; text-align: center;">The Better Announcements</h1>
+    <h2 style="font-size: 14px; color: #ddd; text-align: center; font-weight: normal;"><%= @issue.publish_date.strftime('%B %-d, %Y') %></h2>
   </div>
 
   <%= render :partial => "user_mailer/post", :collection => @issue.posts %>
 
   <!-- note: add settings and compose links -->
 
-    <p style="margin: 0 0 24px;">
+    <p style="margin: 0 0 24px; text-align: center;">
       <a href="<%= @uri_prefix %>">Login to The Better Announcements.</a>
     </p>
 

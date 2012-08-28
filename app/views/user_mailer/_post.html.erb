@@ -1,8 +1,8 @@
 <div class="announcement">
-  <div class="title" style="padding: 10px; color: white; background-color: #0c28a4;">
+  <div class="title" style="padding: 10px; color: white; background-color: #0DB5DB;">
     <h2 style="font-size: 16px; margin: 0; padding: 0;"><%= post.user.name %> - <%= post.title %></h2>
   </div>
   <div class="body" style="padding: 10px;">
-    <p style="font-size: 13px; line-height: 18px;"><%= post.content %></p>
+    <p style="font-size: 13px; line-height: 18px;"><%= post.content_html.html_safe %></p>
   </div>
 </div>

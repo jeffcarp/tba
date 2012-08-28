@@ -1,25 +1,24 @@
-<h1>Listing users</h1>
+<h1>Users</h1>
 
 <table>
   <tr>
-    <th>Name</th>
-    <th>Email</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Name & Email</th>
+    <th>Joined</th>
+    <th>Post?</th>
+    <th>Receive?</th>
+    <th>Admin?</th>
   </tr>
 
-<% @users.each do |user| %>
-  <tr>
-    <td><%= user.name %></td>
-    <td><%= user.email %></td>
-    <td><%= link_to 'Show', user %></td>
-    <td><%= link_to 'Edit', edit_user_path(user) %></td>
-    <td><%= link_to 'Destroy', user, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
+  <% @users.each do |user| %>
+    <tr>
+        <td><%= user.name %><br /><%= user.email %></td>
+        <td><%= user.created_at.strftime('%b %-d') %></td>
+        <td class="<%= 'weekend' if user.canpost %>"><%= user.canpost %></td>
+        <td class="<%= 'weekend' if user.receive %>"><%= user.receive %></td>
+        <td class="<%= 'weekend' if user.admin %>"><%= user.admin %></td>
+    </tr>
+  <% end %>
+
 </table>
 
-<br />
 
-<%= link_to 'New User', new_user_path %>

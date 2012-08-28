@@ -17,15 +17,6 @@ a {
 a:hover {
   color: #0a8dab;
 }
-h2 {
-  font-size: 18px;
-  color: #333;
-  line-height: 24px;
-  margin: 0 0 18px;
-  &.green {
-    color: #0fad3d;
-  }
-}
 .notice {
   background-color: #ddd;
   padding: 12px;
@@ -48,7 +39,7 @@ header {
   margin: 0 0 24px;
   text-align: center;
   color: #fff;
-  background-color: #333;
+  background-color: #031c34;
   padding: 24px 0;
   border-bottom: solid 1px white;
   h1 {
@@ -59,6 +50,12 @@ header {
     margin: 0 0 12px;
     text-shadow: 0 0px 2px black;
     font-family: "Open Sans", sans-serif;
+    a {
+      color: #fff;
+      &:hover {
+        color: #eee;
+      }
+    }
   }
   nav {
     font-size: 13px;
@@ -90,6 +87,8 @@ header {
     font-size: 32px;
   }
   h2 {
+    font-size: 20px;
+    color: #555;
   }
   h3 {
   }
@@ -186,13 +185,15 @@ form .disabled input {
   label {
     float: left;
     font-size: 16px;
-    font-weight: bold;
     color: #222;
     padding: 5px 0 0;
   }
   .checkbox {
     float: right;
   }
+}
+.setting:nth-child(even) {
+  background-color: #eee;
 }
 
 /* Footer
@@ -289,12 +290,13 @@ border-color: #3480FE #3480FE #0157E4;
   #content {
     padding: 24px 0;
   }
-  header h1 {
-    font-size: 24px;
-  }
-  h2 {
-    width: 93%;
-    margin: 0 auto 18px;
+  header {
+    h1 {
+      font-size: 24px;
+    }
+    nav {
+      font-size: 11px;
+    }
   }
   form input[type='text'] {
     width: 90%;

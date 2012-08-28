@@ -16,5 +16,23 @@
 
 <section>
   <h2>Yourself</h2>
-  <%= render :partial => 'users/form' %>
+  <div class="setting clearfix">
+    <label>Name: <strong><%= @user.name %></strong></label>
+  </div>
+  <div class="setting clearfix">
+    <label>Email: <strong><%= @user.email %></strong></label>
+  </div>
+
+  <% if @user.admin %>
+    <div class="setting clearfix">
+      <label>You are an <strong>admin.</strong> Congratulations.</label>
+    </div>
+  <% end %>
+
 </section>
+
+<% if !@user.canpost %>
+    <p>Since you have a non-colby.edu address, you can receive the announcements but cannot post to them.</p>
+<% end %>
+
+<p>Currently names are not editable. If you need to change yours, <%= link_to 'contact', :guide %> us.</p>

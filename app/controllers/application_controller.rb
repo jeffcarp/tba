@@ -13,4 +13,10 @@ class ApplicationController < ActionController::Base
       redirect_to root_url, notice: "Sorry, you're not logged in. Please follow the login link from one of the emails you've received from us."
     end
   end
+
+  def authenticate_admin
+    if !current_user || !current_user.admin
+      redirect_to root_url, notice: "Sorry, you need to be an admin to see that."
+    end
+  end
 end

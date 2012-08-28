@@ -1,7 +1,16 @@
 <h1>Stats</h1>
 
-<p>Total users: <%= @users_count %></p>
+<table>
 
-<p>Total users receiving email: <%= @users_receive_count %> (<%= @users_receive_ratio %>%)</p>
+  <tr>
+    <td>Total users</td>
+    <td><strong><%= @users_count %></strong></td>
+  </tr>
 
+  <tr>
+    <td>Total users receiving email</td>
+    <td><strong><%= @users_receive_count %></strong> (<%= @users_receive_ratio %>%)</td>
+  </tr>
+
+</table>
 
