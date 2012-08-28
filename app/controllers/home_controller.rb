@@ -6,8 +6,9 @@ class HomeController < ApplicationController
   end
 
   def guide
-    # Wu Tang!
   end
+
+  # Wu Tang!
 
   def stats
     @users_count = User.all.count
@@ -29,8 +30,8 @@ class HomeController < ApplicationController
       template = 'welcome_email'
     end
 
-    @url_prefix = 'http://shanghai.herokuapp.com/'
-    @user = User.find_by_email "gccarpen@colby.edu"
+    @url_prefix = 'http://announcements.io/'
+    @user = User.find_by_email "gcarpenterv@gmail.com"
     render :layout => false, :template => 'user_mailer/'+template
   end
 
