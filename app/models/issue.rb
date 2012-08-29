@@ -7,7 +7,7 @@ class Issue < ActiveRecord::Base
   end
 
   def self.todays_issue
-    Issue.find(:first, :conditions => ["publish_date=?", Date.today.strftime('%F')])
+    Issue.find(:first, :conditions => ["publish_date=?", Time.zone.now.strftime('%F')])
   end
 
   def self.create_next
