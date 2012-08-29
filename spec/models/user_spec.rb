@@ -2,18 +2,41 @@ require 'spec_helper'
 
 describe User do
 
-  before { @user = User.new(:name => "Groucho Marx", :email => "gccarpen@colby.edu") }
-  
-  subject { @user }
-  
-  it { should respond_to :name }
-  it { should respond_to :email }
+  context "should have attributes" do
 
-  it { should be_valid }
-  
-  describe "when name is not present" do
-    before { @user.email = " " }
-    it { should_not be_valid }
+    before(:each) do
+      @user = FactoryGirl.create(:user)
+      subject { @user }
+    end
+
+    it { should respond_to :name }
+    it { should respond_to :email }
+    it { should respond_to :canpost }
+    it { should respond_to :admin }
+    it { should respond_to :uid }
+    it { should respond_to :provider }
   end
 
 end
+
+# describe "create_with_omniauth" do
+#   before(:each) do
+#     @user = FactoryGirl.create(:user)
+
+#     # Mimic Google's Oauth2 callback hash
+#     auth = Hash.new
+#     auth["info"] = Hash.new
+#     auth["info"]["name"] = @user.name
+#     auth["info"]["email"] = @user.email
+#     auth["uid"] = @user.uid
+#     auth["provider"] = @user.provider
+#   end
+
+#   it "should create a valid user from an omniauth callback" do
+
+#     user = User.create_with_omniauth(auth)
+#     subject { user }
+#     it { should be_valid }
+#   end
+
+# end
