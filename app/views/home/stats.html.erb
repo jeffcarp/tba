@@ -12,8 +12,20 @@
   </tr>
 
   <tr>
+    <td>Total Colby users</td>
+    <td><strong><%= @colby_users_count %></strong>
+      (<%= @colby_users_ratio %>% of total)</td>
+  </tr>
+
+  <tr>
+    <td>Approximate percentage of Colby signed up</td>
+    <td><strong><%= @colby_population_ratio %>%</strong></td>
+  </tr>
+
+  <tr>
     <td>Total users receiving email</td>
-    <td><strong><%= @users_receive_count %></strong> (<%= @users_receive_ratio %>%)</td>
+    <td><strong><%= @users_receive_count %></strong>
+      (<%= @users_receive_ratio %>% of total)</td>
   </tr>
 
 </table>

@@ -4,6 +4,7 @@
     <div class="notice"><%= flash[:notice] %></div>
   <% end %>
 
+
   <h1>This morning's edition</h1>
 
   <%= render :partial => "user_mailer/post", :collection => @issue.posts %>

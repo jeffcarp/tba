@@ -14,6 +14,9 @@ class HomeController < ApplicationController
 
   def stats
     @users_count = User.all.count
+    @colby_users_count = User.where("email LIKE ?", "%@colby.edu").count
+    @colby_users_ratio = ((@colby_users_count.to_f / @users_count.to_f) * 100).to_i
+    @colby_population_ratio = ((@colby_users_count.to_f / 1825) * 100).to_i
     @users_receive_count = User.find(:all, conditions: ['receive=?', true]).count
     @users_receive_ratio = ((@users_receive_count.to_f / @users_count.to_f) * 100).to_i
   end
