@@ -16,6 +16,7 @@ Shanghai::Application.routes.draw do
   resources :users
   resources :posts
   resources :issues
+  resources :votes
 
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"

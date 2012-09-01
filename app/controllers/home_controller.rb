@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
 
-  before_filter :authenticate, :only => [:settings]
+  before_filter :authenticate, :only => [:stats, :debug_email]
 
   def index
   end

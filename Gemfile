@@ -29,3 +29,5 @@ gem 'omniauth-google-oauth2'
 gem 'google-analytics-rails'
 
 gem 'maruku'
+
+gem 'newrelic_rpm'

@@ -5,6 +5,9 @@ class Post < ActiveRecord::Base
   has_many :votes
 
   validates_length_of :content, maximum: 500
+  validates_presence_of :user_id
+  validates_presence_of :issue_id
+  validates_presence_of :title
 
   def content_html
       Maruku.new(self.content).to_html

@@ -1,21 +1,27 @@
 <h1>Users</h1>
 
+<p>Users' karma points are <strong>extremely protected.</strong> Under no circumstances should anyone be allowed to know their karma (except for admins).</p>
+
+<p>Order by <a href="/users?order=karma">karma</a></p>
+
+<p>Filter out <a href="/users?filter=admin">admins</a></p>
+
 <table>
   <tr>
     <th>Name & Email</th>
     <th>Joined</th>
-    <th>Post?</th>
-    <th>Receive?</th>
-    <th>Admin?</th>
+    <th>Post</th>
+    <th>Receive</th>
+    <th>Karma</th>
   </tr>
 
   <% @users.each do |user| %>
     <tr>
-        <td><strong><%= user.name %></strong><br /><%= user.email %></td>
+        <td class="<%= 'weekend' if user.admin %>"><strong><%= user.name %></strong><br /><%= user.email %></td>
         <td><%= user.created_at.strftime('%b %-d') %></td>
         <td class="<%= 'weekend' if user.canpost %>"><%= user.canpost %></td>
         <td class="<%= 'weekend' if user.receive %>"><%= user.receive %></td>
-        <td class="<%= 'weekend' if user.admin %>"><%= user.admin %></td>
+        <td><strong><%= user.karma %></strong></td>
     </tr>
   <% end %>
 

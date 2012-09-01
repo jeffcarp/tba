@@ -106,13 +106,13 @@ header {
     }
     th {
       padding: 18px;
-      font-size: 18px;
+      font-size: 16px;
     }
     td {
       padding: 12px;
-      font-size: 15px;
+      font-size: 14px;
     }
-    td.weekend {
+    .weekend {
       background-color: #69dcf6;
     }
   }
@@ -234,6 +234,42 @@ footer {
 #content .home_dashboard {
   .title h2 {
     color: white;
+  }
+  .announcements {
+    .announcement {
+      .title {
+        padding: 10px;
+        color: white;
+        background-color: #0DB5DB;
+        font-size: 16px;
+        font-weight: bold;
+        .voting {
+          float: right;
+          .upvote, .downvote {
+            color: white;
+            &:hover {
+              color: #ddd;
+              cursor: pointer;
+            }
+          }
+          .upvoted, .downvoted {
+            color: white;
+            &:hover {
+              color: #ef7b85;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+      .body {
+        padding: 10px;
+        font-size: 13px;
+        line-height: 18px;
+        p {
+          margin: 0 0 12px;
+        }
+      }
+    }
   }
 }
 

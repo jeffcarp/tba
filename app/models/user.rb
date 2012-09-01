@@ -15,6 +15,15 @@ class User < ActiveRecord::Base
   #     :message => "must be @colby.edu."
   #   }
 
+  def has_voted_on (post)
+    Vote.find(:first, conditions: ['post_id = ? AND user_id = ?', post.id, self.id])
+  end
+
+  def give_karma(points)
+    self.karma += points
+    self.save
+  end
+
   def self.create_with_omniauth(auth)
     create! do |user|
       user.provider = auth["provider"]
