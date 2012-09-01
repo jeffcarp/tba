@@ -1,7 +1,9 @@
 class User < ActiveRecord::Base
-  # attr_accessible :email, :name
-  # NO EDITING ANYTHING!
+  attr_accessible
+
   has_many :posts
+  has_many :accounts
+  has_many :votes
 
   # validates_uniqueness_of :email, :message => "%{value} has already been registered. To log into your account, follow the login link in an email from us."
   validates_presence_of :email
