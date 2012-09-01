@@ -9,6 +9,7 @@ class HomeController < ApplicationController
   end
 
   def dashboard
+    session[:cool_cat] ||= Random.rand 101
     @issue = Issue.todays_issue
   end
 
