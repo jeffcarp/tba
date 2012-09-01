@@ -37,4 +37,21 @@ class User < ActiveRecord::Base
 
     end
   end
+
+
+  def self.migrate_users_to_accounts()
+
+    @users = User.all
+    @users.each do |user|
+
+
+      account = user.accounts.create
+      account.provider = user.provider
+      account.uid = user.uid
+      account.email = user.email
+
+      account.save
+    end
+  end
+
 end
