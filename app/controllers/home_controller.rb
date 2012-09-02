@@ -43,6 +43,7 @@ class HomeController < ApplicationController
     if params[:email] == 'the_announcements'
       template = params[:email]
       @issue = Issue.upcoming_issue
+      @posts = Post.find(:all, joins: [:issue, :user], conditions: ['issue_id = ?', @issue.id], order: 'users.karma DESC')
     else
       template = 'welcome_email'
     end

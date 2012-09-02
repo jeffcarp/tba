@@ -9,12 +9,14 @@
     <h2 style="font-size: 14px; color: #ddd; text-align: center; font-weight: normal;"><%= @issue.publish_date.strftime('%B %-d, %Y') %></h2>
   </div>
 
+  <div style="text-align:center;"><a style="color:#0DB5DB;line-height:50px;" href="http://announcements.io">(new) Read on announcements.io to vote &raquo;</a></div>
+
   <%= render :partial => "user_mailer/post", :collection => @posts %>
 
   <!-- note: add settings and compose links -->
 
     <p style="margin: 0 0 24px; text-align: center;">
-      <a href="<%= @uri_prefix %>">Login to The Better Announcements.</a>
+      <a style="color:#0DB5DB;" href="<%= @uri_prefix %>">Login to The Better Announcements.</a>
     </p>
 
   </body>
