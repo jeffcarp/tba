@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
 
-  before_filter :authenticate, :only => [:settings]
+  before_filter :authenticate, :only => [:stats, :debug_email]
 
   def index
   end
@@ -9,13 +9,28 @@ class HomeController < ApplicationController
   end
 
   def dashboard
+    session[:cool_cat] ||= Random.rand 101
     @issue = Issue.todays_issue
+    # @posts = @issue.posts
+    @posts = Post.find(:all, joins: [:issue, :user], conditions: ['issue_id = ?', @issue.id], order: 'users.karma DESC')
   end
 
   def stats
     @users_count = User.all.count
-    @users_receive_count = User.find(:all, conditions: ['receive=?', true]).count
-    @users_receive_ratio = ((@users_receive_count.to_f / @users_count.to_f) * 100).to_i
+    @accounts_count = Account.all.count
+    @colby_emails_count = Account.where("email LIKE ?", "%@colby.edu").count
+    @colby_accounts_ratio = ((@colby_emails_count.to_f / @accounts_count.to_f) * 100).to_i
+    @colby_population_ratio = ((@colby_emails_count.to_f / 1825) * 100).to_i
+    @accounts_receive_count = Account.find(:all, conditions: ['receive=?', true]).count
+    @accounts_receive_ratio = ((@accounts_receive_count.to_f / @accounts_count.to_f) * 100).to_i
+
+    @votes_today_up = Vote.where('created_at > ? AND created_at < ? AND up = ?', (Time.zone.now).beginning_of_day, (Time.zone.now).end_of_day, true).count
+    @votes_today_down = Vote.where('created_at > ? AND created_at < ? AND up = ?', (Time.zone.now).beginning_of_day, (Time.zone.now).end_of_day, false).count
+    @votes_yesterday_up = Vote.where('created_at > ? AND created_at < ? AND up = ?', (Time.zone.now - 1.day).beginning_of_day, (Time.zone.now - 1.day).end_of_day, true).count
+    @votes_yesterday_down = Vote.where('created_at > ? AND created_at < ? AND up = ?', (Time.zone.now - 1.day).beginning_of_day, (Time.zone.now - 1.day).end_of_day, false).count
+    @karma_points_exchanged_today = 10 * (Vote.where('created_at > ? AND created_at < ?', (Time.zone.now).beginning_of_day, (Time.zone.now).end_of_day).count)
+    @karma_points_exchanged = 10 * (Vote.where('created_at > ? AND created_at < ?', (Time.zone.now - 1.day).beginning_of_day, (Time.zone.now - 1.day).end_of_day).count)
+
   end
 
   def settings

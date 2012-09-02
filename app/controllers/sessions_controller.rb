@@ -3,30 +3,46 @@ class SessionsController < ApplicationController
   def create
     auth = request.env["omniauth.auth"]
 
-    unless @user = User.find_by_provider_and_uid(auth["provider"], auth["uid"])
+    provider = auth["provider"]
+    uid = auth["uid"]
+    email = auth["info"]["email"]
+    name = auth["info"]["name"]
 
-      # To catch and convert legacy users!
-      if (@user = User.find_by_email auth["info"]["email"])
-        @user.canpost = true
-        @user.provider = auth["provider"]
-        @user.uid = auth["uid"]
-        @user.name = auth["info"]["name"]
-        @user.save
+    @user = User.find(session[:user_id]) if session[:user_id]
+    @account = Account.find_by_provider_and_uid(provider, uid)
 
-      else
+    if @account # Their cookie expired or they logged out
+      puts 'ONE ONE ONE'
+      session[:account_id] = @account.id
+      session[:user_id] = @account.user.id
+    elsif @user # They're logging in with a new account
+      puts 'TWO TWO TWO'
+      @account = @user.accounts.create_with_omniauth(auth)
 
-        @user = User.create_with_omniauth(auth)
-        UserMailer.welcome_email(@user).deliver
+      session['account_id'] = @account.id
+      session['user_id'] = @user.id
 
-      end
+    else # it's your first time, eh?
+      puts 'THREE THREE THREE'
+      @user = User.create!
+      @user.name = auth["info"]["name"]
+      @user.save
+
+      puts @user.inspect
+
+      @account = @user.accounts.create_with_omniauth(auth)
+
+      session['account_id'] = @account.id
+      session['user_id'] = @user.id
+
+      # NOT YET, BUT SOON UserMailer.welcome_email(@user).deliver
     end
 
-    session[:user_id] = @user.id
     redirect_to root_url, :notice => "Signed in!"
   end
 
   def destroy
-    session[:user_id] = nil
+    session[:account_id] = nil
     redirect_to root_url, :notice => "Signed out!"
   end
 

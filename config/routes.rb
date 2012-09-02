@@ -4,11 +4,13 @@ class LoggedInConstraint
   end
 
   def matches?(request)
-    request.session.key?("user_id") == @value
+    request.session.key?("account_id") == @value
   end
 end
 
 Shanghai::Application.routes.draw do
+
+  get "accounts/update"
 
   match '/auth/:provider/callback', :to => 'sessions#create'
   match "/logout" => "sessions#destroy", :as => :signout
@@ -16,6 +18,8 @@ Shanghai::Application.routes.draw do
   resources :users
   resources :posts
   resources :issues
+  resources :votes
+  resources :accounts
 
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"

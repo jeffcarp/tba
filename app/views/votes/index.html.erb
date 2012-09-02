@@ -1,0 +1,24 @@
+<h1>Votes</h1>
+
+<p>Dark blue rows are upvotes.</p>
+
+<table>
+  <tr>
+    <th>Cast</th>
+    <th>Voter</th>
+    <th>Post</th>
+    <th>Poster</th>
+  </tr>
+
+  <% @votes.each do |vote| %>
+    <tr class="<%= 'weekend' if vote.up %>">
+      <td>
+        <%= vote.created_at.strftime('%e %B') %></td>
+      <td><%= vote.user.name %></td>
+      <td><%= vote.post.title %></td>
+      <td><%= vote.post.user.name %></td>
+    </tr>
+  <% end %>
+
+</table>
+

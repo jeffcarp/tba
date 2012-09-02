@@ -6,22 +6,38 @@ $ ->
     else
       $('#char_counter').text(char_count)
 
-# $ ->
-#   $('input:checkbox').change () -> 
-#     console.log('hm')
-    
-#     user_id = $(this).data('user-id')
-    
-#     $.post '/users/',
-#       key_bindings: 'true'
-#       (data) ->
-#         $('#turn_key_bindings_on').hide()
-#         $('#turn_key_bindings_off').show()
-#         $('#key_bindings').show()
-#         $('#key_bindings').data('key-bindings', true)
+$ ->
+  $('.upvote, .downvote').click () ->
+    node = $(this)
+    up = ($(this).attr('class') == 'upvote') ? 'true' : 'false'
+    post_id = $(this).parent().data('post')
+    $.post(
+      "/votes",
+      post_id: post_id
+      up: up
+      success: (data) ->
+        processVoteCallback(data, node, up)
+    )
 
-# $ ->
-#   didEndDragging = () ->
-#     console.log('OK')
+$ ->
+  $('.upvoted, .downvoted').click () ->
+    node = $(this)
+    post_id = $(this).parent().data('post')
+    console.log(post_id)
+    $.ajax(
+      "/votes/"+post_id+"/",
+      type: 'delete'
+      success: (data) ->
+        deleteVoteCallback(data, node)
+    )
 
-#   $('#receive_checkbox').bind('dragend')
+processVoteCallback = (data, node, up) ->
+  if up
+    node.parent().find('.upvoted').removeClass('hidden')
+  else
+    node.parent().find('.downvoted').removeClass('hidden')
+  node.parent().find('.upvote, .downvote').addClass('hidden')
+
+deleteVoteCallback = (data, node) ->
+  node.parent().find('.upvoted, .downvoted').addClass('hidden')
+  node.parent().find('.upvote, .downvote').removeClass('hidden')

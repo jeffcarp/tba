@@ -105,24 +105,32 @@
 
       // Hey! You there! If you see this, can you teach me how to put this
       // function in main.js?
-      var user_id = $('#receive_checkbox').data('user-id')
-      if ($('#receive_checkbox').attr('checked') == 'checked') {
+      slider = $(this.elem[0])
+
+      var account_id = slider.data('account-id');
+
+      if (slider.attr('checked') == 'checked') {
         var receive = false
       } else {
         var receive = true
       }
+      console.log(receive);
       $.ajax({
         type: 'put',
-        url: '/users/'+user_id+'.json',
+        url: '/accounts/'+account_id+'.json',
         data: {
-          id: user_id,
+          id: account_id,
           receive: receive,
           async: 1
         },
-        dataType: 'json'
-        }).done(function(data) {
-          console.log( "Data Saved: " + data );
-        });
+        success: function(data, textStatus, jqXHR) {
+          console.log(textStatus);
+        },
+        error: function(data, textStatus, jqXHR) {
+          console.log(textStatus);
+        },
+        dataType: 'text'
+      });
 
       // Resume normal code
 

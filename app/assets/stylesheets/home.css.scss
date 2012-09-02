@@ -101,6 +101,7 @@ header {
   }
   table {
     width: 100%;
+    margin: 0 0 24px;
     tr {
       background-color: #a9ebfa;
     }
@@ -112,7 +113,7 @@ header {
       padding: 12px;
       font-size: 14px;
     }
-    td.weekend {
+    .weekend {
       background-color: #69dcf6;
     }
   }
@@ -195,6 +196,7 @@ form .disabled input {
   background-color: #eee;
 }
 
+
 /* Footer
 ===================================*/
 footer {
@@ -234,6 +236,42 @@ footer {
 #content .home_dashboard {
   .title h2 {
     color: white;
+  }
+  .announcements {
+    .announcement {
+      .title {
+        padding: 10px;
+        color: white;
+        background-color: #0DB5DB;
+        font-size: 16px;
+        font-weight: bold;
+        .voting {
+          float: right;
+          .upvote, .downvote {
+            color: white;
+            &:hover {
+              color: #ddd;
+              cursor: pointer;
+            }
+          }
+          .upvoted, .downvoted {
+            color: white;
+            &:hover {
+              color: #ef7b85;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+      .body {
+        padding: 10px;
+        font-size: 13px;
+        line-height: 18px;
+        p {
+          margin: 0 0 12px;
+        }
+      }
+    }
   }
 }
 
@@ -299,7 +337,6 @@ border-color: #3480FE #3480FE #0157E4;
         td {
           padding: 12px 4px;
           font-size: 12px;
-          text-align: center;
         }
       }
     }
