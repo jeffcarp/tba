@@ -11,7 +11,7 @@ class UsersController < ApplicationController
       @users = User.find(:all,
         joins: 'left outer join accounts on accounts.user_id = users.id',
         select: "users.*",
-        group: "users.id",
+        group: "users.id, users.name, users.created_at, users.updated_at, users.receive, users.admin, users.canpost, users.karma",
         having: "COUNT(accounts.id) > 1"
       )
     else
