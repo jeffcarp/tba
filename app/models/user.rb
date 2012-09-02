@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   has_many :votes
 
   # validates_uniqueness_of :email, :message => "%{value} has already been registered. To log into your account, follow the login link in an email from us."
-  validates_presence_of :email
+  # validates_presence_of :email
   validates_length_of :name, maximum: 128
 
   # validates :email,

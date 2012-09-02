@@ -12,9 +12,14 @@
   </tr>
 
   <tr>
-    <td>Total Colby users</td>
-    <td><strong><%= @colby_users_count %></strong>
-      (<%= @colby_users_ratio %>% of total)</td>
+    <td>Total emails</td>
+    <td><strong><%= @accounts_count %></strong></td>
+  </tr>
+
+  <tr>
+    <td>Total Colby emails</td>
+    <td><strong><%= @colby_emails_count %></strong>
+      (<%= @colby_accounts_ratio %>% of total)</td>
   </tr>
 
   <tr>
@@ -24,8 +29,18 @@
 
   <tr>
     <td>Total users receiving email</td>
-    <td><strong><%= @users_receive_count %></strong>
-      (<%= @users_receive_ratio %>% of total)</td>
+    <td><strong><%= @accounts_receive_count %></strong>
+      (<%= @accounts_receive_ratio %>% of total)</td>
+  </tr>
+
+  <tr>
+    <td>Votes yesterday</td>
+    <td><strong><%= @votes_yesterday_up %></strong> up, <strong><%= @votes_yesterday_down %></strong> down</td>
+  </tr>
+
+  <tr>
+    <td>Karma points exchanged yesterday</td>
+    <td><strong><%= @karma_points_exchanged %></strong></td>
   </tr>
 
 </table>

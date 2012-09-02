@@ -3,15 +3,21 @@
 <% end %>
 
 <section>
-  <h2>Subscription</h2>
-  <form>
-    <div class="setting clearfix">
-      <label for="receive_checkbox">Receive Announcements</label>
-      <div class="checkbox">
-        <input type="checkbox" id="receive_checkbox" data-user-id="<%= current_user.id %>" <% if current_user.receive %>checked="checked"<% end %> />
+  <h2>Receive email at:</h2>
+
+  <% current_user.accounts.each do |account| %>
+
+    <form>
+      <div class="setting clearfix">
+        <label for="receive_checkbox"><%= account.email %></label>
+        <div class="checkbox">
+          <input type="checkbox" id="receive_checkbox" data-account-id="<%= account.id %>" <% if account.receive %>checked="checked"<% end %> />
+        </div>
       </div>
-    </div>
-  </form>
+    </form>
+
+  <% end %>
+
 </section>
 
 <section>
@@ -19,8 +25,9 @@
   <div class="setting clearfix">
     <label>Name: <strong><%= @user.name %></strong></label>
   </div>
+
   <div class="setting clearfix">
-    <label>Email: <strong><%= @user.email %></strong></label>
+    <label>Posts: <strong><%= @user.posts.count %></strong></label>
   </div>
 
   <% if @user.admin %>

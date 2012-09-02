@@ -7,6 +7,13 @@ class UsersController < ApplicationController
       @users = User.order('karma DESC')
     elsif params[:filter] == 'admin'
       @users = User.where('admin = ?', true)
+    elsif params[:filter] == 'multiples'
+      @users = User.find(:all,
+        joins: 'left outer join accounts on accounts.user_id = users.id',
+        select: "users.*, COUNT(accounts.id) AS accounts_count",
+        group: "users.id",
+        having: "accounts_count > 1"
+      )
     else
       @users = User.order('created_at DESC')
     end

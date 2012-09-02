@@ -9,7 +9,7 @@
     <h2 style="font-size: 14px; color: #ddd; text-align: center; font-weight: normal;"><%= @issue.publish_date.strftime('%B %-d, %Y') %></h2>
   </div>
 
-  <%= render :partial => "user_mailer/post", :collection => @issue.posts %>
+  <%= render :partial => "user_mailer/post", :collection => @posts %>
 
   <!-- note: add settings and compose links -->
 

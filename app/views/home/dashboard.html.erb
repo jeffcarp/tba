@@ -8,37 +8,39 @@
   <h1>This morning's edition</h1>
 
   <div class="announcements">
-    <% @issue.posts.each do |post| %>
+    <% @posts.each do |post| %>
       <div class="announcement">
         <div class="title">
           <span><%= post.user.name %> <%= post.user.karma %> - <%= post.title %></span>
-          <span class="voting" data-post="<%= post.id %>">
+          <% if current_user.canpost %>
+            <span class="voting" data-post="<%= post.id %>">
 
-            <% user_vote = current_user.has_voted_on post %>
+              <% user_vote = current_user.has_voted_on post %>
 
-            <% if post.user == current_user %>
-              <% # you can't vote on your own stuff %>
-            <% elsif user_vote %>
-              <% if user_vote.up %>
-                <span class="upvoted">upvoted</span>
-                <span class="downvoted hidden">downvoted</span>
+              <% if post.user == current_user  %>
+                <% # you can't vote on your own stuff %>
+              <% elsif user_vote %>
+                <% if user_vote.up %>
+                  <span class="upvoted">upvoted</span>
+                  <span class="downvoted hidden">downvoted</span>
+                <% else %>
+                  <span class="upvoted hidden">upvoted</span>
+                  <span class="downvoted">downvoted</span>
+                <% end %>
+
+                <span class="upvote hidden">&#9650;</span>
+                <span class="downvote hidden">&#9660;</span>
+
               <% else %>
+
                 <span class="upvoted hidden">upvoted</span>
-                <span class="downvoted">downvoted</span>
+                <span class="downvoted hidden">downvoted</span>
+                <span class="upvote">&#9650;</span>
+                <span class="downvote">&#9660;</span>
+
               <% end %>
-
-              <span class="upvote hidden">&#9650;</span>
-              <span class="downvote hidden">&#9660;</span>
-
-            <% else %>
-
-              <span class="upvoted hidden">upvoted</span>
-              <span class="downvoted hidden">downvoted</span>
-              <span class="upvote">&#9650;</span>
-              <span class="downvote">&#9660;</span>
-
-            <% end %>
-          </span>
+            </span>
+          <% end %>
         </div>
         <div class="body">
           <%= post.content_html.html_safe %>

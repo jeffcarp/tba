@@ -4,7 +4,7 @@
 
 <p>Order by <a href="/users">date joined</a>, <a href="/users?order=karma">karma</a></p>
 
-<p>Filter <a href="/users?filter=admin">admins</a></p>
+<p>Filter <a href="/users?filter=admin">admins</a>, <a href="/users?filter=multiples">multiple accounts</a></p>
 
 <table>
   <tr>
@@ -17,7 +17,11 @@
 
   <% @users.each do |user| %>
     <tr>
-        <td class="<%= 'weekend' if user.admin %>"><strong><%= user.name %></strong><br /><%= user.email %></td>
+        <td class="<%= 'weekend' if user.admin %>"><strong><%= user.name %></strong>
+          <% user.accounts.each do |account| %>
+            <br /><%= account.email %>
+          <% end %>
+        </td>
         <td><%= user.created_at.strftime('%b %-d') %></td>
         <td class="<%= 'weekend' if user.canpost %>"><%= user.canpost %></td>
         <td class="<%= 'weekend' if user.receive %>"><%= user.receive %></td>

@@ -30,7 +30,7 @@ class Issue < ActiveRecord::Base
   def self.send_announcements
     puts "Sending announcements..."
 
-    @users = User.all
+    @accounts = Account.all
     @issue = Issue.upcoming_issue
 
     return false if @issue.publish_date != Date.today
@@ -39,8 +39,8 @@ class Issue < ActiveRecord::Base
 
     return false if !@issue.posts.any?
 
-    @users.each do |user|
-      UserMailer.the_announcements(user, @issue).deliver
+    @accounts.each do |account|
+      UserMailer.the_announcements(account, @issue).deliver
     end
 
     puts "Done sending all announcements."
