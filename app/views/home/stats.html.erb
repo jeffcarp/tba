@@ -33,6 +33,22 @@
       (<%= @accounts_receive_ratio %>% of total)</td>
   </tr>
 
+</table>
+
+<h2>Karma</h2>
+
+<table>
+
+  <tr>
+    <td>Votes today</td>
+    <td><strong><%= @votes_today_up %></strong> up, <strong><%= @votes_today_down %></strong> down</td>
+  </tr>
+
+  <tr>
+    <td>Karma points exchanged today</td>
+    <td><strong><%= @karma_points_exchanged_today %></strong></td>
+  </tr>
+
   <tr>
     <td>Votes yesterday</td>
     <td><strong><%= @votes_yesterday_up %></strong> up, <strong><%= @votes_yesterday_down %></strong> down</td>
@@ -44,4 +60,3 @@
   </tr>
 
 </table>
-

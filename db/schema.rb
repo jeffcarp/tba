@@ -24,32 +24,32 @@ ActiveRecord::Schema.define(:version => 20120901100028) do
   end
 
   create_table "issues", :force => true do |t|
-    t.date     "publish_date"
-    t.datetime "created_at",                      :null => false
-    t.datetime "updated_at",                      :null => false
-    t.boolean  "published",    :default => false
+    t.date      "publish_date"
+    t.timestamp "created_at",                      :null => false
+    t.timestamp "updated_at",                      :null => false
+    t.boolean   "published",    :default => false
   end
 
   create_table "posts", :force => true do |t|
-    t.string   "title"
-    t.text     "content"
-    t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.integer  "issue_id"
+    t.string    "title"
+    t.text      "content"
+    t.integer   "user_id"
+    t.timestamp "created_at", :null => false
+    t.timestamp "updated_at", :null => false
+    t.integer   "issue_id"
   end
 
   create_table "users", :force => true do |t|
-    t.string   "name"
-    t.string   "email"
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
-    t.boolean  "receive",    :default => true
-    t.boolean  "admin",      :default => false
-    t.string   "provider"
-    t.string   "uid"
-    t.boolean  "canpost",    :default => false
-    t.integer  "karma",      :default => 0
+    t.string    "name"
+    t.string    "email"
+    t.timestamp "created_at",                    :null => false
+    t.timestamp "updated_at",                    :null => false
+    t.boolean   "receive",    :default => true
+    t.boolean   "admin",      :default => false
+    t.string    "provider"
+    t.string    "uid"
+    t.boolean   "canpost",    :default => false
+    t.integer   "karma",      :default => 0
   end
 
   create_table "votes", :force => true do |t|

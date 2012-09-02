@@ -24,8 +24,11 @@ class HomeController < ApplicationController
     @accounts_receive_count = Account.find(:all, conditions: ['receive=?', true]).count
     @accounts_receive_ratio = ((@accounts_receive_count.to_f / @accounts_count.to_f) * 100).to_i
 
+    @votes_today_up = Vote.where('created_at > ? AND created_at < ? AND up = ?', (Time.zone.now).beginning_of_day, (Time.zone.now).end_of_day, true).count
+    @votes_today_down = Vote.where('created_at > ? AND created_at < ? AND up = ?', (Time.zone.now).beginning_of_day, (Time.zone.now).end_of_day, false).count
     @votes_yesterday_up = Vote.where('created_at > ? AND created_at < ? AND up = ?', (Time.zone.now - 1.day).beginning_of_day, (Time.zone.now - 1.day).end_of_day, true).count
     @votes_yesterday_down = Vote.where('created_at > ? AND created_at < ? AND up = ?', (Time.zone.now - 1.day).beginning_of_day, (Time.zone.now - 1.day).end_of_day, false).count
+    @karma_points_exchanged_today = 10 * (Vote.where('created_at > ? AND created_at < ?', (Time.zone.now).beginning_of_day, (Time.zone.now).end_of_day).count)
     @karma_points_exchanged = 10 * (Vote.where('created_at > ? AND created_at < ?', (Time.zone.now - 1.day).beginning_of_day, (Time.zone.now - 1.day).end_of_day).count)
 
   end

@@ -11,7 +11,7 @@
     <% @posts.each do |post| %>
       <div class="announcement">
         <div class="title">
-          <span><%= post.user.name %> <%= post.user.karma %> - <%= post.title %></span>
+          <span><%= post.user.name %> - <%= post.title %></span>
           <% if current_user.canpost %>
             <span class="voting" data-post="<%= post.id %>">
 
