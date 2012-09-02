@@ -42,6 +42,9 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    if params[:super] == yes
+      # hmm
+    end
     session[:account_id] = nil
     redirect_to root_url, :notice => "Signed out!"
   end
