@@ -15,12 +15,12 @@ class SessionsController < ApplicationController
       puts 'Log em in'
       session[:account_id] = @account.id
       session[:user_id] = @account.user.id
-    elsif @user # They're logging in with a new account
-      puts 'Create new Account'
-      @account = @user.accounts.create_with_omniauth(auth)
+    # elsif @user # They're logging in with a new account
+    #   puts 'Create new Account'
+    #   @account = @user.accounts.create_with_omniauth(auth)
 
-      session['account_id'] = @account.id
-      session['user_id'] = @user.id
+    #   session['account_id'] = @account.id
+    #   session['user_id'] = @user.id
 
     else # it's your first time, eh?
       puts 'Create new User and Account'
