@@ -31,3 +31,4 @@ gem 'google-analytics-rails'
 gem 'maruku'
 
 gem 'newrelic_rpm'
+gem 'delayed_job_active_record'

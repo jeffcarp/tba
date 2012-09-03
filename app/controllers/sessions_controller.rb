@@ -12,18 +12,18 @@ class SessionsController < ApplicationController
     @account = Account.find_by_provider_and_uid(provider, uid)
 
     if @account # Their cookie expired or they logged out
-      puts 'ONE ONE ONE'
+      puts 'Log em in'
       session[:account_id] = @account.id
       session[:user_id] = @account.user.id
     elsif @user # They're logging in with a new account
-      puts 'TWO TWO TWO'
+      puts 'Create new Account'
       @account = @user.accounts.create_with_omniauth(auth)
 
       session['account_id'] = @account.id
       session['user_id'] = @user.id
 
     else # it's your first time, eh?
-      puts 'THREE THREE THREE'
+      puts 'Create new User and Account'
       @user = User.create!
       @user.name = auth["info"]["name"]
       @user.save
@@ -35,6 +35,7 @@ class SessionsController < ApplicationController
       session['account_id'] = @account.id
       session['user_id'] = @user.id
 
+      UserMailer.delay.welcome_email(@user)
       # NOT YET, BUT SOON UserMailer.welcome_email(@user).deliver
     end
 

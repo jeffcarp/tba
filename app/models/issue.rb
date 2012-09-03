@@ -40,7 +40,8 @@ class Issue < ActiveRecord::Base
     return false if !@issue.posts.any?
 
     @accounts.each do |account|
-      UserMailer.the_announcements(account, @issue).deliver
+      UserMailer.delay.the_announcements(account, @issue)
+      # UserMailer.the_announcements(account, @issue).deliver
     end
 
     puts "Done sending all announcements."
