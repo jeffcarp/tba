@@ -6,6 +6,11 @@ class Issue < ActiveRecord::Base
     Issue.find(:first, :conditions => ["published=?", false], :order => 'publish_date ASC')
   end
 
+  def self.current_issue
+    Issue.find(:last, :conditions => ["published=?", true], :order => 'publish_date ASC')
+  end
+
+  # Deprecated.
   def self.todays_issue
     Issue.find(:first, :conditions => ["publish_date=?", Time.zone.now.strftime('%F')])
   end

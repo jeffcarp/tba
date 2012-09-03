@@ -9,7 +9,7 @@ class HomeController < ApplicationController
   end
 
   def dashboard
-    @issue = Issue.todays_issue
+    @issue = Issue.current_issue
     @posts = Post.find(:all, joins: [:issue, :user], conditions: ['issue_id = ?', @issue.id], order: 'users.karma DESC')
   end
 
