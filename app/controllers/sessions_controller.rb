@@ -35,7 +35,7 @@ class SessionsController < ApplicationController
       session['account_id'] = @account.id
       session['user_id'] = @user.id
 
-      UserMailer.delay.welcome_email(@user)
+      UserMailer.delay.welcome_email(@account)
       # NOT YET, BUT SOON UserMailer.welcome_email(@user).deliver
     end
 

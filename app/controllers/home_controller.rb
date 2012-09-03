@@ -9,9 +9,7 @@ class HomeController < ApplicationController
   end
 
   def dashboard
-    session[:cool_cat] ||= Random.rand 101
     @issue = Issue.todays_issue
-    # @posts = @issue.posts
     @posts = Post.find(:all, joins: [:issue, :user], conditions: ['issue_id = ?', @issue.id], order: 'users.karma DESC')
   end
 

@@ -4,6 +4,7 @@ class UserMailer < ActionMailer::Base
   def welcome_email(account)
     @account = account
     @uri_prefix = 'http://announcements.io/'
+    puts "Sending welcome email to "+ @account.email
     mail(:to => @account.email, :subject => "Welcome to The Better Announcements!")
   end
 
