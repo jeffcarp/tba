@@ -10,8 +10,7 @@
   <tr>
     <th>Name & Email</th>
     <th>Joined</th>
-    <th>Post</th>
-    <th>Receive</th>
+    <th>Post?</th>
     <th>Karma</th>
   </tr>
 
@@ -19,12 +18,11 @@
     <tr>
         <td class="<%= 'weekend' if user.admin %>"><strong><%= user.name %></strong>
           <% user.accounts.each do |account| %>
-            <br /><%= account.email %>
+            <br /><%= account.email %> <%= '(not receiving)' if !account.receive %>
           <% end %>
         </td>
         <td><%= user.created_at.strftime('%b %-d') %></td>
         <td class="<%= 'weekend' if user.canpost %>"><%= user.canpost %></td>
-        <td class="<%= 'weekend' if user.receive %>"><%= user.receive %></td>
         <td><strong><%= user.karma %></strong></td>
     </tr>
   <% end %>
