@@ -29,7 +29,6 @@ class HomeController < ApplicationController
     @votes_yesterday_down = Vote.where('created_at > ? AND created_at < ? AND up = ?', (Time.zone.now - 1.day).beginning_of_day, (Time.zone.now - 1.day).end_of_day, false).count
     @karma_points_exchanged_today = 10 * (Vote.where('created_at > ? AND created_at < ?', (Time.zone.now).beginning_of_day, (Time.zone.now).end_of_day).count)
     @karma_points_exchanged = 10 * (Vote.where('created_at > ? AND created_at < ?', (Time.zone.now - 1.day).beginning_of_day, (Time.zone.now - 1.day).end_of_day).count)
-
   end
 
   def settings
@@ -39,17 +38,22 @@ class HomeController < ApplicationController
   end
 
   def debug_email
-    if params[:email] == 'the_announcements'
-      template = params[:email]
-      @issue = Issue.upcoming_issue
-      @posts = Post.find(:all, joins: [:issue, :user], conditions: ['issue_id = ?', @issue.id], order: 'users.karma DESC')
-    else
-      template = 'welcome_email'
+
+    @forecast = Rails.cache.read('weather', @forecast)
+    @hit = 'hit'
+    if !@forecast
+      @hit = 'miss'
+      wuapi = Wunderground.new("ae554e13f3e3461e")
+      @forecast = wuapi.forecast_and_conditions_for("ME", "Waterville")
+      Rails.cache.write('weather', @forecast, expires_in: 12.hours)
     end
+
+    @issue = Issue.upcoming_issue
+    @posts = Post.find(:all, joins: [:issue, :user], conditions: ['issue_id = ?', @issue.id], order: 'users.karma DESC')
 
     @url_prefix = 'http://announcements.io/'
     @user = User.find_by_email "gcarpenterv@gmail.com"
-    render :layout => false, :template => 'user_mailer/'+template
+    render :layout => false, :template => 'user_mailer/the_announcements'
   end
 
 end
