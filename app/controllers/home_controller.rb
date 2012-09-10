@@ -37,6 +37,7 @@ class HomeController < ApplicationController
 
   def debug_email
 
+    @account = current_user.accounts.first
     @forecast = Rails.cache.read('weather', @forecast)
     @hit = 'hit'
     if !@forecast
