@@ -10,6 +10,8 @@ end
 
 Shanghai::Application.routes.draw do
 
+  get "arduino" => "home#arduino"
+
   get "accounts/update"
 
   match '/auth/:provider/callback', :to => 'sessions#create'

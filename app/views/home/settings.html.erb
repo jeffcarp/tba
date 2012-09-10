@@ -11,7 +11,7 @@
       <div class="setting clearfix">
         <label for="receive_checkbox"><%= account.email %></label>
         <div class="checkbox">
-          <input type="checkbox" id="receive_checkbox" data-account-id="<%= account.id %>" <% if account.receive %>checked="checked"<% end %> />
+          <input type="checkbox" id="receive_checkbox" data-controller="accounts" data-attribute="receive" data-id="<%= account.id %>" <% if account.receive %>checked="checked"<% end %> />
         </div>
       </div>
     </form>
@@ -21,25 +21,74 @@
 </section>
 
 <section>
-  <h2>Yourself</h2>
-  <div class="setting clearfix">
-    <label>Name: <strong><%= @user.name %></strong></label>
-  </div>
+  <h2>Mail Settings</h2>
 
-  <div class="setting clearfix">
-    <label>Posts: <strong><%= @user.posts.count %></strong></label>
-  </div>
-
-  <% if @user.admin %>
+  <form>
     <div class="setting clearfix">
-      <label>You are an <strong>admin.</strong> Congratulations.</label>
+      <label for="weather_checkbox">Weather</label>
+      <div class="checkbox">
+        <input type="checkbox" id="weather_checkbox" data-controller="users" data-attribute="weather" data-id="<%= current_user.id %>" <% if current_user.receive %>checked="checked"<% end %> />
+      </div>
     </div>
-  <% end %>
+  </form>
 
 </section>
 
-<% if !@user.canpost %>
-    <p>Since you have a non-colby.edu address, you can receive the announcements but cannot post to them.</p>
-<% end %>
+<section>
+  <h2>Yourself</h2>
 
-<p>Currently names are not editable. If you need to change yours, <%= link_to 'contact', :guide %> us.</p>
+  <table>
+      <tr>
+        <td>Name</td>
+        <td><strong><%= @user.name %></strong></td>
+      </tr>
+      <tr>
+        <td>Posts</td>
+        <td><strong><%= @user.posts.count %></strong></td>
+      </tr>
+      <tr>
+        <td>Likes</td>
+        <td><strong><%= @votes.count %></strong></td>
+      </tr>
+      <tr>
+        <td>Likes per post</td>
+        <td><strong><%= @votes.count / @user.posts.count %></strong></td>
+      </tr>
+  </table>
+
+  <% if @user.admin %>
+    <p>You are an <strong>admin.</strong> Congratulations.</p>
+  <% end %>
+
+  <% if !@user.canpost %>
+      <p>Since you have a non-colby.edu address, you can receive the announcements but cannot post to them.</p>
+  <% end %>
+
+  <p>Currently names are not editable. If you need to change yours, <%= link_to 'contact', :guide %> us.</p>
+
+</section>
+
+
+<section>
+  <h2>Likes on your posts</h2>
+
+  <p>Posts on The Better Announcements are ordered by users' total number of likes.</p>
+
+  <table>
+    <tr>
+      <th>Cast</th>
+      <th>Voter</th>
+      <th>Post</th>
+    </tr>
+
+    <% @votes.each do |vote| %>
+      <tr>
+        <td>
+          <%= vote.created_at.strftime('%e %B') %></td>
+        <td><strong><%= vote.user.name %></strong></td>
+        <td><%= vote.post.title %></td>
+      </tr>
+    <% end %>
+
+  </table>
+</section>

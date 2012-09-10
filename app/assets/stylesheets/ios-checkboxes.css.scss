@@ -38,7 +38,7 @@
     }
 label.iPhoneCheckLabelOn {
     color: white;
-    background: url('https://github.com/tdreyno/iphone-style-checkboxes/raw/master/images/iphone-style-checkboxes/on.png?1284697268') no-repeat;
+    background: url(image_path('on.png')) no-repeat;
     text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
     left: 0;
     padding-top: 5px;
@@ -48,7 +48,7 @@ label.iPhoneCheckLabelOn {
         }
 label.iPhoneCheckLabelOff {
     color: #8b8b8b;
-    background: url('https://github.com/tdreyno/iphone-style-checkboxes/raw/master/images/iphone-style-checkboxes/off.png?1284697268') no-repeat right 0;
+    background: url(image_path('off.png')) no-repeat right 0;
     text-shadow: 0px 0px 2px rgba(255, 255, 255, 0.6);
     text-align: right;
     right: 0;
@@ -64,19 +64,19 @@ label.iPhoneCheckLabelOff {
     top: 0;
     left: 0;
     width: 0;
-    background: url('https://github.com/tdreyno/iphone-style-checkboxes/raw/master/images/iphone-style-checkboxes/slider_left.png?1284697268') no-repeat;
+    background: url(image_path('slider_left.png')) no-repeat;
     padding-left: 3px;
     }
 .iPhoneCheckHandleRight {
     height: 100%;
     width: 100%;
     padding-right: 3px;
-    background: url('https://github.com/tdreyno/iphone-style-checkboxes/raw/master/images/iphone-style-checkboxes/slider_right.png?1284697268') no-repeat right 0;
+    background: url(image_path('slider_right.png')) no-repeat right 0;
     }
 .iPhoneCheckHandleCenter {
     height: 100%;
     width: 100%;
-    background: url('https://github.com/tdreyno/iphone-style-checkboxes/raw/master/images/iphone-style-checkboxes/slider_center.png?1284697268');
+    background: url(image_path('slider_center.png'));
     }
 .iOSCheckContainer {
     position: relative;
@@ -118,7 +118,7 @@ label.iPhoneCheckLabelOff {
     }
 label.iOSCheckLabelOn {
     color: white;
-    background: url('https://github.com/tdreyno/iphone-style-checkboxes/raw/master/images/ios-style-checkboxes/on.png?1284697268') no-repeat;
+    background: url(image_path('on.png')) no-repeat;
     text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
     left: 0;
     padding-top: 5px;
@@ -128,7 +128,7 @@ label.iOSCheckLabelOn {
         }
 label.iOSCheckLabelOff {
     color: #8b8b8b;
-    background: url('https://github.com/tdreyno/iphone-style-checkboxes/raw/master/images/ios-style-checkboxes/off.png?1284697268') no-repeat right 0;
+    background: url(image_path('off.png')) no-repeat right 0;
     text-shadow: 0px 0px 2px rgba(255, 255, 255, 0.6);
     text-align: right;
     right: 0;
@@ -144,17 +144,17 @@ label.iOSCheckLabelOff {
     top: 0;
     left: 0;
     width: 0;
-    background: url('https://github.com/tdreyno/iphone-style-checkboxes/raw/master/images/ios-style-checkboxes/slider_left.png?1284697268') no-repeat;
+    background: url(image_path('slider_left.png')) no-repeat;
     padding-left: 3px;
     }
 .iOSCheckHandleRight {
     height: 100%;
     width: 100%;
     padding-right: 3px;
-    background: url('https://github.com/tdreyno/iphone-style-checkboxes/raw/master/images/ios-style-checkboxes/slider_right.png?1284697268') no-repeat right 0;
+    background: url(image_path('slider_right.png')) no-repeat right 0;
     }
 .iOSCheckHandleCenter {
     height: 100%;
     width: 100%;
-    background: url('https://github.com/tdreyno/iphone-style-checkboxes/raw/master/images/ios-style-checkboxes/slider_center.png?1284697268');
+    background: url(image_path('slider_center.png'));
     }

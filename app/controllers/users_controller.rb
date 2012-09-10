@@ -42,11 +42,13 @@ class UsersController < ApplicationController
   # PUT /users/1
   # PUT /users/1.json
   def update
-    @user = User.find(params[:id])
+    @user = current_user
 
-    if params[:receive]
-      puts params[:receive]
-      @user.receive = params[:receive]
+    if params[:async]
+    end
+    if params[:weather]
+      puts params[:weather]
+      @user.receive = params[:weather]
     end
 
     if @user.update_attributes(params[:user])

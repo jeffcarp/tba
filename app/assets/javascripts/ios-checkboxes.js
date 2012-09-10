@@ -105,22 +105,28 @@
 
       // Hey! You there! If you see this, can you teach me how to put this
       // function in main.js?
-      slider = $(this.elem[0])
+      slider = $(this.elem[0]);
 
-      var account_id = slider.data('account-id');
+      var controller = slider.data('controller');
+      var attribute = slider.data('attribute');
+      var id = slider.data('id');
+      console.log(controller);
+      console.log(attribute);
+      console.log(id);
 
       if (slider.attr('checked') == 'checked') {
-        var receive = false
+        var checked = false;
       } else {
-        var receive = true
+        var checked = true;
       }
-      console.log(receive);
+
       $.ajax({
         type: 'put',
-        url: '/accounts/'+account_id+'.json',
+        url: '/'+controller+'/'+id+'.json',
         data: {
-          id: account_id,
-          receive: receive,
+          id: id,
+          receive: checked,
+          weather: checked,
           async: 1
         },
         success: function(data, textStatus, jqXHR) {

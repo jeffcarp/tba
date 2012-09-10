@@ -9,8 +9,8 @@
 
     <h2 style="font-size: 14px; color: #555; text-align: center; font-weight: normal;"><%= @issue.publish_date.strftime('%B %-d, %Y') %></h2>
 
-    <% if @forecast %>
-    <table style="margin: 0 auto 36px; width:70%;">
+    <% if @forecast && @account.user.receive %>
+    <table style="margin: 0 auto 36px; width:60%;">
       <tr>
         <% @forecast['forecast']['simpleforecast']['forecastday'].each_with_index do |f, i| %>
           <td style="text-align:center;width:100px;vertical-align:top;">
@@ -27,6 +27,7 @@
               <%= f['conditions'] %>
             </div>
           </td>
+          <% break if i > 0 %>
         <% end %>
       </tr>
     </table>

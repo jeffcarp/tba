@@ -20,22 +20,17 @@
                 <% # you can't vote on your own stuff %>
               <% elsif user_vote %>
                 <% if user_vote.up %>
-                  <span class="upvoted">upvoted</span>
-                  <span class="downvoted hidden">downvoted</span>
+                  <span class="upvoted">liked</span>
                 <% else %>
-                  <span class="upvoted hidden">upvoted</span>
-                  <span class="downvoted">downvoted</span>
+                  <span class="upvoted hidden">liked</span>
                 <% end %>
 
-                <span class="upvote hidden">&#9650;</span>
-                <span class="downvote hidden">&#9660;</span>
+                <span class="upvote hidden">like</span>
 
               <% else %>
 
-                <span class="upvoted hidden">upvoted</span>
-                <span class="downvoted hidden">downvoted</span>
-                <span class="upvote">&#9650;</span>
-                <span class="downvote">&#9660;</span>
+                <span class="upvoted hidden">liked</span>
+                <span class="upvote">like</span>
 
               <% end %>
             </span>
