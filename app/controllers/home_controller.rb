@@ -3,10 +3,6 @@ class HomeController < ApplicationController
   before_filter :authenticate, :only => [:stats, :debug_email]
   caches_page [:index, :guide, :dashboard], :expires_in => 10.minutes
 
-  def arduino
-    render :json => '{ number: &5 }'
-  end
-
   def index
   end
 
@@ -35,7 +31,7 @@ class HomeController < ApplicationController
   def settings
     @checkboxes = true
     @user = current_user
-    @votes = Vote.find(:all, joins: ['JOIN posts ON posts.id = votes.post_id'], conditions: ['posts.user_id = ?', current_user.id])
+    @votes = Vote.find(:all, joins: ['JOIN posts ON posts.id = votes.post_id'], conditions: ['posts.user_id = ?', current_user.id], order: "created_at DESC")
     render 'home/settings'
   end
 
