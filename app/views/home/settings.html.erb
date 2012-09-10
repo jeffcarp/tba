@@ -52,7 +52,7 @@
       </tr>
       <tr>
         <td>Likes per post</td>
-        <td><strong><%= @votes.count / @user.posts.count %></strong></td>
+        <td><strong><%= @votes.count.to_f / @user.posts.count.to_f %></strong></td>
       </tr>
   </table>
 
