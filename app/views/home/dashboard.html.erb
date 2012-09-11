@@ -10,7 +10,7 @@
     <% @posts.each do |post| %>
       <div class="announcement">
         <div class="title">
-          <span><%= post.user.name %> - <%= post.title %></span>
+          <span><a href="mailto:<%= post.user.primary_email %>"><%= post.user.name %></a> - <%= post.title %></span>
           <% if current_user.canpost %>
             <span class="voting" data-post="<%= post.id %>">
 

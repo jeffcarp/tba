@@ -38,14 +38,14 @@ class HomeController < ApplicationController
   def debug_email
 
     @account = current_user.accounts.first
-    @forecast = Rails.cache.read('weather', @forecast)
-    @hit = 'hit'
-    if !@forecast
-      @hit = 'miss'
+    # @forecast = Rails.cache.read('weather', @forecast)
+    # @hit = 'hit'
+    # if !@forecast
+      # @hit = 'miss'
       wuapi = Wunderground.new("ae554e13f3e3461e")
       @forecast = wuapi.forecast_and_conditions_for("ME", "Waterville")
-      Rails.cache.write('weather', @forecast, expires_in: 12.hours)
-    end
+      # Rails.cache.write('weather', @forecast, expires_in: 12.hours)
+    # end
 
     @issue = Issue.upcoming_issue
     @posts = Post.find(:all, joins: [:issue, :user], conditions: ['issue_id = ?', @issue.id], order: 'users.karma DESC')

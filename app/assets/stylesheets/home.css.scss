@@ -234,9 +234,6 @@ footer {
   }
 }
 #content .home_dashboard {
-  .title h2 {
-    color: white;
-  }
   .announcements {
     .announcement {
       .title {
@@ -245,6 +242,15 @@ footer {
         background-color: #0DB5DB;
         font-size: 16px;
         font-weight: bold;
+        a {
+          color: white;
+          padding: 2px;
+          // border-bottom: dotted 1px #29cdf2;
+          &:hover {
+            color: #a9ebfa;
+            border-bottom: dotted 1px #a9ebfa;
+          }
+        }
         .voting {
           float: right;
           .upvote, .downvote {
