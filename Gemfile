@@ -36,3 +36,4 @@ gem 'delayed_job_active_record'
 gem 'dalli'
 
 gem 'wunderground'
+gem 'rails_autolink'

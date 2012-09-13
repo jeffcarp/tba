@@ -22,10 +22,10 @@ class UserMailer < ActionMailer::Base
     end
 
     @posts = Post.find(:all, joins: [:issue, :user], conditions: ['issue_id = ?', @issue.id], order: 'users.karma DESC')
-    if @account.receive
-      puts "Sending announcement to "+ @account.email
-      mail(to: @account.email, from: "gcarpenterv@gmail.com", subject: "The Better Announcements, " + @issue.publish_date.strftime('%B %-d, %Y'))
-    end
+
+    puts "Sending announcement to "+ @account.email
+    mail(to: @account.email, from: "gcarpenterv@gmail.com", subject: "The Better Announcements, " + @issue.publish_date.strftime('%B %-d, %Y'))
+
   end
 
 end

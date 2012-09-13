@@ -52,7 +52,11 @@
       </tr>
       <tr>
         <td>Likes per post</td>
-        <td><strong><%= @votes.count.to_f / @user.posts.count.to_f %></strong></td>
+        <% if (@user.posts.count == 0) %>
+          <td>0</td>
+        <% else %>
+          <td><strong><%= (@votes.count.to_f / @user.posts.count.to_f).round(2) %></strong></td>
+        <% end %>
       </tr>
   </table>
 

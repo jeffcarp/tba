@@ -13,4 +13,9 @@ class Post < ActiveRecord::Base
       Maruku.new(self.content).to_html
   end
 
+  # def content_html_with_links
+    # self.content
+    # Maruku.new(content).to_html
+  # end
+
 end

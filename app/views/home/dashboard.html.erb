@@ -37,7 +37,7 @@
           <% end %>
         </div>
         <div class="body">
-          <%= post.content_html.html_safe %>
+          <%= simple_format(auto_link(post.content)) %>
         </div>
       </div>
     <% end %>
