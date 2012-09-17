@@ -38,9 +38,7 @@ processVoteCallback = (data, node) ->
   if like_count_td.hasClass('hidden')
     like_count_td.removeClass('hidden')
 
-  like_count_td.html(like_count + " like")
-  if like_count == 0 || like_count > 1
-    like_count_td.html(like_count_td.html() + "s")
+  like_count_td.html(like_count)
 
   node.parent().find('.upvoted').removeClass('hidden')
   node.parent().find('.upvote').addClass('hidden')
@@ -54,9 +52,7 @@ deleteVoteCallback = (data, node) ->
   if like_count == 0
     like_count_td.addClass('hidden')
 
-  like_count_td.html(like_count + " like")
-  if like_count == 0 || like_count > 1
-    like_count_td.html(like_count_td.html() + "s")
+  like_count_td.html(like_count)
 
   node.parent().find('.upvoted').addClass('hidden')
   node.parent().find('.upvote').removeClass('hidden')

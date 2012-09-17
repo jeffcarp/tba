@@ -239,11 +239,11 @@ footer {
       table.title {
         color: #333;
         // background-color: #0DB5DB;
-        font-weight: bold;
         margin: 0 0 6px;
         a {
           color: #333;
           padding: 2px;
+          font-weight: normal;
           &:hover {
             color: #555;
             border-bottom: dotted 1px #a9ebfa;
@@ -259,8 +259,11 @@ footer {
             vertical-align: center;
           }
           td.like_count {
-            width: 13%;
+            width: 5%;
             text-align:center;
+          }
+          td.headline {
+            font-weight: bold;
           }
           td:first-child {
             width: 25%;
