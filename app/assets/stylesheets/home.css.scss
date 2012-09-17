@@ -104,14 +104,14 @@ header {
     margin: 0 0 24px;
     tr {
       background-color: #a9ebfa;
-    }
-    th {
-      padding: 18px;
-      font-size: 16px;
-    }
-    td {
-      padding: 12px;
-      font-size: 14px;
+      th {
+        padding: 18px;
+        font-size: 16px;
+      }
+      td {
+        padding: 12px;
+        font-size: 14px;
+      }
     }
     .weekend {
       background-color: #69dcf6;
@@ -236,32 +236,51 @@ footer {
 #content .home_dashboard {
   .announcements {
     .announcement {
-      .title {
-        padding: 10px;
-        color: white;
-        background-color: #0DB5DB;
-        font-size: 16px;
+      table.title {
+        color: #333;
+        // background-color: #0DB5DB;
         font-weight: bold;
+        margin: 0 0 6px;
         a {
-          color: white;
+          color: #333;
           padding: 2px;
-          // border-bottom: dotted 1px #29cdf2;
           &:hover {
-            color: #a9ebfa;
+            color: #555;
             border-bottom: dotted 1px #a9ebfa;
           }
         }
+        tr {
+          // padding: 0px;
+          // margin: 0;
+          td {
+            // padding: 0;
+            // margin: 0;
+            font-size: 16px;
+            vertical-align: center;
+          }
+          td.like_count {
+            width: 13%;
+            text-align:center;
+          }
+          td:first-child {
+            width: 25%;
+          }
+          td.vote_box {
+            width: 5%;
+            text-align: center;
+          }
+        }
         .voting {
-          float: right;
+          span {
+            color: #333;
+          }
           .upvote, .downvote {
-            color: white;
             &:hover {
-              color: #ddd;
+              color: #555;
               cursor: pointer;
             }
           }
           .upvoted, .downvoted {
-            color: white;
             &:hover {
               color: #ef7b85;
               cursor: pointer;

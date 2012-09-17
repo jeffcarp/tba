@@ -9,14 +9,12 @@ $ ->
 $ ->
   $('.upvote, .downvote').click () ->
     node = $(this)
-    up = ($(this).attr('class') == 'upvote') ? 'true' : 'false'
     post_id = $(this).parent().data('post')
     $.post(
       "/votes",
       post_id: post_id
-      up: up
       success: (data) ->
-        processVoteCallback(data, node, up)
+        processVoteCallback(data, node)
     )
 
 $ ->
@@ -31,13 +29,34 @@ $ ->
         deleteVoteCallback(data, node)
     )
 
-processVoteCallback = (data, node, up) ->
-  if up
-    node.parent().find('.upvoted').removeClass('hidden')
-  else
-    node.parent().find('.downvoted').removeClass('hidden')
-  node.parent().find('.upvote, .downvote').addClass('hidden')
+processVoteCallback = (data, node) ->
+  like_count_td = node.parent().parent().parent().find('.like_count')
+  like_count = parseInt(like_count_td.attr('data-likes'))
+  like_count = like_count + 1
+  like_count_td.attr('data-likes', like_count)
+
+  if like_count_td.hasClass('hidden')
+    like_count_td.removeClass('hidden')
+
+  like_count_td.html(like_count + " like")
+  if like_count == 0 || like_count > 1
+    like_count_td.html(like_count_td.html() + "s")
+
+  node.parent().find('.upvoted').removeClass('hidden')
+  node.parent().find('.upvote').addClass('hidden')
 
 deleteVoteCallback = (data, node) ->
-  node.parent().find('.upvoted, .downvoted').addClass('hidden')
-  node.parent().find('.upvote, .downvote').removeClass('hidden')
+  like_count_td = node.parent().parent().parent().find('.like_count')
+  like_count = parseInt(like_count_td.attr('data-likes'))
+  like_count = like_count - 1
+  like_count_td.attr('data-likes', like_count)
+
+  if like_count == 0
+    like_count_td.addClass('hidden')
+
+  like_count_td.html(like_count + " like")
+  if like_count == 0 || like_count > 1
+    like_count_td.html(like_count_td.html() + "s")
+
+  node.parent().find('.upvoted').addClass('hidden')
+  node.parent().find('.upvote').removeClass('hidden')

@@ -6,7 +6,6 @@ class Vote < ActiveRecord::Base
 
   validates_presence_of :post_id
   validates_presence_of :user_id
-  validates_inclusion_of :up, :in => [true, false]
 
   validates :user_id, :uniqueness => {:scope => :post_id}
 end

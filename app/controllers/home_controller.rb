@@ -48,6 +48,10 @@ class HomeController < ApplicationController
     # end
 
     @issue = Issue.upcoming_issue
+    if params[:current]
+      @issue = Issue.current_issue
+    end
+
     @posts = Post.find(:all, joins: [:issue, :user], conditions: ['issue_id = ?', @issue.id], order: 'users.karma DESC')
 
     @url_prefix = 'http://announcements.io/'

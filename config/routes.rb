@@ -17,6 +17,8 @@ Shanghai::Application.routes.draw do
   match '/auth/:provider/callback', :to => 'sessions#create'
   match "/logout" => "sessions#destroy", :as => :signout
 
+  match "/votes/mail/:post_id", :to => "votes#mail"
+
   resources :users
   resources :posts
   resources :issues

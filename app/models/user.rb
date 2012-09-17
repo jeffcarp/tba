@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
     self.accounts.first.email
   end
 
-  def has_voted_on (post)
+  def has_voted_on(post)
     Vote.find(:first, conditions: ['post_id = ? AND user_id = ?', post.id, self.id])
   end
 

@@ -6,36 +6,41 @@
 
 
   <h1>This morning's edition</h1>
+
+<!--
+- posts
+- likes
+- first time posters
+ -->
+
   <div class="announcements">
     <% @posts.each do |post| %>
       <div class="announcement">
-        <div class="title">
-          <span><a href="mailto:<%= post.user.primary_email %>"><%= post.user.name %></a> - <%= post.title %></span>
-          <% if current_user.canpost %>
-            <span class="voting" data-post="<%= post.id %>">
 
-              <% user_vote = current_user.has_voted_on post %>
+        <table class="title" id="<%= post.id %>">
+          <tr>
+            <td><a href="mailto:<%= post.user.primary_email %>"><%= post.user.name %></a></td>
+            <td><%= post.title %></td>
+            <td class="like_count <%= 'hidden' if post.votes.count == 0 %>" data-likes="<%= post.votes.count %>"><%= pluralize  post.votes.count, 'like' %></td>
 
-              <% if post.user == current_user  %>
-                <% # you can't vote on your own stuff %>
-              <% elsif user_vote %>
-                <% if user_vote.up %>
-                  <span class="upvoted">liked</span>
-                <% else %>
-                  <span class="upvoted hidden">liked</span>
-                <% end %>
+            <% if current_user.canpost && post.user != current_user %>
+              <td class="vote_box">
+                <span class="voting" data-post="<%= post.id %>">
+                  <% if current_user.has_voted_on post  %>
+                    <span class="upvoted">&#10007;</span>
+                    <span class="upvote hidden">&#9829;</span>
+                  <% else %>
+                    <span class="upvoted hidden">&#10007;</span>
+                    <span class="upvote">&#9829;</span>
+                  <% end %>
+                </span>
+              </td>
+            <% end %>
 
-                <span class="upvote hidden">like</span>
+          </tr>
 
-              <% else %>
+        </table>
 
-                <span class="upvoted hidden">liked</span>
-                <span class="upvote">like</span>
-
-              <% end %>
-            </span>
-          <% end %>
-        </div>
         <div class="body">
           <%= simple_format(auto_link(post.content)) %>
         </div>
