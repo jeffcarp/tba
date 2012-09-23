@@ -3,15 +3,27 @@
   <div class="menu">
     <% if @dining_hall == 'foss' %>
       <h1>Foss</h1>
-      <%= @issue.foss.html_safe %>
+      <% if @issue.foss %>
+        <%= @issue.foss.html_safe %>
+      <% else %>
+        <p>Sorry, no data.</p>
+      <% end %>
     <% end %>
     <% if @dining_hall == 'dana' %>
       <h1>Dana</h1>
-      <%= @issue.dana.html_safe %>
+      <% if @issue.dana %>
+        <%= @issue.dana.html_safe %>
+      <% else %>
+        <p>Sorry, no data.</p>
+      <% end %>
     <% end %>
     <% if @dining_hall == 'bobs' %>
       <h1>Bobs</h1>
-      <%= @issue.bobs.html_safe %>
+      <% if @issue.bobs %>
+        <%= @issue.bobs.html_safe %>
+      <% else %>
+        <p>Sorry, no data.</p>
+      <% end %>
     <% end %>
   </div>
 
