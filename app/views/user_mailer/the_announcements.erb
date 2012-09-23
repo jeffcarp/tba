@@ -36,6 +36,17 @@
 
   <div style="text-align:center;"><a style="color:#0DB5DB;line-height:50px;" href="http://announcements.io">Read on announcements.io &raquo;</a></div>
 
+  <% if @issue.foss && @issue.dana && @issue.bobs %>
+    <div class="title" style="padding: 10px; color: white; background-color: #0DB5DB; font-weight: bold;">Lunch Menus</div>
+    <table style="font-size: 11px; color: #555; width: 100%;">
+      <tr>
+        <td style="vertical-align: top; text-align: center;"><h3 style="font-size: 16px; font-style: italic;">Foss</h3><%= @issue.foss.html_safe %></td>
+        <td style="vertical-align: top; text-align: center;"><h3 style="font-size: 16px; font-style: italic;">Dana</h3><%= @issue.dana.html_safe %></td>
+        <td style="vertical-align: top; text-align: center;"><h3 style="font-size: 16px; font-style: italic;">Bobs</h3><%= @issue.bobs.html_safe %></td>
+      <tr>
+    </table>
+  <% end %>
+
   <%= render :partial => "user_mailer/post", :collection => @posts %>
 
   <!-- note: add settings and compose links -->

@@ -19,6 +19,9 @@ Shanghai::Application.routes.draw do
 
   match "/votes/mail/:post_id", :to => "votes#mail"
 
+  get "mobile" => "mobile#index"
+  get "mobile/dining_hall" => "mobile#dining_hall"
+
   resources :users
   resources :posts
   resources :issues

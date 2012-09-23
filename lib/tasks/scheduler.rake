@@ -12,3 +12,7 @@ end
 task :create_week_from_scratch => :environment do
   Issue.create_week_from_scratch
 end
+
+task :fetch_upcoming_menus => :environment do
+  Issue.fetch_upcoming_menus
+end

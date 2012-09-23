@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <title>The Better Announcements</title>
+  <%= stylesheet_link_tag    "reset", "mobile" %>
+  <%= javascript_include_tag "application" %>
+
+  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css'>
+
+  <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0" />
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div id="wrap">
+    <div id="content">
+      <%= yield %>
+    </div>
+  </div>
+</body>
+</html>

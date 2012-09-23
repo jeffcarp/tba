@@ -75,4 +75,69 @@ class Issue < ActiveRecord::Base
     end
   end
 
+  def self.fetch_upcoming_menus
+
+    @issue = Issue.upcoming_issue
+
+    # EVENTUALLY MOVE TO LIB OR GEM
+    url = URI.parse('http://www.colby.edu/news/feeds/dining-Dana.xml')
+    req = Net::HTTP::Get.new(url.path)
+    res = Net::HTTP.start(url.host, url.port) { |http|
+      http.request(req)
+    }
+    @stuff = Nokogiri::XML(res.body)
+
+    @dana = @stuff.css("item").first.to_s
+
+    @dana.gsub!(/&amp;/, "&")
+    @dana.gsub!(/&lt;/, "<")
+    @dana.gsub!(/&gt;/, ">")
+    @dana.gsub!(/(<[pubdate|category|author].*[pubdate|category|author]>)/, "")
+    @dana.gsub!(/(http:\/\/.*.$)/, "")
+
+    @issue.dana = @dana
+
+    # EVENTUALLY MOVE TO LIB OR GEM
+    url = URI.parse('http://www.colby.edu/news/feeds/dining-Foss.xml')
+    req = Net::HTTP::Get.new(url.path)
+    res = Net::HTTP.start(url.host, url.port) { |http|
+      http.request(req)
+    }
+    @stuff = Nokogiri::XML(res.body)
+
+    @foss = @stuff.css("item").first.to_s
+
+    @foss.gsub!(/&amp;/, "&")
+    @foss.gsub!(/&lt;/, "<")
+    @foss.gsub!(/&gt;/, ">")
+    @foss.gsub!(/(<[pubdate|category|author].*[pubdate|category|author]>)/, "")
+    @foss.gsub!(/(http:\/\/.*.$)/, "")
+
+    @issue.foss = @foss
+
+    # EVENTUALLY MOVE TO LIB OR GEM
+    url = URI.parse('http://www.colby.edu/news/feeds/dining-Roberts.xml')
+    req = Net::HTTP::Get.new(url.path)
+    res = Net::HTTP.start(url.host, url.port) { |http|
+      http.request(req)
+    }
+    @stuff = Nokogiri::XML(res.body)
+
+    @bobs = @stuff.css("item").first.to_s
+
+    @bobs.gsub!(/&amp;/, "&")
+    @bobs.gsub!(/&lt;/, "<")
+    @bobs.gsub!(/&gt;/, ">")
+    @bobs.gsub!(/(<[pubdate|category|author].*[pubdate|category|author]>)/, "")
+    @bobs.gsub!(/(http:\/\/.*.$)/, "")
+
+    @issue.bobs = @bobs
+
+    if @issue.save
+      return true
+    else
+      return false
+    end
+  end
+
 end

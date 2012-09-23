@@ -1,0 +1,34 @@
+<div class="mobile_index">
+
+  <% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
+
+
+  <h1>This morning's edition</h1>
+  <h2><%= @issue.publish_date.strftime('%B %-d, %Y') %></h2>
+
+  <p><%= h @stuff %></p>
+
+<!--
+- posts
+- likes
+- first time posters
+ -->
+
+  <div class="announcements">
+    <% @posts.each do |post| %>
+      <div class="announcement">
+
+        <div class="title" id="<%= post.id %>">
+          <div class="name"><strong><%= post.user.name %></strong></div>
+          <div class="headline"><%= post.title %> asdf asdf asdf asdf asdf asdf a asdf asf sdafasd</div>
+        </div>
+
+        <div class="body">
+          <%= simple_format(auto_link(post.content)) %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
