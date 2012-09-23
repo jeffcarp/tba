@@ -1,8 +1,18 @@
 <div class="mobile_dining_hall">
 
   <div class="menu">
-    <h1>Dana</h1>
-    <%= @dana.html_safe %>
+    <% if @dining_hall == 'foss' %>
+      <h1>Foss</h1>
+      <%= @issue.foss.html_safe %>
+    <% end %>
+    <% if @dining_hall == 'dana' %>
+      <h1>Dana</h1>
+      <%= @issue.dana.html_safe %>
+    <% end %>
+    <% if @dining_hall == 'bobs' %>
+      <h1>Bobs</h1>
+      <%= @issue.bobs.html_safe %>
+    <% end %>
   </div>
 
 </div>
