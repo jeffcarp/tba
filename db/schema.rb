@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120923223447) do
+ActiveRecord::Schema.define(:version => 20120924221029) do
 
   create_table "accounts", :force => true do |t|
     t.string   "provider"
@@ -41,12 +41,12 @@ ActiveRecord::Schema.define(:version => 20120923223447) do
 
   create_table "issues", :force => true do |t|
     t.date     "publish_date"
-    t.datetime "created_at",                      :null => false
-    t.datetime "updated_at",                      :null => false
-    t.boolean  "published",    :default => false
-    t.string   "foss"
-    t.string   "dana"
-    t.string   "bobs"
+    t.datetime "created_at",                                     :null => false
+    t.datetime "updated_at",                                     :null => false
+    t.boolean  "published",                   :default => false
+    t.text     "foss",         :limit => 255
+    t.text     "dana",         :limit => 255
+    t.text     "bobs",         :limit => 255
   end
 
   create_table "posts", :force => true do |t|
