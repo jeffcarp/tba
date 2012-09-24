@@ -37,3 +37,5 @@ gem 'dalli'
 
 gem 'wunderground'
 gem 'rails_autolink'
+
+gem 'nokogiri'
