@@ -21,6 +21,7 @@ Shanghai::Application.configure do
   config.assets.precompile += %w( ios-checkboxes.css )
   config.assets.precompile += %w( reset.css )
   config.assets.precompile += %w( mobile.css )
+  config.assets.precompile += %w( mobile.js )
 
   # Don't fallback to assets pipeline if a precompiled asset is missed
   config.assets.compile = false
