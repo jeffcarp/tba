@@ -218,6 +218,7 @@ DEPENDENCIES
   jquery-rails
   maruku
   newrelic_rpm
+  nokogiri
   omniauth
   omniauth-google-oauth2
   pg
