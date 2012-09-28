@@ -37,12 +37,12 @@
   <div style="text-align:center;"><a style="color:#0DB5DB;line-height:50px;" href="http://announcements.io">Read on announcements.io &raquo;</a></div>
 
   <% if @issue.foss && @issue.dana && @issue.bobs %>
-    <div class="title" style="padding: 10px; color: white; background-color: #0DB5DB; font-weight: bold;">Lunch Menus</div>
-    <table style="font-size: 11px; color: #555; width: 100%;">
+    <div class="title" style="padding: 10px; color: white; background-color: #06586b; font-weight: bold;">Lunch Menus</div>
+    <table style="font-size: 11px; color: #555; width: 100%; padding: 12px 0;">
       <tr>
-        <td style="vertical-align: top; text-align: center;"><h3 style="font-size: 16px; font-style: italic;">Foss</h3><%= @issue.foss.html_safe %></td>
-        <td style="vertical-align: top; text-align: center;"><h3 style="font-size: 16px; font-style: italic;">Dana</h3><%= @issue.dana.html_safe %></td>
-        <td style="vertical-align: top; text-align: center;"><h3 style="font-size: 16px; font-style: italic;">Bobs</h3><%= @issue.bobs.html_safe %></td>
+        <td style="vertical-align: top; text-align: center; padding: 0 2px 0 0;border-right: solid 1px #ddd;"><h3 style="font-size: 16px; font-style: italic;">Foss</h3><%= @issue.foss.html_safe %></td>
+        <td style="vertical-align: top; text-align: center; padding: 0 2px;"><h3 style="font-size: 16px; font-style: italic;">Dana</h3><%= @issue.dana.html_safe %></td>
+        <td style="vertical-align: top; text-align: center;padding: 0 0 0 2px; border-left: solid 1px #ddd;"><h3 style="font-size: 16px; font-style: italic;">Bobs</h3><%= @issue.bobs.html_safe %></td>
       <tr>
     </table>
   <% end %>

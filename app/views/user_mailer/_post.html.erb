@@ -1,7 +1,7 @@
 <div class="announcement">
   <div class="title" style="padding: 10px; color: white; background-color: #0DB5DB;">
     <% if post.user.id != @account.user.id %>
-    <a style="float:right;color:#eee;text-decoration:none;" href="http://announcements.io/votes/mail/<%= post.id %>">&#9829; like &rarr;</a>
+    <a style="float:right;color:#eee;text-decoration:none;" href="http://announcements.io/votes/mail/<%= post.id %>">&#9829; &rarr;</a>
     <% end %>
     <h2 style="font-size: 16px; margin: 0; padding: 0;"><%= post.user.name %> - <%= post.title %></h2>
   </div>

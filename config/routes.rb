@@ -19,12 +19,10 @@ Shanghai::Application.routes.draw do
 
   match "/votes/mail/:post_id", :to => "votes#mail"
 
-
-  get "mobile/partial/dashboard" => "mobile#dashboard"
-  get "mobile/partial/foss" => "mobile#dining_hall", :dining_hall => 'foss'
-  get "mobile/partial/dana" => "mobile#dining_hall", :dining_hall => 'dana'
-  get "mobile/partial/bobs" => "mobile#dining_hall", :dining_hall => 'bobs'
-  get "mobile/:partial" => "mobile#sabot"
+  get "mobile/dashboard" => "mobile#dashboard"
+  get "mobile/foss"      => "mobile#foss"
+  get "mobile/dana"      => "mobile#dana"
+  get "mobile/bobs"      => "mobile#bobs"
 
   resources :users
   resources :posts

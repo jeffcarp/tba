@@ -1,8 +1,11 @@
 <div class="mobile_dining_hall">
 
+  <div style="display:none;"><%= Random.rand(101) %></div>
+
   <div class="menu">
     <% if @dining_hall == 'foss' %>
       <h1>Foss</h1>
+      <h2><%= @issue.publish_date.strftime('%B %-d, %Y') %></h2>
       <% if @issue.foss %>
         <%= @issue.foss.html_safe %>
       <% else %>
@@ -11,6 +14,7 @@
     <% end %>
     <% if @dining_hall == 'dana' %>
       <h1>Dana</h1>
+      <h2><%= @issue.publish_date.strftime('%B %-d, %Y') %></h2>
       <% if @issue.dana %>
         <%= @issue.dana.html_safe %>
       <% else %>
@@ -19,6 +23,7 @@
     <% end %>
     <% if @dining_hall == 'bobs' %>
       <h1>Bobs</h1>
+      <h2><%= @issue.publish_date.strftime('%B %-d, %Y') %></h2>
       <% if @issue.bobs %>
         <%= @issue.bobs.html_safe %>
       <% else %>

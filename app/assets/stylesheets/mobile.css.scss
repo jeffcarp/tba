@@ -67,9 +67,18 @@ a:hover {
 }
 
 #content .mobile_dining_hall {
-  padding: 24px;
+  padding: 24px 24px 64px;
+  min-height: 400px;
   h1 {
     font-size: 32px;
+    margin: 0 0 6px;
+  }
+  h2 {
+    font-size: 12px;
+    text-align: center;
+    color: #bbb;
+    text-shadow: 0 1px 1px white;
+    font-weight: normal;
     margin: 0 0 24px;
   }
   .menu {
@@ -84,6 +93,18 @@ a:hover {
       margin: 18px 0;
       font-style: italic;
       font-weight: normal;
+    }
+  }
+}
+
+.reload {
+  background-color: white;
+  border-top: solid 2px #ccc;
+  text-align: center;
+  h2 {
+    a {
+      display: block;
+      padding: 24px 24px 64px;
     }
   }
 }
