@@ -50,8 +50,6 @@ class Issue < ActiveRecord::Base
 
     @issue.mark_as_published
 
-    return false if !@issue.posts.any?
-
     @accounts.each do |account|
       if account.receive
         UserMailer.delay.the_announcements(account, @issue)
