@@ -4,7 +4,7 @@ class LoggedInConstraint
   end
 
   def matches?(request)
-    request.session.key?("account_id") == @value
+    request.cookies.key?("user_id") == @value
   end
 end
 

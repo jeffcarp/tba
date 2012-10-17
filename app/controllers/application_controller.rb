@@ -5,7 +5,13 @@ class ApplicationController < ActionController::Base
   private
 
   def current_user
-    @current_user ||= Account.find(session[:account_id]).user if session[:account_id]
+    if session[:user_id]
+      @current_user ||= User.find session[:user_id]
+    elsif cookies.signed[:user_id]
+      @current_user ||= User.find cookies.signed[:user_id]
+    else
+      @current_user = nil
+    end
   end
 
   def authenticate
