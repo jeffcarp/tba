@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
 
   def authenticate
     if !current_user
-      redirect_to root_url, notice: "Sorry, you're not logged in. Please follow the login link from one of the emails you've received from us."
+      redirect_to root_url, notice: "Sorry, you're not logged in."
     end
   end
 
