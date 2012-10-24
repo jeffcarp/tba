@@ -95,6 +95,18 @@ class Issue < ActiveRecord::Base
 
     @issue.dana = @dana
 
+    # OH THE HUMANITY
+
+    @dana_dinner = @stuff.css("item")[1].to_s
+
+    @dana_dinner.gsub!(/&amp;/, "&")
+    @dana_dinner.gsub!(/&lt;/, "<")
+    @dana_dinner.gsub!(/&gt;/, ">")
+    @dana_dinner.gsub!(/(<[pubdate|category|author].*[pubdate|category|author]>)/, "")
+    @dana_dinner.gsub!(/(http:\/\/.*.$)/, "")
+
+    @issue.dana_dinner = @dana_dinner
+
     # EVENTUALLY MOVE TO LIB OR GEM
     url = URI.parse('http://www.colby.edu/news/feeds/dining-Foss.xml')
     req = Net::HTTP::Get.new(url.path)
@@ -113,6 +125,18 @@ class Issue < ActiveRecord::Base
 
     @issue.foss = @foss
 
+    # OH THE HUMANITY
+
+    @foss_dinner = @stuff.css("item")[1].to_s
+
+    @foss_dinner.gsub!(/&amp;/, "&")
+    @foss_dinner.gsub!(/&lt;/, "<")
+    @foss_dinner.gsub!(/&gt;/, ">")
+    @foss_dinner.gsub!(/(<[pubdate|category|author].*[pubdate|category|author]>)/, "")
+    @foss_dinner.gsub!(/(http:\/\/.*.$)/, "")
+
+    @issue.foss_dinner = @foss_dinner
+
     # EVENTUALLY MOVE TO LIB OR GEM
     url = URI.parse('http://www.colby.edu/news/feeds/dining-Roberts.xml')
     req = Net::HTTP::Get.new(url.path)
@@ -130,6 +154,16 @@ class Issue < ActiveRecord::Base
     @bobs.gsub!(/(http:\/\/.*.$)/, "")
 
     @issue.bobs = @bobs
+
+    @bobs_dinner = @stuff.css("item")[1].to_s
+
+    @bobs_dinner.gsub!(/&amp;/, "&")
+    @bobs_dinner.gsub!(/&lt;/, "<")
+    @bobs_dinner.gsub!(/&gt;/, ">")
+    @bobs_dinner.gsub!(/(<[pubdate|category|author].*[pubdate|category|author]>)/, "")
+    @bobs_dinner.gsub!(/(http:\/\/.*.$)/, "")
+
+    @issue.bobs_dinner = @bobs_dinner
 
     if @issue.save
       return true

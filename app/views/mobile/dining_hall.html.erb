@@ -6,8 +6,11 @@
     <% if @dining_hall == 'foss' %>
       <h1>Foss</h1>
       <h2><%= @issue.publish_date.strftime('%B %-d, %Y') %></h2>
-      <% if @issue.foss %>
+      <% if @issue.foss && @issue.foss_dinner %>
+        <h3>Lunch</h3>
         <%= @issue.foss.html_safe %>
+        <h3>Dinner</h3>
+        <%= @issue.foss_dinner.html_safe %>
       <% else %>
         <p>Sorry, no data.</p>
       <% end %>
@@ -15,8 +18,11 @@
     <% if @dining_hall == 'dana' %>
       <h1>Dana</h1>
       <h2><%= @issue.publish_date.strftime('%B %-d, %Y') %></h2>
-      <% if @issue.dana %>
+      <% if @issue.dana && @issue.dana_dinner %>
+        <h3>Lunch</h3>
         <%= @issue.dana.html_safe %>
+        <h3>Dinner</h3>
+        <%= @issue.dana_dinner.html_safe %>
       <% else %>
         <p>Sorry, no data.</p>
       <% end %>
@@ -24,8 +30,11 @@
     <% if @dining_hall == 'bobs' %>
       <h1>Bobs</h1>
       <h2><%= @issue.publish_date.strftime('%B %-d, %Y') %></h2>
-      <% if @issue.bobs %>
+      <% if @issue.bobs && @issue.bobs_dinner %>
+        <h3>Lunch</h3>
         <%= @issue.bobs.html_safe %>
+        <h3>Dinner</h3>
+        <%= @issue.bobs_dinner.html_safe %>
       <% else %>
         <p>Sorry, no data.</p>
       <% end %>

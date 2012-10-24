@@ -27,7 +27,7 @@
               <%= f['conditions'] %>
             </div>
           </td>
-          <% break if i == 0 %>
+          <% break if i == 1 %>
         <% end %>
       </tr>
     </table>
@@ -69,9 +69,20 @@
     </table>
   <% end %>
 
+  <% if @issue.foss_dinner && @issue.dana_dinner && @issue.bobs_dinner %>
+    <div class="title" style="padding: 10px; color: white; background-color: #06586b; font-weight: bold;">Dinnah Menus</div>
+    <table style="font-size: 11px; color: #555; width: 100%; padding: 12px 0;">
+      <tr>
+        <td style="vertical-align: top; text-align: center; padding: 0 2px 0 0;border-right: solid 1px #ddd;"><h3 style="font-size: 16px; font-style: italic;">Foss</h3><%= @issue.foss_dinner.html_safe %></td>
+        <td style="vertical-align: top; text-align: center; padding: 0 2px;"><h3 style="font-size: 16px; font-style: italic;">Dana</h3><%= @issue.dana_dinner.html_safe %></td>
+        <td style="vertical-align: top; text-align: center;padding: 0 0 0 2px; border-left: solid 1px #ddd;"><h3 style="font-size: 16px; font-style: italic;">Bobs</h3><%= @issue.bobs_dinner.html_safe %></td>
+      <tr>
+    </table>
+  <% end %>
+
   <!-- note: add settings and compose links -->
 
-    <p style="margin: 0 0 24px; text-align: center;">
+    <p style="margin: 24px 0; text-align: center;">
       <a style="color:#0DB5DB;" href="<%= @uri_prefix %>">Login to The Better Announcements.</a>
     </p>
 
