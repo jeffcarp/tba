@@ -97,14 +97,12 @@ a:hover {
   }
 }
 
-.reload {
-  background-color: white;
-  border-top: solid 2px #ccc;
+footer {
+  padding: 24px 0 42px;
   text-align: center;
-  h2 {
-    a {
-      display: block;
-      padding: 24px 24px 64px;
-    }
+  font-size: 12px;
+  text-shadow: 0 0 1px white;
+  p {
+    margin: 0 0 4px;
   }
 }
