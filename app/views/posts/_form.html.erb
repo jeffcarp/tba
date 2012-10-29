@@ -37,7 +37,7 @@
 //     });
 </script>
 
-<div class="filepicker" <%= "style='display:none;'" if @post.photo_url && @post.photo_url != "" %>>
+<div class="filepicker" <%= "style='display:none;'" if @post.photo_url != nil && @post.photo_url != "" %>>
   <input type="filepicker-dragdrop"
     data-fp-apikey="AjrSNotOQnu3ABsDzPEBKz"
     data-fp-mimetypes="image/*"
@@ -60,7 +60,7 @@
     </div>
   <% end %>
 
-  <div class="uploaded_photo" <%= "style='display:none;'" if !@post.photo_url || @post.photo_url == "" %>>
+  <div class="uploaded_photo" <%= "style='display:none;'" if @post.photo_url == nil || @post.photo_url == "" %>>
     <img src="<%= @post.photo_url %>" />
     <p class="cancel_photo">&#x2716; cancel photo</p>
   </div>
