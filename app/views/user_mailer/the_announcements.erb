@@ -51,9 +51,7 @@
           <div class="body" style="padding: 10px;">
 
             <% if post.photo_url && !post.photo_url.empty? %>
-              <div style="text-align:center;">
-                <a href="http://announcements.io/#<%= post.id %>"><img src="<%= post.photo_url %>/convert?w=250" /></a>
-              </div>
+              <div style="text-align:center;"><a href="http://announcements.io/#<%= post.id %>"><img src="<%= post.photo_url %>/convert?w=400" style="width:100%;" /></a></div>
             <% end %>
 
             <p style="font-size: 14px; line-height: 19px; color: #222;"><%= post.content_html.html_safe %></p>
