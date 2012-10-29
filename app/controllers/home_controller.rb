@@ -11,6 +11,9 @@ class HomeController < ApplicationController
 
   def dashboard
     @issue = Issue.current_issue
+    if params[:upcoming]
+      @issue = Issue.upcoming_issue
+    end
     @posts = Post.find(:all, joins: [:issue, :user], conditions: ['issue_id = ?', @issue.id], order: 'users.karma DESC')
   end
 
