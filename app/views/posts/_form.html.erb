@@ -61,7 +61,7 @@
   <% end %>
 
   <div class="uploaded_photo" <%= "style='display:none;'" if @post.photo_url == nil || @post.photo_url == "" %>>
-    <img src="<%= @post.photo_url %>" />
+    <img src="<%= @post.photo_url %>/convert?w=600" />
     <p class="cancel_photo">&#x2716; cancel photo</p>
   </div>
 
