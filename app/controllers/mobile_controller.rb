@@ -3,7 +3,7 @@ class MobileController < ApplicationController
   caches_page [:dashboard, :foss, :dana, :bobs], :expires_in => 20.minutes
 
   def dashboard
-    @issue = Issue.current_issue
+    @issue = Issue.current_issue #JESUS CHANGE THIS
     @posts = Post.find(:all, joins: [:issue, :user], conditions: ['issue_id = ?', @issue.id], order: 'users.karma DESC')
   end
 

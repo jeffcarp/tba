@@ -149,6 +149,15 @@ section li {
 form .field {
   margin: 0 0 18px;
 }
+.filepicker {
+  margin: 12px 0 24px;
+}
+.cancel_photo {
+  &:hover {
+    color: #888;
+    cursor: pointer;
+  }
+}
 form input[type='text'] {
   display: block;
   width: 584px;

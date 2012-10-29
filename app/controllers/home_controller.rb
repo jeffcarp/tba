@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
 
-  before_filter :authenticate, :only => [:stats, :settings, :debug_email]
+  before_filter :authenticate, :only => [:stats, :settings]
   caches_page [:index, :guide, :dashboard], :expires_in => 10.minutes
 
   def index

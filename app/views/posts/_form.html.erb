@@ -1,3 +1,52 @@
+<script type="text/javascript">
+
+    var handleFP = function(event){
+      $('.filepicker').hide();
+
+      console.log("handleFP");
+
+
+      var file = event.fpfile;
+        console.log(file);
+        uploaded_photo = $('.uploaded_photo');
+        uploaded_photo.children('img').attr('src', file.url+"/convert?w=600");
+        uploaded_photo.show();
+
+        $('input.photo_url').val(file.url);
+    }
+
+    $(document).ready(function(){
+
+      // Cancel photo
+      $('.cancel_photo').on('click', function(){
+        $('.uploaded_photo').hide();
+        $('.filepicker').show();
+        $('.photo_drag_drop').html('Or drop files here');
+        var photo_url = $('input.photo_url');
+
+        // Remove file from filepicker (currently not doing this)
+        // filepicker.remove(photo_url.val(), function(){
+        //   console.log("Removed");
+        // });
+
+        photo_url.val('');
+      });
+
+    });
+
+//     });
+</script>
+
+<div class="filepicker" <%= "style='display:none;'" if @post.photo_url && @post.photo_url != "" %>>
+  <input type="filepicker-dragdrop"
+    data-fp-apikey="AjrSNotOQnu3ABsDzPEBKz"
+    data-fp-mimetypes="image/*"
+    data-fp-drag-class="photo_drag_drop"
+    data-fp-option-services="DROPBOX,FACEBOOK,FLICKR,GMAIL,INSTAGRAM,COMPUTER,WEBCAM"
+    onchange="handleFP(event);"
+    />
+</div>
+
 <%= form_for(@post) do |f| %>
   <% if @post.errors.any? %>
     <div id="error_explanation">
@@ -10,6 +59,11 @@
       </ul>
     </div>
   <% end %>
+
+  <div class="uploaded_photo" <%= "style='display:none;'" if !@post.photo_url || @post.photo_url == "" %>>
+    <img src="<%= @post.photo_url %>" />
+    <p class="cancel_photo">&#x2716; cancel photo</p>
+  </div>
 
   <div class="field">
     <%= f.text_field :title, :placeholder => "Title", :maxlength => 80 %>
@@ -26,10 +80,11 @@
     <% end %>
   <% else %>
     <div id="char_counter">500</div>
-  <% end %>   
+  <% end %>
   <div class="field">
     <%= f.hidden_field :user_id, :value => current_user.id %>
     <%= f.hidden_field :issue_id, :value => @issue.id %>
+    <%= f.hidden_field :photo_url, :value => @post.photo_url, :class => "photo_url" %>
   </div>
   <div class="field" id="submit">
     <%= f.submit "Save announcement" %>
@@ -40,3 +95,10 @@
     </div>
   <% end %>
 <% end %>
+
+
+
+<script type="text/javascript">
+// Load non-blocking filepicker API
+(function(a){if(window.filepicker){return}var b=a.createElement("script");b.type="text/javascript";b.async=!0;b.src=("https:"===a.location.protocol?"https:":"http:")+"//api.filepicker.io/v1/filepicker.js";var c=a.getElementsByTagName("script")[0];c.parentNode.insertBefore(b,c);var d={};d._queue=[];var e="pick,pickMultiple,read,write,writeUrl,export,convert,store,storeUrl,remove,stat,setKey,constructWidget,makeDropPane".split(",");var f=function(a,b){return function(){b.push([a,arguments])}};for(var g=0;g<e.length;g++){d[e[g]]=f(e[g],d._queue)}window.filepicker=d})(document);
+</script>
