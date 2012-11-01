@@ -10,6 +10,7 @@ class HomeController < ApplicationController
   end
 
   def dashboard
+    @all_posts = Post.where("photo_url != ''")
     @issue = Issue.current_issue
     if params[:upcoming]
       @issue = Issue.upcoming_issue

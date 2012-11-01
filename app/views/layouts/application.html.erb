@@ -26,8 +26,25 @@
 </head>
 <body>
   <header>
-    <h1><%= link_to 'The Better Announcements', :root %></a></h1>
-    <nav>
+    <% if @all_posts %>
+      <% @all_posts.each_with_index do |post, index| %>
+        <img src="<%= post.photo_url+'/convert?h=118' %>"
+        style="position:absolute;top:0;left:0;opacity:0.2;z-index=-1;display:none;" />
+        <% break if index > 10 %>
+      <% end %>
+      <script>
+        var header_images = $('header img');
+        header_images.load(function(){
+          var header_left_offset = 0;
+          header_images.each(function(index, element){
+            $(element).css('left', header_left_offset+'px');
+            header_left_offset += element.clientWidth;
+          }).fadeIn(1200);
+        });
+      </script>
+    <% end %>
+    <h1 style="z-index=1;position:relative;"><%= link_to 'The Better Announcements', :root %></a></h1>
+    <nav style="z-index=1;position:relative;">
       <% if current_user %>
         <%= render partial: 'layouts/nav' %>
       <% else %>
