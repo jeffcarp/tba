@@ -11,6 +11,7 @@ class HomeController < ApplicationController
 
   def dashboard
     @all_posts = Post.where("photo_url != ''")
+    @all_posts.shuffle!
     @issue = Issue.current_issue
     if params[:upcoming]
       @issue = Issue.upcoming_issue

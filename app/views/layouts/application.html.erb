@@ -28,6 +28,7 @@
   <header>
     <% if @all_posts %>
       <% @all_posts.each_with_index do |post, index| %>
+        <% next if !post.issue.published %>
         <img src="<%= post.photo_url+'/convert?h=118' %>"
         style="position:absolute;top:0;left:0;opacity:0.2;z-index=-1;display:none;" />
         <% break if index > 10 %>
