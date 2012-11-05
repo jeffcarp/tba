@@ -1,3 +1,24 @@
+
+# Global Search
+# ===================================================================
+$ ->
+
+  global_search = $('.global_search')
+  global_search_box = global_search.children('input')
+
+  # Show search box when 'search' in nav is clicked
+  $('.fire_global_search').on('click', (event) ->
+    global_search.show()
+    global_search_box.focus()
+  )
+
+  # Show some results when user types in stuff
+  global_search_box.on( 'keyup', (event) ->
+    console.log(global_search_box.val())
+  )
+
+
+
 $ ->
   $('#post_content').keyup () ->
     char_count = 500 - $('#post_content').val().length
