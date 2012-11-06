@@ -213,6 +213,8 @@ footer {
   margin: 24px 0 0;
   padding: 12px 0;
   border-top: solid 1px #ccc;
+  font-size: 12px;
+  line-height: 17px;
 }
 
 /* Page Specific
@@ -354,6 +356,14 @@ background-image: linear-gradient(top,#80B0FE,#3480FE);
 background-repeat: repeat-x;
 border-color: #3480FE #3480FE #0157E4;
   }
+}
+
+.iphone_app_photo {
+  float: right;
+  width: 200px;
+}
+.iphone_description {
+  width: 350px;
 }
 
 /* Responsive
