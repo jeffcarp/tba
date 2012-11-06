@@ -67,6 +67,18 @@ class HomeController < ApplicationController
     render :layout => false, :template => 'user_mailer/the_announcements'
   end
 
+  def search
+    q = params[:q]
+    q_sql = '%'+q+'%'
+    results = {}
+    results[:users] = User.find(:all, :conditions => ['name LIKE ?', q_sql])
+    # Zip up matched user names with their primary account, and matched email addresses with their user
+    # results[:accounts] = Account.find(:all, :conditions => ['email LIKE ?', q_sql])
+    results[:posts] = Post.find(:all, :conditions => ['title LIKE ? OR content LIKE ?', q_sql, q_sql])
+    puts results.inspect
+    render :json => results
+  end
+
 end
 
 # Wu Tang!

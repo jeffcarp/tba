@@ -14,6 +14,8 @@ Shanghai::Application.routes.draw do
 
   get "accounts/update"
 
+  get "search" => "home#search"
+
   match '/auth/:provider/callback', :to => 'sessions#create'
   match "/logout" => "sessions#destroy", :as => :signout
 
