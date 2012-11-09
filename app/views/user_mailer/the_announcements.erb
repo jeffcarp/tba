@@ -36,32 +36,37 @@
 
   <div style="text-align:center;"><a style="color:#0DB5DB;line-height:50px;" href="http://announcements.io">Read on announcements.io &raquo;</a></div>
 
-  <table style="width: 100%; margin: 12px 0;">
-    <% @posts.each_with_index do |post, index| %>
-      <% if index.even? %>
-        <tr>
-      <% end %>
-        <td class="announcement" style="width: 50%; vertical-align: top;">
-          <div class="title" style="padding: 10px; color: white; background-color: #0DB5DB;">
-            <% if post.user.id != @account.user.id %>
-            <a style="float:right;color:#eee;text-decoration:none;" href="http://announcements.io/votes/mail/<%= post.id %>">&#9829; &rarr;</a>
-            <% end %>
-            <h2 style="font-size: 16px; margin: 0; padding: 0;"><%= post.user.name %> - <%= post.title %></h2>
-          </div>
-          <div class="body" style="padding: 10px;">
+<!-- The Announcements -->
+<div style="padding:12px;">
 
-            <% if post.photo_url && !post.photo_url.empty? %>
-              <div style="text-align:center;"><a href="http://announcements.io/#<%= post.id %>"><img src="<%= post.photo_url %>/convert?w=400" style="width:100%;" /></a></div>
-            <% end %>
+  <% @posts.each_with_index do |post, index| %>
 
-            <p style="font-size: 14px; line-height: 19px; color: #222;"><%= post.content_html.html_safe %></p>
-          </div>
-        </td>
-      <% if index.odd? || index == @posts.count - 1 %>
+
+    <table style="border-top:2px solid #999;padding:8px; width: 100%;">
+      <tr>
+
+        <% if post.photo_url && !post.photo_url.empty? %>
+          <td style="width: 140px;">
+            <a href="http://announcements.io/#<%= post.id %>"><img src="<%= post.photo_url %>/convert?w=140" style="width: 140px; margin: 0 6px 0 0;" /></a>
+          </td>
+        <% end %>
+
+        <td style="vertical-align:top;">
+          <h2 style="font-size:11px;font-family:Helvetica;font-weight:bold;color:#444;margin:0 0 6px;"><%= post.user.name.upcase %></h2>
+            <a style="font-size:18px;font-family:Georgia;color:#333;text-decoration:none;font-weight:bold;" href="http://announcements.io/#<%= post.id %>"><%= post.title %></a>
+            <div style="font-size:14px;font-family:Helvetica;color:#444;margin: -4px 0 4px;"><%= post.content_html.slice((0..200)).html_safe %> <a style="text-decoration:none;color: #0DB5DB;" href="http://announcements.io/#<%= post.id %>">more &raquo;</a></div>
+          </td>
         </tr>
-      <% end %>
-    <% end %>
-  </table>
+    </table>
+
+    <!-- HEART -->
+            <% if post.user.id != @account.user.id %>
+              <!-- <a style="float:right;color:#eee;text-decoration:none;" href="http://announcements.io/votes/mail/<%= post.id %>">&#9829; &rarr;</a> -->
+            <% end %>
+
+
+  <% end %>
+</div>
 
   <% if @issue.foss && @issue.dana && @issue.bobs %>
     <div class="title" style="padding: 10px; color: white; background-color: #06586b; font-weight: bold;">Lunch Menus</div>

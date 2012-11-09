@@ -35,6 +35,55 @@
     });
 
 //     });
+
+
+
+$(document).ready(function(){
+
+  var youtube_videos = [
+    {url: '7pdWAcK6Eh8', length: 8},
+    {url: '5hfYJsQAhl0', length: 27},
+    {url: 'Lty7RAHKT9E', length: 57},
+    {url: 'RH1ekuvSYzE', length: 40},
+    {url: 'tfboOt1bJcA', length: 17},
+    {url: 'Lmj9HnbdhTc', length: 30},
+    {url: 'N-LnP3uraDo', length: 21},
+    {url: 'tuHezFweJ40', length: 30},
+    {url: 'H_GMMD_GCTg', length: 23}
+    ];
+  var times_loud_noiseded = 0;
+  var this_video = youtube_videos[0];
+
+  // If the title contains more than 50% uppercase characters...
+  $('form #submit').on('click', function(event){
+    var post_title = $('#post_title').val();
+
+    if (post_title.replace(/[^A-Z]/g, "").length > post_title.replace(/[\s]/g, "").length / 2) {
+
+      event.preventDefault();
+
+      $('.filepicker').fadeOut(800);
+
+      $('form').fadeOut(800, function(){
+
+        if (times_loud_noiseded != 0) {
+          var key = Math.floor(Math.random()*youtube_videos.length) + 1;
+          this_video = youtube_videos[key];
+        }
+
+        var loud_noises = "<div style='font-size:36px;' class='loud_noises'>WE UNDERSTAND YOU WANT TO GET YOUR POINT ACROSS BUT YOU DON'T HAVE TO USE SO MANY CAPITAL LETTERS.<iframe id='ytplayer' width='560' height='315' src='http://www.youtube.com/embed/"+this_video.url+"?rel=0&autoplay=1' frameborder='0' allowfullscreen></iframe></div>";
+        $('form').before(loud_noises);
+
+        // times_loud_noiseded += 1;
+
+      }).delay(this_video.length*1000+1000).fadeIn(200, function(){
+        $('.filepicker').fadeIn(200);
+        $('.loud_noises').remove();
+      });
+    }
+  });
+});
+
 </script>
 
 <div class="filepicker" <%= "style='display:none;'" if @post.photo_url != nil && @post.photo_url != "" %>>
