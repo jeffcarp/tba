@@ -2,7 +2,7 @@
 <html>
 <head>
 </head>
-<body style="font-family: 'Helvetica-Neue', 'Helvetica', 'Arial', sans-serif;">
+<body style="font-family:'Helvetica-Neue','Helvetica','Arial',sans-serif;width:600px;margin:0 auto;">
 
   <div class="header" style="margin: 0 0 40px; padding: 10px;">
     <h1 style="font-size: 36px; color: #222; text-align: center;">The Better Announcements</h1>
@@ -10,7 +10,7 @@
     <h2 style="font-size: 14px; color: #555; text-align: center; font-weight: normal;"><%= @issue.publish_date.strftime('%B %-d, %Y') %></h2>
 
     <% if @forecast && @account.user.receive %>
-    <table style="margin: 0 auto 36px; width:60%;">
+    <table style="margin: 0 auto 24px; width:60%;">
       <tr>
         <% @forecast['forecast']['simpleforecast']['forecastday'].each_with_index do |f, i| %>
           <td style="text-align:center;width:100px;vertical-align:top;">
@@ -34,42 +34,67 @@
     <% end %>
   </div>
 
-  <div style="text-align:center;"><a style="color:#0DB5DB;line-height:50px;" href="http://announcements.io">Read on announcements.io &raquo;</a></div>
+  <div style="text-align:center;margin:0 0 12px;"><a style="color:#0DB5DB;" href="http://announcements.io">Read on announcements.io &raquo;</a></div>
 
 <!-- The Announcements -->
-<div style="padding:12px;">
+<div>
+  <div style="width:290px;float:left;">
+    <% @posts.each_with_index do |post, index| %>
+      <% next if index.even? %>
+      <div style="margin:0 0 12px;">
 
-  <% @posts.each_with_index do |post, index| %>
+          <div style="font-size:13px;font-family:Helvetica;font-weight:bold;color:white;margin:0 0 8px;background-color:#0DB5DB;padding:6px;">
 
+            <%= post.user.name.upcase %>
 
-    <table style="border-top:2px solid #999;padding:8px; width: 100%;">
-      <tr>
-
-        <% if post.photo_url && !post.photo_url.empty? %>
-          <td style="width: 140px;">
-            <a href="http://announcements.io/#<%= post.id %>"><img src="<%= post.photo_url %>/convert?w=140" style="width: 140px; margin: 0 6px 0 0;" /></a>
-          </td>
-        <% end %>
-
-        <td style="vertical-align:top;">
-          <h2 style="font-size:11px;font-family:Helvetica;font-weight:bold;color:#444;margin:0 0 6px;"><%= post.user.name.upcase %></h2>
-            <a style="font-size:18px;font-family:Georgia;color:#333;text-decoration:none;font-weight:bold;" href="http://announcements.io/#<%= post.id %>"><%= post.title %></a>
-            <div style="font-size:14px;font-family:Helvetica;color:#444;margin: -4px 0 4px;"><%= post.content_html.slice((0..200)).html_safe %> <a style="text-decoration:none;color: #0DB5DB;" href="http://announcements.io/#<%= post.id %>">more &raquo;</a></div>
-          </td>
-        </tr>
-    </table>
-
-    <!-- HEART -->
-            <% if post.user.id != @account.user.id %>
-              <!-- <a style="float:right;color:#eee;text-decoration:none;" href="http://announcements.io/votes/mail/<%= post.id %>">&#9829; &rarr;</a> -->
+            <% if post.user.id != @account.user.id && @account.user.canpost %>
+              <a style="float:right;color:#eee;text-decoration:none;font-size:10px;padding:1px 0 0;" href="http://announcements.io/votes/mail/<%= post.id %>">&#9829;</a>
             <% end %>
+          </div>
 
+          <% if post.photo_url && !post.photo_url.empty? %>
+            <a href="http://announcements.io/#<%= post.id %>"><img src="<%= post.photo_url %>/convert?w=288" style="border:solid 1px #ccc;" /></a>
+          <% end %>
 
-  <% end %>
+          <div style="margin:10px 0 0;"><a style="font-size:18px;font-family:Georgia;color:#333;text-decoration:none;font-weight:bold;" href="http://announcements.io/#<%= post.id %>"><%= post.title %></a>
+          </div>
+
+          <div style="font-size:14px;font-family:Helvetica;color:#444;"><%= post.content_html.html_safe %></div>
+
+      </div>
+    <% end %>
+  </div>
+
+  <div style="width:290px;float:right;">
+    <% @posts.each_with_index do |post, index| %>
+      <% next if index.odd? %>
+      <div style="margin:0 0 12px;">
+
+          <div style="font-size:13px;font-family:Helvetica;font-weight:bold;color:white;margin:0 0 8px;background-color:#0DB5DB;padding:6px;">
+
+            <%= post.user.name.upcase %>
+
+            <% if post.user.id != @account.user.id && @account.user.canpost %>
+              <a style="float:right;color:#eee;text-decoration:none;font-size:10px;padding:1px 0 0;" href="http://announcements.io/votes/mail/<%= post.id %>">&#9829;</a>
+            <% end %>
+          </div>
+
+          <% if post.photo_url && !post.photo_url.empty? %>
+            <a href="http://announcements.io/#<%= post.id %>"><img src="<%= post.photo_url %>/convert?w=288" style="border:solid 1px #ccc;" /></a>
+          <% end %>
+
+          <div style="margin:10px 0 0;"><a style="font-size:18px;font-family:Georgia;color:#333;text-decoration:none;font-weight:bold;" href="http://announcements.io/#<%= post.id %>"><%= post.title %></a>
+          </div>
+
+          <div style="font-size:14px;font-family:Helvetica;color:#444;"><%= post.content_html.html_safe %></div>
+
+      </div>
+    <% end %>
+  </div>
 </div>
 
   <% if @issue.foss && @issue.dana && @issue.bobs %>
-    <div class="title" style="padding: 10px; color: white; background-color: #06586b; font-weight: bold;">Lunch Menus</div>
+    <div class="title" style="padding: 10px; color: white; background-color: #06586b; font-weight: bold;clear:both;">Lunch Menus</div>
     <table style="font-size: 11px; color: #555; width: 100%; padding: 12px 0;">
       <tr>
         <td style="vertical-align: top; text-align: center; padding: 0 2px 0 0;border-right: solid 1px #ddd;"><h3 style="font-size: 16px; font-style: italic;">Foss</h3><%= @issue.foss.html_safe %></td>
@@ -80,7 +105,7 @@
   <% end %>
 
   <% if @issue.foss_dinner && @issue.dana_dinner && @issue.bobs_dinner %>
-    <div class="title" style="padding: 10px; color: white; background-color: #06586b; font-weight: bold;">Dinnah Menus</div>
+    <div class="title" style="padding: 10px; color: white; background-color: #06586b; font-weight: bold;clear:both;">Dinner Menus</div>
     <table style="font-size: 11px; color: #555; width: 100%; padding: 12px 0;">
       <tr>
         <td style="vertical-align: top; text-align: center; padding: 0 2px 0 0;border-right: solid 1px #ddd;"><h3 style="font-size: 16px; font-style: italic;">Foss</h3><%= @issue.foss_dinner.html_safe %></td>

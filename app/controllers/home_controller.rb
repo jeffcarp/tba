@@ -44,7 +44,16 @@ class HomeController < ApplicationController
 
     @account = current_user.accounts.first
     wuapi = Wunderground.new("ae554e13f3e3461e")
-    @forecast = wuapi.forecast_and_conditions_for("ME", "Waterville")
+
+    @forecast = Rails.cache.read('weather', @forecast)
+    @hit = 'hit'
+    if !@forecast
+      @hit = 'miss'
+      wuapi = Wunderground.new("ae554e13f3e3461e")
+      @forecast = wuapi.forecast_and_conditions_for("ME", "Waterville")
+      Rails.cache.write('weather', @forecast, expires_in: 12.hours)
+    end
+
 
     @issue = Issue.upcoming_issue
     if params[:current]
