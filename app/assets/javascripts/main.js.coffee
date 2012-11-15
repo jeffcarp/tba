@@ -14,7 +14,7 @@ $ ->
   )
 
   global_search_box.on('focusout', (event) ->
-    global_search.toggle()
+    # global_search.toggle()
   )
 
   # Show some results when user types in stuff
@@ -80,7 +80,6 @@ populate_search_results = (data, query) ->
       search_results.append '<div class="post" data-post-id="'+element.id+'"><h4>'+embolden_substring(element.title, query)+'</h4><h5>'+element.formatted_date+' by '+element.user_name+'</h5><p>'+embolden_substring(element.content, query)+'</p></div>'
     )
   search_results.find('div').on('click', (event) ->
-    console.log(event)
     if $(this).hasClass('user')
       window.location = '/users/'+$(this).attr('data-user-id')
   )

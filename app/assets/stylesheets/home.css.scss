@@ -248,6 +248,17 @@ form .disabled input {
 }
 
 
+/* Random
+===================================*/
+.inset {
+  background-color: #333;
+  color: white;
+  padding: 12px;
+  margin: 0 0 12px;
+  border-top: solid 2px #ddd;
+  border-bottom: solid 2px #555;
+}
+
 /* Footer
 ===================================*/
 footer {
@@ -351,6 +362,25 @@ footer {
         p {
           margin: 0 0 12px;
         }
+      }
+    }
+  }
+}
+
+#content .user_show {
+  .inset {
+    margin: 0 0 48px;
+  }
+  .post {
+    margin: 0 0 48px;
+    h2 {
+      font-size: 22px;
+      margin: 0 0 4px;
+    }
+    .post_info {
+      margin: 0 0 8px;
+      span {
+        margin: 0 8px 0 0;
       }
     }
   }

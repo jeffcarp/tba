@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
 
-  before_filter :authenticate_admin
-
   def index
     if params[:order] == 'karma'
       @users = User.order('karma DESC')
@@ -21,6 +19,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @posts = @user.posts.order('created_at DESC')
   end
 
   def edit
