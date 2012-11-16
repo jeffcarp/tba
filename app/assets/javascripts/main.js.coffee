@@ -1,4 +1,5 @@
 
+
 # Global Search
 # ===================================================================
 $ ->
@@ -12,9 +13,13 @@ $ ->
     global_search_box.focus()
   )
 
+  global_search_box.on('focusout', (event) ->
+    global_search.toggle()
+  )
+
   # Show some results when user types in stuff
   global_search_box.on('keyup', (event) ->
-    console.log(global_search_box.val())
+    # console.log(global_search_box.val())
     q = global_search_box.val()
     if q.length < 3
       $('.global_search .results').html('')
@@ -72,7 +77,7 @@ populate_search_results = (data, query) ->
       # console.log(query.split(' ')[0])
       # in_array = $.inArray(query.split(' ')[0], word_array)
       # console.log(in_array)
-      search_results.append '<div class="post" data-post-id="'+element.id+'"><h4>'+embolden_substring(element.title, query)+'</h4><p>'+embolden_substring(element.content, query)+'</p></div>'
+      search_results.append '<div class="post" data-post-id="'+element.id+'"><h4>'+embolden_substring(element.title, query)+'</h4><h5>'+element.formatted_date+' by '+element.user_name+'</h5><p>'+embolden_substring(element.content, query)+'</p></div>'
     )
   search_results.find('div').on('click', (event) ->
     console.log(event)

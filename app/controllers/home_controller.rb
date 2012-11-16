@@ -10,8 +10,6 @@ class HomeController < ApplicationController
   end
 
   def dashboard
-    @all_posts = Post.where("photo_url != ''")
-    @all_posts.shuffle!
     @issue = Issue.current_issue
     if params[:upcoming]
       @issue = Issue.upcoming_issue
@@ -71,11 +69,15 @@ class HomeController < ApplicationController
     q = params[:q]
     q_sql = '%'+q+'%'
     results = {}
-    results[:users] = User.find(:all, :conditions => ['name LIKE ?', q_sql])
+    results[:users] = User.find(:all, :conditions => ['name LIKE ?', q_sql], :limit => 5, :order => 'created_at DESC')
     # Zip up matched user names with their primary account, and matched email addresses with their user
     # results[:accounts] = Account.find(:all, :conditions => ['email LIKE ?', q_sql])
-    results[:posts] = Post.find(:all, :conditions => ['title LIKE ? OR content LIKE ?', q_sql, q_sql])
-    puts results.inspect
+    results[:posts] = Post.find(:all, :conditions => ['title LIKE ? OR content LIKE ?', q_sql, q_sql], :limit => 5, :order => 'created_at DESC')
+    results[:posts].map do |post|
+      post[:formatted_date] = post.issue.publish_date.strftime('%B %-d, %Y')
+      post[:user_name] = post.user.name
+    end
+
     render :json => results
   end
 
