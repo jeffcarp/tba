@@ -60,7 +60,7 @@ $ ->
   global_search_box.on('focusout', (event) ->
     setTimeout ->
         global_search.toggle()
-      , 100
+      , 300
   )
 
 populate_search_results = (data, query) ->
