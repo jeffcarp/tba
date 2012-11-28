@@ -29,6 +29,7 @@ class PostsController < ApplicationController
       render :action => 'new', :template => 'posts/compose'
     else
       @post = Post.new
+      @post.anon = false
       render :action => 'edit', :template => 'posts/compose'
     end
   end
