@@ -155,6 +155,13 @@ header {
         font-size: 14px;
       }
     }
+    a {
+      color: #333;
+      border-bottom: dotted 1px #777;
+      &:hover {
+        color: #555;
+      }
+    }
     .weekend {
       background-color: #69dcf6;
     }
@@ -337,23 +344,6 @@ footer {
             text-align: center;
           }
         }
-        .voting {
-          span {
-            color: #333;
-          }
-          .upvote, .downvote {
-            &:hover {
-              color: #555;
-              cursor: pointer;
-            }
-          }
-          .upvoted, .downvoted {
-            &:hover {
-              color: #ef7b85;
-              cursor: pointer;
-            }
-          }
-        }
       }
       .body {
         padding: 10px;
@@ -367,7 +357,20 @@ footer {
   }
 }
 
-#content .user_show {
+.voting {
+  span {
+    color: #333;
+  }
+  .upvote, .upvoted {
+    &:hover {
+      color: #ef7b85;
+      cursor: pointer;
+    }
+  }
+}
+
+#content .user_show,
+#content .post_show {
   .inset {
     margin: 0 0 48px;
   }

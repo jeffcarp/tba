@@ -19,7 +19,11 @@
 
         <table class="title" id="<%= post.id %>">
           <tr>
-            <td><a href="mailto:<%= post.user.primary_email %>"><%= post.user.name %></a></td>
+            <% if post.anon %>
+              <td>Anonymous</td>
+            <% else %>
+              <td><a href="mailto:<%= post.user.primary_email %>"><%= post.user.name %></a></td>
+            <% end %>
             <td class="headline"><%= post.title %></td>
             <td class="like_count <%= 'hidden' if post.votes.count == 0 %>" data-likes="<%= post.votes.count %>"><%= post.votes.count %></td>
 

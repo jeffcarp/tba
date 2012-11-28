@@ -9,7 +9,7 @@
 
     <h2 style="font-size: 14px; color: #555; text-align: center; font-weight: normal;"><%= @issue.publish_date.strftime('%B %-d, %Y') %></h2>
 
-    <% if @forecast && @account.user.receive %>
+    <% if @forecast %>
     <table style="margin: 0 auto 24px; width:60%;">
       <tr>
         <% @forecast['forecast']['simpleforecast']['forecastday'].each_with_index do |f, i| %>
@@ -45,7 +45,11 @@
 
           <div style="font-size:13px;font-family:Helvetica;font-weight:bold;color:white;margin:0 0 8px;background-color:#0DB5DB;padding:6px;">
 
-            <%= post.user.name.upcase %>
+            <% if post.anon %>
+              ANONYMOUS
+            <% else %>
+              <%= post.user.name.upcase %>
+            <% end %>
 
             <% if post.user.id != @account.user.id && @account.user.canpost %>
               <a style="float:right;color:#eee;text-decoration:none;font-size:10px;padding:1px 0 0;" href="http://announcements.io/votes/mail/<%= post.id %>">&#9829;</a>
@@ -72,7 +76,11 @@
 
           <div style="font-size:13px;font-family:Helvetica;font-weight:bold;color:white;margin:0 0 8px;background-color:#0DB5DB;padding:6px;">
 
-            <%= post.user.name.upcase %>
+            <% if post.anon %>
+              ANONYMOUS
+            <% else %>
+              <%= post.user.name.upcase %>
+            <% end %>
 
             <% if post.user.id != @account.user.id && @account.user.canpost %>
               <a style="float:right;color:#eee;text-decoration:none;font-size:10px;padding:1px 0 0;" href="http://announcements.io/votes/mail/<%= post.id %>">&#9829;</a>

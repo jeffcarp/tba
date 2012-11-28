@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121028231443) do
+ActiveRecord::Schema.define(:version => 20121128054605) do
 
   create_table "accounts", :force => true do |t|
     t.string    "provider"
@@ -56,10 +56,11 @@ ActiveRecord::Schema.define(:version => 20121028231443) do
     t.string    "title"
     t.text      "content"
     t.integer   "user_id"
-    t.timestamp "created_at", :null => false
-    t.timestamp "updated_at", :null => false
+    t.timestamp "created_at",                    :null => false
+    t.timestamp "updated_at",                    :null => false
     t.integer   "issue_id"
     t.string    "photo_url"
+    t.boolean   "anon",       :default => false
   end
 
   create_table "users", :force => true do |t|

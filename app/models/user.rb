@@ -28,6 +28,17 @@ class User < ActiveRecord::Base
     self.save
   end
 
+  def posts_count
+    return self.posts.count
+  end
+
+  def likes_per_post
+  end
+
+  def likes_on_posts
+    # Votes where post.user = User
+  end
+
   def self.create_with_omniauth(auth)
     create! do |user|
       user.provider = auth["provider"]

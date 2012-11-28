@@ -7,6 +7,14 @@ class HomeController < ApplicationController
   end
 
   def guide
+    # Users with the most posts?
+    if Rails.cache.read(:colby_percentage)
+      @colby_percentage = Rails.cache.read(:colby_percentage)
+    else
+      @colby_emails_count = Account.where("email LIKE ?", "%@colby.edu").count
+      @colby_percentage = ((@colby_emails_count.to_f / 1825) * 100).to_i
+      Rails.cache.write(:colby_percentage, @colby_percentage)
+    end
   end
 
   def dashboard
@@ -25,6 +33,13 @@ class HomeController < ApplicationController
     @colby_population_ratio = ((@colby_emails_count.to_f / 1825) * 100).to_i
     @accounts_receive_count = Account.find(:all, conditions: ['receive=?', true]).count
     @accounts_receive_ratio = ((@accounts_receive_count.to_f / @accounts_count.to_f) * 100).to_i
+
+    # if Rails.cache.read(:loud_mouths)
+      # @loud_mouths = Rails.cache.read(:loud_mouths)
+    # else
+      @loud_mouths = User.all.sort_by(&:posts_count).reverse[0..10]
+      # Rails.cache.write(:loud_mouths, @loud_mouths)
+    # end
 
     @likes_today = Vote.where('created_at > ? AND created_at < ?', (Time.zone.now).beginning_of_day, (Time.zone.now).end_of_day).count
     @likes_yesterday = Vote.where('created_at > ? AND created_at < ?', (Time.zone.now - 1.day).beginning_of_day, (Time.zone.now - 1.day).end_of_day).count
@@ -75,7 +90,11 @@ class HomeController < ApplicationController
     results[:posts] = Post.find(:all, :conditions => ['title LIKE ? OR content LIKE ?', q_sql, q_sql], :limit => 5, :order => 'created_at DESC')
     results[:posts].map do |post|
       post[:formatted_date] = post.issue.publish_date.strftime('%B %-d, %Y')
-      post[:user_name] = post.user.name
+      if post.anon
+        post[:user_name] = "Anonymous"
+      else
+        post[:user_name] = post.user.name
+      end
     end
 
     render :json => results

@@ -3,7 +3,11 @@ class VotesController < ApplicationController
 before_filter :authenticate
 
   def index
-    @votes = Vote.order('created_at DESC')
+    if params[:all]
+      @votes = Vote.order('created_at DESC')
+    else
+      @votes = Vote.order('created_at DESC').limit(100)
+    end
   end
 
   def create

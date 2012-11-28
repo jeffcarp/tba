@@ -66,6 +66,31 @@
 
 </table>
 
+<h2>Biggest Posters</h2>
+
+<table>
+  <tr>
+    <th>Name & Email</th>
+    <th>Joined</th>
+    <th>Karma</th>
+    <th>Posts</th>
+  </tr>
+
+  <% @loud_mouths.each do |user| %>
+    <tr>
+        <td class="<%= 'weekend' if user.admin %>"><strong><%= user.name %></strong>
+          <% user.accounts.each do |account| %>
+            <br /><%= account.email %> <%= '(not receiving)' if !account.receive %>
+          <% end %>
+        </td>
+        <td><%= user.created_at.strftime('%b %-d') %></td>
+        <td><%= user.karma %></td>
+        <td><strong><%= user.posts.count %></strong></td>
+    </tr>
+  <% end %>
+
+</table>
+
 <h2>Errors</h2>
 
 <p>Solid vertical lines are new version pushes.</p>

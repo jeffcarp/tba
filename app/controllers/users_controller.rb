@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  before_filter :authenticate, :only => [:index]
+
   def index
     if params[:order] == 'karma'
       @users = User.order('karma DESC')
@@ -12,14 +14,24 @@ class UsersController < ApplicationController
         group: "users.id, users.name, users.created_at, users.updated_at, users.receive, users.admin, users.canpost, users.karma, users.uid, users.provider, users.email",
         having: "COUNT(accounts.id) > 1"
       )
-    else
+    elsif params[:all] == 1
       @users = User.order('created_at DESC')
+    else
+      @users = User.order('created_at DESC').limit(100)
     end
   end
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.order('created_at DESC')
+    @posts = @user.posts.order('created_at DESC').where('anon = ?', false)
+    if @posts.count == 0
+      # if Rails.cache.read(:loud_mouths)
+        # @loud_mouths = Rails.cache.read(:loud_mouths)
+      # else
+        @loud_mouths = User.all.sort_by(&:posts_count).reverse[0..10]
+        # Rails.cache.write(:loud_mouths, @loud_mouths)
+      # end
+    end
   end
 
   def edit

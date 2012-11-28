@@ -2,6 +2,10 @@ class PostsController < ApplicationController
 
   before_filter :authenticate
 
+  def show
+    @post = Post.find(params[:id])
+  end
+
   def compose
     # If they don't have a name, tell them to make one
     if !current_user.name

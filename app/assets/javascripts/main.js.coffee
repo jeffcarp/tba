@@ -13,10 +13,6 @@ $ ->
     global_search_box.focus()
   )
 
-  global_search_box.on('focusout', (event) ->
-    # global_search.toggle()
-  )
-
   # Show some results when user types in stuff
   global_search_box.on('keyup', (event) ->
     # console.log(global_search_box.val())
@@ -61,6 +57,12 @@ $ ->
         deleteVoteCallback(data, node)
     )
 
+  global_search_box.on('focusout', (event) ->
+    setTimeout ->
+        global_search.toggle()
+      , 100
+  )
+
 populate_search_results = (data, query) ->
   search_results = $('.global_search .results')
   search_results.html('')
@@ -82,6 +84,8 @@ populate_search_results = (data, query) ->
   search_results.find('div').on('click', (event) ->
     if $(this).hasClass('user')
       window.location = '/users/'+$(this).attr('data-user-id')
+    if $(this).hasClass('post')
+      window.location = '/posts/'+$(this).attr('data-post-id')
   )
 
 embolden_substring = (string, substring) ->

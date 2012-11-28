@@ -19,7 +19,11 @@
       <div class="announcement">
 
         <div class="title" id="<%= post.id %>">
-          <div class="name"><strong><%= post.user.name %></strong></div>
+            <% if post.anon %>
+              <div class="name"><strong>Anonymous</strong></div>
+            <% else %>
+              <div class="name"><strong><%= post.user.name %></strong></div>
+            <% end %>
           <div class="headline"><%= post.title %></div>
         </div>
 
