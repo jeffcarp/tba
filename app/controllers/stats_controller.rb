@@ -5,6 +5,12 @@ class StatsController < ApplicationController
   def index
   end
 
+  def issues
+    @upcoming_issue = Issue.upcoming_issue
+    @upcoming_posts = Post.find(:all, joins: [:issue, :user], conditions: ['issue_id = ?', @upcoming_issue.id], order: 'users.karma DESC')
+    @current_issue = Issue.current_issue
+  end
+
   def email
 
     # User.all.each do |user|
