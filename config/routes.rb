@@ -10,7 +10,10 @@ end
 
 Shanghai::Application.routes.draw do
 
-  get "arduino" => "home#arduino"
+  # Stats
+  match 'stats/image/:user_id/:issue_id', :to => 'stats#image'
+  match 'stats/email',                    :to => 'stats#email'
+  match 'stats',			  :to => 'stats#index'
 
   get "accounts/update"
 
@@ -40,7 +43,6 @@ Shanghai::Application.routes.draw do
   get '/settings' => 'home#settings', :as => 'settings'
   get '/compose' => 'posts#compose', :as => 'compose'
   get '/guide' => 'home#guide', :as => 'guide'
-  get '/stats' => 'home#stats', :as => 'stats'
 
   post '/' => 'users#create', :as => 'home'
 

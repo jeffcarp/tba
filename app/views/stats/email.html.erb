@@ -1,0 +1,37 @@
+<h1>Email Metrics</h1>
+
+<h2>Email opens per day</h2>
+
+<p><img class="full_width" src="<%= @opens_chart %>" /></p>
+
+<h2>Opens by day</h2>
+
+<table>
+	<tr>
+		<th>Day</th>
+		<th>Opens</th>
+	</tr>
+	<% @opens_grouped.each do |k,v| %>
+		<tr>
+			<td><%= k %></td>
+			<td><%= v %></td>
+		</tr>
+	<% end %>
+</table>
+
+<h2>Last 50 Email Opens</h2>
+
+<table>
+	<tr>
+		<th>Time</th>
+		<th>User</th>
+		<th>Issue</th>
+	</tr>
+	<% @opens.each do |stat| %>
+		<tr>
+			<td><%= stat.created_at.strftime('%b %-d %l:%M%P') %></td>
+			<td><%= stat.user.name %></td>
+			<td><%= stat.issue.publish_date.strftime('%e %B') %></td>
+		</tr>
+	<% end %>
+</table>

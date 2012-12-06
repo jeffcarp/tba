@@ -1,0 +1,109 @@
+<h1>Stats</h1>
+
+<%= image_tag 'lucius_fox.png' %>
+
+<%
+=begin
+<h2>Users</h2>
+
+<table>
+
+  <tr>
+    <td>Total users</td>
+    <td><strong><%= @users_count %></strong></td>
+  </tr>
+
+  <tr>
+    <td>Total emails</td>
+    <td><strong><%= @accounts_count %></strong></td>
+  </tr>
+
+  <tr>
+    <td>Total Colby emails</td>
+    <td><strong><%= @colby_emails_count %></strong>
+      (<%= @colby_accounts_ratio %>% of total)</td>
+  </tr>
+
+  <tr>
+    <td>Approximate percentage of Colby signed up</td>
+    <td><strong><%= @colby_population_ratio %>%</strong></td>
+  </tr>
+
+  <tr>
+    <td>Total addresses receiving email</td>
+    <td><strong><%= @accounts_receive_count %></strong>
+      (<%= @accounts_receive_ratio %>% of total)</td>
+  </tr>
+
+</table>
+
+<h2>Announcements</h2>
+
+<p><a href="/?upcoming=1">Tomorrow's issue (dashboard)</a></p>
+
+<p><a href="/debug_email">Tomorrow's issue (email)</a> (use sparingly, uses up our API calls)</p>
+
+<p>(please keep these links to admins)</p>
+
+<h2>Karma</h2>
+
+<table>
+
+  <tr>
+    <td>Likes today</td>
+    <td><strong><%= @likes_today %></strong></td>
+  </tr>
+
+  <tr>
+    <td>Likes yesterday</td>
+    <td><strong><%= @likes_yesterday %></strong></td>
+  </tr>
+
+  <tr>
+    <td>Likes the day before</td>
+    <td><strong><%= @likes_ototoi %></strong></td>
+  </tr>
+
+</table>
+
+<h2>Biggest Posters</h2>
+
+<table>
+  <tr>
+    <th>Name & Email</th>
+    <th>Joined</th>
+    <th>Karma</th>
+    <th>Posts</th>
+  </tr>
+
+  <% @loud_mouths.each do |user| %>
+    <tr>
+        <td class="<%= 'weekend' if user.admin %>"><strong><%= user.name %></strong>
+          <% user.accounts.each do |account| %>
+            <br /><%= account.email %> <%= '(not receiving)' if !account.receive %>
+          <% end %>
+        </td>
+        <td><%= user.created_at.strftime('%b %-d') %></td>
+        <td><%= user.karma %></td>
+        <td><strong><%= user.posts.count %></strong></td>
+    </tr>
+  <% end %>
+
+</table>
+
+<h2>Errors</h2>
+
+<p>Solid vertical lines are new version pushes.</p>
+
+<iframe src="https://heroku.newrelic.com/public/charts/5SB0ddNQ02D" width="100%" height="300" scrolling="no" frameborder="no"></iframe>
+
+<h2>Server Response Time</h2>
+
+<iframe src="https://heroku.newrelic.com/public/charts/jc03twL9e9K" width="100%" height="300" scrolling="no" frameborder="no"></iframe>
+
+<h2>Browser Page Load Time</h2>
+
+<iframe src="https://heroku.newrelic.com/public/charts/6VjKE16o9K4" width="100%" height="300" scrolling="no" frameborder="no"></iframe>
+
+=end
+%>

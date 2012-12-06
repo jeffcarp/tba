@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121128054605) do
+ActiveRecord::Schema.define(:version => 20121205170107) do
 
   create_table "accounts", :force => true do |t|
     t.string    "provider"
@@ -63,17 +63,25 @@ ActiveRecord::Schema.define(:version => 20121128054605) do
     t.boolean   "anon",       :default => false
   end
 
+  create_table "stats", :force => true do |t|
+    t.string   "action"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "issue_id"
+  end
+
   create_table "users", :force => true do |t|
-    t.string    "name"
-    t.string    "email"
-    t.timestamp "created_at",                    :null => false
-    t.timestamp "updated_at",                    :null => false
-    t.boolean   "receive",    :default => true
-    t.boolean   "admin",      :default => false
-    t.string    "provider"
-    t.string    "uid"
-    t.boolean   "canpost",    :default => false
-    t.integer   "karma",      :default => 0
+    t.string   "name"
+    t.string   "email"
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.boolean  "receive",    :default => true
+    t.boolean  "admin",      :default => false
+    t.string   "provider"
+    t.string   "uid"
+    t.boolean  "canpost",    :default => false
+    t.integer  "karma",      :default => 0
   end
 
   create_table "votes", :force => true do |t|

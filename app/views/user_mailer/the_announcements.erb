@@ -34,7 +34,7 @@
     <% end %>
   </div>
 
-  <div style="text-align:center;margin:0 0 12px;"><a style="color:#0DB5DB;" href="http://announcements.io">Read on announcements.io &raquo;</a></div>
+  <div style="text-align:center;margin:0 0 12px;"><a style="color:#0DB5DB;" href="<%= @uri_prefix %>">Read on announcements.io &raquo;</a></div>
 
 <!-- The Announcements -->
 <div>
@@ -128,6 +128,8 @@
     <p style="margin: 24px 0; text-align: center;">
       <a style="color:#0DB5DB;" href="<%= @uri_prefix %>">Login to The Better Announcements.</a>
     </p>
+
+    <img src="<%= @uri_prefix %>/stats/image/<%= @account.user.id %>/<%= @issue.id %>" />
 
   </body>
 </html>

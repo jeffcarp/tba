@@ -13,6 +13,8 @@ group :development, :test do
   gem 'guard-rspec'
 end
 
+gem 'googlecharts'
+
 gem 'thin'
 
 group :assets do

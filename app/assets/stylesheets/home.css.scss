@@ -29,6 +29,9 @@ a:hover {
   margin: 64px auto 0;
 }
 #content {
+  img.full_width {
+    width: 100%;
+  }
 }
 
 /* Header
@@ -61,7 +64,6 @@ header {
     a {
       padding: 0 0 2px;
       margin: 0 12px 0 0;
-      text-shadow: 0 2px 1px #333;
     }
     a.admin {
       color: #888;

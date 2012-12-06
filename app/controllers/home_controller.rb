@@ -67,7 +67,6 @@ class HomeController < ApplicationController
       Rails.cache.write('weather_debug', @forecast, expires_in: 12.hours)
     end
 
-
     @issue = Issue.upcoming_issue
     if params[:current]
       @issue = Issue.current_issue
@@ -75,7 +74,7 @@ class HomeController < ApplicationController
 
     @posts = Post.find(:all, joins: [:issue, :user], conditions: ['issue_id = ?', @issue.id], order: 'users.karma DESC')
 
-    @url_prefix = 'http://announcements.io/'
+    @uri_prefix = 'http://localhost:3000/'
     @user = User.find_by_email "gcarpenterv@gmail.com"
     render :layout => false, :template => 'user_mailer/the_announcements'
   end

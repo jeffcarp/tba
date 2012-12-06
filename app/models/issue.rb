@@ -1,6 +1,7 @@
 class Issue < ActiveRecord::Base
   attr_accessible :publish_date
   has_many :posts, :dependent => :destroy
+  has_many :stats
 
   def self.upcoming_issue
     Issue.find(:first, :conditions => ["published=?", false], :order => 'publish_date ASC')
