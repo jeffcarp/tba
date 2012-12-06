@@ -15,6 +15,7 @@ Shanghai::Application.routes.draw do
   match 'stats/email',                    :to => 'stats#email'
   match 'stats/issues',                   :to => 'stats#issues'
   match 'stats/users',                    :to => 'stats#users'
+  match 'stats/infrastructure',           :to => 'stats#infrastructure'
   match 'stats',			                    :to => 'stats#index'
 
   get "accounts/update"
