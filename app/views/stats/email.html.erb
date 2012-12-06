@@ -1,25 +1,16 @@
-<h1>Email Metrics</h1>
+<h1>Stats<span style="font-weight:normal;margin-left:24px;">Email Metrics</span></h1>
+
+<%= render 'stats_nav' %>
+
+<h2>How many people have opened our emails today?</h2>
+
+<img src="<%= @opens_pie %>" />
 
 <h2>Email opens per day</h2>
 
 <p><img class="full_width" src="<%= @opens_chart %>" /></p>
 
-<h2>Opens by day</h2>
-
-<table>
-	<tr>
-		<th>Day</th>
-		<th>Opens</th>
-	</tr>
-	<% @opens_grouped.each do |k,v| %>
-		<tr>
-			<td><%= k %></td>
-			<td><%= v %></td>
-		</tr>
-	<% end %>
-</table>
-
-<h2>Last 50 Email Opens</h2>
+<h2>Last 20 Email Opens</h2>
 
 <table>
 	<tr>

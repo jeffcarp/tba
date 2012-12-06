@@ -2,64 +2,89 @@ class StatsController < ApplicationController
 
   before_filter :authenticate_admin, :only => [:index]
 
-  def image
-    stat = Stat.new(:user_id => params[:user_id], :action => 'open_email', :issue_id => params[:issue_id])
-    stat.save
-    redirect_to "/assets/1x1.gif"
-  end
-
-  # GET /stats
-  # GET /stats.json
   def index
-    @stats = Stat.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @stats }
-    end
   end
 
   def email
 
-    @opens = Stat.where('action = ?', 'open_email').order('created_at DESC').limit(50)
+    # User.all.each do |user|
+    #   user.created_at = user.created_at.to_formatted_s(:db)
+    #   user.updated_at = user.updated_at.to_formatted_s(:db)
+    #   user.save
+    # end
+
+    @opens = Stat.where('action = ?', 'open_email').order('created_at DESC').limit(20)
     # @opens_grouped = Stat.where('action = ?', 'open_email').group('date(created_at)').order('created_at DESC').count
-    @opens_grouped = User.group('date(created_at)').order('created_at DESC').count
+    @opens_grouped = Stat.where('action = ?', 'open_email').group('date(created_at)').order('created_at DESC').count
+    # @votes_grouped = Vote.where('action = ?', 'open_email').group('date(created_at)').order('created_at DESC').count
+
+# User.find_by_sql
 
     opens_data = []
-    x_axis_labels = []
+    x_axis_labels = [0]
     index = 0
     min = 1000000
     max = 0
     @opens_grouped.each do |k,v|
-      x_axis_labels << k #if index % 2 == 0
+      x_axis_labels << Date.parse(k).strftime("%-m/%-d") #if index % 2 == 0
       opens_data << v
       index += 1
       min = v if v < min
       max = v if v > max
     end
     x_axis_labels.reverse!
-    opens_data.reverse!
+    # opens_data.reverse!
 
-    @opens_chart = Gchart.line(:size => '600x250',
+    @opens_chart = Gchart.bar(:size => '600x200',
       :axis_with_labels => 'x,y',
-      :axis_labels => [x_axis_labels.join('|'), "#{min}|#{(max+min)/2}|#{max}"],
+      :axis_labels => [x_axis_labels.join('|'), "0|#{min}|#{(max+min)/4}|#{(max+min)/2}|#{((max+min)*(0.75)).to_i}|#{max}"],
       :bg => '00000000',
       :data => opens_data)
 
-    puts "OPENS DATA"
-    puts opens_data.inspect
-    puts
-    puts
-    puts "X AXIS LABELS"
-    puts x_axis_labels.join('|').inspect
+    # Users who have opened today's issue
+    opens_today = Stat.where('action = ? AND created_at > ?', 'open_email', Date.today.beginning_of_day).count
+    receiving_accounts = Account.where('receive = ?', true).count
+    opens_pie_data = [opens_today, receiving_accounts]
+    @opens_pie = Gchart.pie(:size => '600x200',
+      # :axis_labels => [x_axis_labels.join('|'), "0|#{min}|#{(max+min)/4}|#{(max+min)/2}|#{((max+min)*(0.75)).to_i}|#{max}"],
+      :bg => '00000000',
+      :labels => 'opened|have not opened',
+      :data => [opens_today, receiving_accounts])
 
-
-
-    # lc.data "Trend 1", [5,4,3,1,3,5,6], '0000ff'
-    # lc.data "Trend 2", [1,2,3,4,5,6], '00ff00'
-    # lc.data "Trend 3", [6,5,4,3,2,1], 'ff0000'
-    # lc.axis :y, :range => [0,6], :color => 'ff00ff', :font_size => 16, :alignment => :center
-    # lc.axis :x, :range => [0,6], :color => '00ffff', :font_size => 16, :alignment => :center
-
+    # @todays_opens_chart = 
   end
+
+  def users
+    @users = User.group('date(created_at)').order('created_at DESC').count
+
+    opens_data = []
+    x_axis_labels = []
+    index = 0
+    min = 1000000
+    max = 0
+    cumulative_total = 0
+    @users.each do |k,v|
+      x_axis_labels << Date.parse(k).strftime("%b %-d") if index % 10 == 0
+      cumulative_total += v
+      opens_data << cumulative_total
+      index += 1
+      min = cumulative_total if cumulative_total < min
+      max = cumulative_total if cumulative_total > max
+    end
+    x_axis_labels.reverse!
+    # opens_data.reverse!
+
+    @users_chart = Gchart.line(:size => '600x300',
+      :axis_with_labels => 'x,y',
+      :axis_labels => [x_axis_labels.join('|'), "#{min}|#{(max+min)/4}|#{(max+min)/2}|#{((max+min)*(0.75)).to_i}|#{max}"],
+      :bg => '00000000',
+      :data => opens_data)
+  end
+
+  def image
+    stat = Stat.new(:user_id => params[:user_id], :action => 'open_email', :issue_id => params[:issue_id])
+    stat.save
+    redirect_to "/assets/1x1.gif"
+  end
+
 end

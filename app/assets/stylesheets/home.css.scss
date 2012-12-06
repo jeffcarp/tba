@@ -391,6 +391,19 @@ footer {
   }
 }
 
+.stats_nav {
+  background: rgba(0, 0, 0, 0.1);
+  padding: 12px;
+  margin: 0 0 24px;
+  a {
+    color: #444;
+    margin: 0 18px 0 0;
+    &:hover {
+      color: #777;
+    }
+  }
+}
+
 /* One-off
 ===================================*/
 .google_login {
