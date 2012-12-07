@@ -18,7 +18,7 @@
         <%= vote.created_at.strftime('%e %B') %></td>
       <td><%= vote.user.name %></td>
       <td><%= vote.post.title %></td>
-      <td><%= vote.post.user.name %></td>
+      <td><%= (vote.post.anon) ? "Anonymous" : vote.post.user.name %></td>
     </tr>
   <% end %>
 
