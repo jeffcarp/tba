@@ -60,7 +60,7 @@ class StatsController < ApplicationController
   end
 
   def users
-    @users = User.group('date(created_at)').order('created_at DESC').count
+    @users = User.count(:order => 'date(created_at) DESC', :group => ["date(created_at)"])
 
     opens_data = []
     x_axis_labels = []
