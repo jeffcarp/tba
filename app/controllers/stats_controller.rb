@@ -21,9 +21,8 @@ class StatsController < ApplicationController
 
     @opens = Stat.where('action = ?', 'open_email').order('created_at DESC').limit(20)
     # @opens_grouped = Stat.where('action = ?', 'open_email').group('date(created_at)').order('created_at DESC').count
-    @opens_grouped = Stat.where('action = ?', 'open_email').group('date(created_at)').order('created_at DESC').count
+    @opens_grouped = Stat.count(:conditions => ["action = ?", 'open_email'], :order => 'DATE(created_at) DESC', :group => ["DATE(created_at)"])
     # @votes_grouped = Vote.where('action = ?', 'open_email').group('date(created_at)').order('created_at DESC').count
-
 # User.find_by_sql
 
     opens_data = []
