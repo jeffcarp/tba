@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   has_many :posts, :dependent => :destroy
   has_many :accounts, :dependent => :destroy
   has_many :votes, :dependent => :destroy
+  has_many :stats
 
   # validates_uniqueness_of :email, :message => "%{value} has already been registered. To log into your account, follow the login link in an email from us."
   # validates_presence_of :email

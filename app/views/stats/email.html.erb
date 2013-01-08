@@ -1,0 +1,28 @@
+<h1>Stats<span style="font-weight:normal;margin-left:24px;">Email Metrics</span></h1>
+
+<%= render 'stats_nav' %>
+
+<h2>How many people have opened our emails today?</h2>
+
+<p><img class="full_width" src="<%= @opens_pie %>" /></p>
+
+<h2>Email opens per day</h2>
+
+<p><img class="full_width" src="<%= @opens_chart %>" /></p>
+
+<h2>Last 20 Email Opens</h2>
+
+<table>
+	<tr>
+		<th>Time</th>
+		<th>User</th>
+		<th>Issue</th>
+	</tr>
+	<% @opens.each do |stat| %>
+		<tr>
+			<td><%= stat.created_at.strftime('%b %-d %l:%M%P') %></td>
+			<td><%= stat.user.name %></td>
+			<td><%= stat.issue.publish_date.strftime('%e %B') %></td>
+		</tr>
+	<% end %>
+</table>

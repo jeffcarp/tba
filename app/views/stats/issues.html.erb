@@ -1,0 +1,21 @@
+<h1>Stats<span style="font-weight:normal;margin-left:24px;">Issue Production</span></h1>
+
+<%= render 'stats_nav' %>
+
+<h2>Tomorrow's Issue</h2>
+
+<p>Posts <%= @upcoming_issue.posts.count %></p>
+
+<ul>
+  <% @upcoming_posts.each do |post| %>
+    <li><%= post.user.name %> - <%= post.title %></li>
+  <% end %>
+</ul>
+
+<h2>Today's Issue</h2>
+
+<p>How many likes</p>
+
+<h2>Trends in Production</h2>
+
+<p>Histogram of posts per issue</p>

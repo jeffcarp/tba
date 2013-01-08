@@ -29,6 +29,9 @@ a:hover {
   margin: 64px auto 0;
 }
 #content {
+  img.full_width {
+    width: 100%;
+  }
 }
 
 /* Header
@@ -61,7 +64,6 @@ header {
     a {
       padding: 0 0 2px;
       margin: 0 12px 0 0;
-      text-shadow: 0 2px 1px #333;
     }
     a.admin {
       color: #888;
@@ -385,6 +387,20 @@ footer {
       span {
         margin: 0 8px 0 0;
       }
+    }
+  }
+}
+
+.stats_nav {
+  background: rgba(0, 0, 0, 0.1);
+  padding: 12px;
+  margin: 0 0 24px;
+  border-bottom: solid 1px #ccc;
+  a {
+    color: #444;
+    margin: 0 18px 0 0;
+    &:hover {
+      color: #777;
     }
   }
 }
