@@ -1,8 +1,7 @@
 desc "This task is called by the Heroku scheduler add-on"
 
 task :send_announcements => :environment do
-  # HIBERNATING
-  # Issue.send_announcements
+  Issue.send_announcements
 end
 
 task :create_next_issue => :environment do
