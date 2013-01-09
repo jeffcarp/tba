@@ -32,7 +32,6 @@ class SessionsController < ApplicationController
     session.delete(:account_id)
     session.delete(:user_id)
     cookies.delete(:user_id)
-    puts session.inspect
     redirect_to root_url, :notice => "Signed out!"
   end
 
