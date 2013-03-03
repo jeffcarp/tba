@@ -2,6 +2,22 @@
 
 <%= render 'stats_nav' %>
 
-<p><%= image_tag 'lucius_fox.png', :class => 'full_width' %></p>
+<table>
+  <tr>
+    <td>Upcoming issue post count</td>
+    <td><%= @upcoming_issue_posts_count %></td>
+  </tr>
+  <tr>
+    <td>Users count</td>
+    <td><%= @users_count %></td>
+  </tr>
+  <tr>
+    <td>New users in last week</td>
+    <td><%= @users_week_delta %></td>
+  </tr>
+  <tr>
+    <td>New users in last month</td>
+    <td><%= @users_month_delta %></td>
+  </tr>
 
-<p><em>Spying on thirty million people wasn't in my job description.</em></p>
+</table>

@@ -3,6 +3,10 @@ class StatsController < ApplicationController
   before_filter :authenticate_admin, :only => [:index]
 
   def index
+    @upcoming_issue_posts_count = Issue.upcoming_issue.posts.count
+    @users_count = User.count
+    @users_week_delta = User.count - User.where('created_at < ?', 1.week.ago).count
+    @users_month_delta = User.count - User.where('created_at < ?', 1.month.ago).count
   end
 
   def issues
