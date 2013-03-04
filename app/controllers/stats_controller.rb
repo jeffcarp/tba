@@ -40,8 +40,8 @@ puts @posts_per_issue
 
     max = max.to_i
     top_quarter = ((max.to_i+min.to_i)*(0.75)).to_i
-    half = ((max+min).to_i/2).to_i
-    bottom_quarter = ((max+min).to_i/4).to_i
+    half = ((max.to_i+min.to_i).to_i/2).to_i
+    bottom_quarter = ((max.to_i+min.to_i).to_i/4).to_i
 
     @posts_per_issue_chart = Gchart.line(:size => '600x300',
       :axis_with_labels => 'x,y',
