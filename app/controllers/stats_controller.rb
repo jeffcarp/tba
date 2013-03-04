@@ -38,9 +38,14 @@ puts @posts_per_issue
     puts min
     puts max
 
+    max = max
+    top_quarter = ((max+min)*(0.75)).to_i
+    half = (max+min).to_i/2
+    bottom_quarter = (max+min).to_i/4
+
     @posts_per_issue_chart = Gchart.line(:size => '600x300',
       :axis_with_labels => 'x,y',
-      :axis_labels => [x_axis_labels.join('|'), "#{min}|#{(max+min).to_i/4}|#{(max+min).to_i/2}|#{((max+min).to_i*(0.75)).to_i}|#{max}"],
+      :axis_labels => [x_axis_labels.join('|'), "#{min}|#{bottom_quarter}|#{half}|#{top_quarter}|#{max}"],
       :bg => '00000000',
       :data => posts_per_issue)
   end
