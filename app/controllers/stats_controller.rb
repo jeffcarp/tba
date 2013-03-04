@@ -39,7 +39,7 @@ puts @posts_per_issue
     puts max
 
     max = max.to_i
-    top_quarter = ((max+min)*(0.75)).to_i
+    top_quarter = ((max.to_i+min.to_i)*(0.75)).to_i
     half = ((max+min).to_i/2).to_i
     bottom_quarter = ((max+min).to_i/4).to_i
 
