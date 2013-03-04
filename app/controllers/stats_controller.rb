@@ -13,6 +13,7 @@ class StatsController < ApplicationController
     @upcoming_issue = Issue.upcoming_issue
     @upcoming_posts = Post.find(:all, joins: [:issue, :user], conditions: ['issue_id = ?', @upcoming_issue.id], order: 'users.karma DESC')
     @current_issue = Issue.current_issue
+=begin
     @posts_per_issue = ActiveRecord::Base.connection.execute "select issues.publish_date as publish_date, count(posts.id) as post_count from issues left outer join posts on posts.issue_id = issues.id group by issues.publish_date order by issues.publish_date desc"
 puts @posts_per_issue
 
@@ -40,13 +41,14 @@ puts @posts_per_issue
     top_quarter = ((max.to_i+min.to_i)*(0.75)).to_s
     half = ((max.to_i+min.to_i).to_i/2).to_s
     bottom_quarter = ((max.to_i+min.to_i).to_i/4).to_s
-    min = nil
+    min = min.to_s 
 
     @posts_per_issue_chart = Gchart.line(:size => '600x300',
       :axis_with_labels => 'x,y',
       :axis_labels => [x_axis_labels.join('|'), "#{min}|#{bottom_quarter}|#{half}|#{top_quarter}|#{max}"],
       :bg => '00000000',
       :data => posts_per_issue)
+=end
   end
 
   def email
