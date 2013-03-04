@@ -2,22 +2,32 @@
 
 <%= render 'stats_nav' %>
 
-<a href="/issues">See all issues</a>
-
 <h2>Tomorrow's Issue</h2>
 
-<p>Posts <%= @upcoming_issue.posts.count %></p>
-
-<ul>
+<table>
+  <tr>
+    <th>Posts</th>
+    <th><%= @upcoming_issue.posts.count %></th>
+  </tr>
   <% @upcoming_posts.each do |post| %>
-    <li><%= post.user.name %> - <%= post.title %></li>
+    <tr>
+      <td>
+        <% if post.anon %>
+          Anonymous
+        <% else %>
+          <%= post.user.name %>
+        <% end %>
+      </td>
+      <td>
+        <%= link_to post.title, post %>
+      </td>
+    </tr>
   <% end %>
-</ul>
+</table>
 
-<h2>Today's Issue</h2>
-
-<p>How many likes</p>
+<p><a href="/issues">See all issues</a></p>
+<p><a href="/debug_email">See upcoming email</a></p>
 
 <h2>Trends in Production</h2>
 
-<p>Histogram of posts per issue</p>
+<p><img class="full_width" src="<%= @posts_per_issue_chart %>" /></p>
