@@ -26,8 +26,6 @@ puts @posts_per_issue
       x_axis_labels << Date.parse(issue['publish_date']).strftime("%b %-d") if index % 20 == 0
       posts_per_issue << issue['post_count']
 
-      puts issue['post_count']
-
       min = issue['post_count'] if !min
       max = issue['post_count'] if !max
       min = issue['post_count'] if issue['post_count'] < min
@@ -38,11 +36,11 @@ puts @posts_per_issue
     puts min
     puts max
 
-    max = max.to_i
-    top_quarter = ((max.to_i+min.to_i)*(0.75)).to_i
-    half = ((max.to_i+min.to_i).to_i/2).to_i
-    bottom_quarter = ((max.to_i+min.to_i).to_i/4).to_i
-    min = min.to_i
+    max = max.to_s
+    top_quarter = ((max.to_i+min.to_i)*(0.75)).to_s
+    half = ((max.to_i+min.to_i).to_i/2).to_s
+    bottom_quarter = ((max.to_i+min.to_i).to_i/4).to_s
+    min = min.to_s
 
     @posts_per_issue_chart = Gchart.line(:size => '600x300',
       :axis_with_labels => 'x,y',
