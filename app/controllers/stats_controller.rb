@@ -3,13 +3,52 @@ class StatsController < ApplicationController
   before_filter :authenticate_admin, :only => [:index]
 
   def index
-    puts "herro"
+    @upcoming_issue_posts_count = Issue.upcoming_issue.posts.count
+    @users_count = User.count
+    @users_week_delta = User.count - User.where('created_at < ?', 1.week.ago).count
+    @users_month_delta = User.count - User.where('created_at < ?', 1.month.ago).count
   end
 
   def issues
     @upcoming_issue = Issue.upcoming_issue
     @upcoming_posts = Post.find(:all, joins: [:issue, :user], conditions: ['issue_id = ?', @upcoming_issue.id], order: 'users.karma DESC')
     @current_issue = Issue.current_issue
+=begin
+    @posts_per_issue = ActiveRecord::Base.connection.execute "select issues.publish_date as publish_date, count(posts.id) as post_count from issues left outer join posts on posts.issue_id = issues.id group by issues.publish_date order by issues.publish_date desc"
+puts @posts_per_issue
+
+    posts_per_issue = []
+    x_axis_labels = []
+    index = 0
+    min = false 
+    max = false 
+    cumulative_total = 0
+    @posts_per_issue.each_with_index do |issue, index|
+      x_axis_labels << Date.parse(issue['publish_date']).strftime("%b %-d") if index % 20 == 0
+      posts_per_issue << issue['post_count']
+
+      min = issue['post_count'] if !min
+      max = issue['post_count'] if !max
+      min = issue['post_count'] if issue['post_count'] < min
+      max = issue['post_count'] if issue['post_count'] > max
+    end
+    x_axis_labels.reverse!
+    posts_per_issue.reverse!
+    puts min
+    puts max
+
+    max = max.to_s
+    top_quarter = ((max.to_i+min.to_i)*(0.75)).to_s
+    half = ((max.to_i+min.to_i).to_i/2).to_s
+    bottom_quarter = ((max.to_i+min.to_i).to_i/4).to_s
+    min = min.to_s 
+
+    @posts_per_issue_chart = Gchart.line(:size => '600x300',
+      :axis_with_labels => 'x,y',
+      :axis_labels => [x_axis_labels.join('|'), "#{min}|#{bottom_quarter}|#{half}|#{top_quarter}|#{max}"],
+      :bg => '00000000',
+      :data => posts_per_issue)
+=end
   end
 
   def email
@@ -70,7 +109,7 @@ class StatsController < ApplicationController
     max = 0
     cumulative_total = 0
     @users.each do |k,v|
-      x_axis_labels << Date.parse(k).strftime("%b %-d") if index % 10 == 0
+      x_axis_labels << Date.parse(k).strftime("%b %-d") if index % 10 == 0 && k
       cumulative_total += v
       opens_data << cumulative_total
       index += 1
