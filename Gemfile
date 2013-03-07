@@ -24,6 +24,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'd3-rails'
 
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
