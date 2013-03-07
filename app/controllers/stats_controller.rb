@@ -3,6 +3,7 @@ class StatsController < ApplicationController
   before_filter :authenticate_admin, :only => [:index]
 
   def index
+    puts "herro"
   end
 
   def issues
