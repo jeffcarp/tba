@@ -51,9 +51,6 @@
               <%= post.user.name.upcase %>
             <% end %>
 
-            <% if post.user.id != @account.user.id && @account.user.canpost %>
-              <a style="float:right;color:#eee;text-decoration:none;font-size:10px;padding:1px 0 0;" href="http://announcements.io/votes/mail/<%= post.id %>">&#9829;</a>
-            <% end %>
           </div>
 
           <% if post.photo_url && !post.photo_url.empty? %>
@@ -82,9 +79,6 @@
               <%= post.user.name.upcase %>
             <% end %>
 
-            <% if post.user.id != @account.user.id && @account.user.canpost %>
-              <a style="float:right;color:#eee;text-decoration:none;font-size:10px;padding:1px 0 0;" href="http://announcements.io/votes/mail/<%= post.id %>">&#9829;</a>
-            <% end %>
           </div>
 
           <% if post.photo_url && !post.photo_url.empty? %>
