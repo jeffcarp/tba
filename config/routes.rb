@@ -44,9 +44,10 @@ Shanghai::Application.routes.draw do
   get '/success' => 'home#success', :as => 'success'
   get '/debug_email' => 'home#debug_email'
   get '/auth' => 'home#auth', :as => 'auth'
-  get '/settings' => 'home#settings', :as => 'settings'
-  get '/compose' => 'posts#compose', :as => 'compose'
-  get '/guide' => 'home#guide', :as => 'guide'
+  get '/settings'    => 'home#settings', :as => 'settings'
+  get '/compose'     => 'posts#compose', :as => 'compose'
+  get '/guide'       => 'home#guide',    :as => 'guide'
+  get '/help'        => 'home#help',     :as => 'help'
 
   post '/' => 'users#create', :as => 'home'
 

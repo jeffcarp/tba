@@ -126,7 +126,7 @@ $(document).ready(function(){
     </div>
 
     <div class="field">
-      <%= f.text_field :title, :placeholder => "Title", :maxlength => 80 %>
+      <%= f.text_field :title, :placeholder => "Title (required)", :maxlength => 80 %>
     </div>
     <div class="field">
       <%= f.text_area :content, :placeholder => "Your post", :maxlength => 500, :id => 'post_content' %>
@@ -172,11 +172,9 @@ $(document).ready(function(){
   </div>
 
   <div class="title">
-    This is the post title 
   </div>
 
   <div class="body">
-    This is the post body 
   </div>
 
 </section>
