@@ -1,5 +1,21 @@
 class AccountsController < ApplicationController
 
+  before_filter :authenticate, :only => [:unsubscribe]
+
+  # GET /accounts/:id/unsubscribe
+  def unsubscribe
+
+    if !current_user
+      # you must be logged in
+    else
+      @account = Account.find(params[:id])
+      if @account
+        @account.receive = false
+        @account.save
+      end
+    end
+  end
+
   # PUT /accounts/1
   # PUT /accounts/1.json
   def update

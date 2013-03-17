@@ -16,3 +16,11 @@ end
 task :fetch_upcoming_menus => :environment do
   Issue.fetch_upcoming_menus
 end
+
+task :get_idle_accounts => :environment do
+  User.all.each do |user|
+    if user.stats.count == 0 && user.accounts.first.receive
+      puts "#{user.name} has never opened an email"
+    end
+  end
+end
