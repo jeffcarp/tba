@@ -38,6 +38,7 @@ Shanghai::Application.routes.draw do
   resources :votes
   resources :accounts
 
+  get "accounts/:id/unsubscribe" => "accounts#unsubscribe", :as => "unsubscribe"
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
   get '/success' => 'home#success', :as => 'success'

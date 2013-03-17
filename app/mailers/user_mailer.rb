@@ -4,7 +4,14 @@ class UserMailer < ActionMailer::Base
     @account = account
     @uri_prefix = 'http://announcements.io/'
     puts "Sending welcome email to "+ @account.email
-    mail(to: @account.email, from: "hello@announcements.io", subject: "Welcome to The Better Announcements!")
+
+    if !Rails.env.production?
+      to = "test-#{@account.email}@announcements.io"
+    else
+      to = @account.email
+    end
+
+    mail(to: to, from: "hello@announcements.io", subject: "Welcome to The Better Announcements!")
   end
 
   def the_announcements(account, issue)
@@ -23,8 +30,14 @@ class UserMailer < ActionMailer::Base
 
     @posts = Post.find(:all, joins: [:issue, :user], conditions: ['issue_id = ?', @issue.id], order: 'users.karma DESC')
 
+    if !Rails.env.production?
+      to = "test-#{@account.email}@announcements.io"
+    else
+      to = @account.email
+    end
+
     puts "Sending announcement to "+ @account.email
-    mail(to: @account.email, from: "hello@announcements.io", subject: "The Better Announcements, " + @issue.publish_date.strftime('%B %-d, %Y'))
+    mail(to: to, from: "hello@announcements.io", subject: "The Better Announcements, " + @issue.publish_date.strftime('%B %-d, %Y'))
 
   end
 

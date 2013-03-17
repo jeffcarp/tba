@@ -14,6 +14,7 @@ class AccountsController < ApplicationController
         @account.save
       end
     end
+    render :unsubscribe
   end
 
   # PUT /accounts/1

@@ -16,20 +16,6 @@
 
 </section>
 
-<!-- <section>
-  <h2>Mail Settings</h2>
-
-  <form>
-    <div class="setting clearfix">
-      <label for="weather_checkbox">Weather</label>
-      <div class="checkbox">
-        <input type="checkbox" id="weather_checkbox" data-controller="users" data-attribute="weather" data-id="<%= current_user.id %>" <% if current_user.receive %>checked="checked"<% end %> />
-      </div>
-    </div>
-  </form>
-
-</section> -->
-
 <section>
   <h2>Yourself</h2>
 
@@ -43,16 +29,8 @@
         <td><strong><%= @user.posts.count %></strong></td>
       </tr>
       <tr>
-        <td>Likes</td>
-        <td><strong><%= @votes.count %></strong></td>
-      </tr>
-      <tr>
-        <td>Likes per post</td>
-        <% if (@user.posts.count == 0) %>
-          <td>0</td>
-        <% else %>
-          <td><strong><%= (@votes.count.to_f / @user.posts.count.to_f).round(2) %></strong></td>
-        <% end %>
+        <td>Number of times your posts have been viewed</td>
+        <td><strong><%= @posts_seen_times %></strong></td>
       </tr>
   </table>
 
@@ -64,34 +42,6 @@
       <p>Since you have a non-colby.edu address, you can receive the announcements but cannot post to them.</p>
   <% end %>
 
-  <p>Currently names are not editable. If you need to change yours, <%= link_to 'contact', :guide %> us.</p>
+  <p>Currently names are not editable. If you need to change yours, <a href="mailto:hello@announcements.io">contact</a> us.</p>
 
 </section>
-
-<% if @user.canpost %>
-
-<section>
-  <h2>Likes on your posts</h2>
-
-  <p>Posts on The Better Announcements are ordered by users' total number of likes.</p>
-
-  <table>
-    <tr>
-      <th>Cast</th>
-      <th>Voter</th>
-      <th>Post</th>
-    </tr>
-
-    <% @votes.each do |vote| %>
-      <tr>
-        <td>
-          <%= vote.created_at.strftime('%e %B') %></td>
-        <td><strong><%= vote.user.name %></strong></td>
-        <td><%= vote.post.title %></td>
-      </tr>
-    <% end %>
-
-  </table>
-</section>
-
-<% end %>

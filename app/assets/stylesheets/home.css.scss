@@ -196,46 +196,6 @@ section li {
   }
 }
 
-/* Compose
-===================================*/
-form .field {
-  margin: 0 0 18px;
-}
-.filepicker {
-  margin: 12px 0 24px;
-}
-.cancel_photo {
-  &:hover {
-    color: #888;
-    cursor: pointer;
-  }
-}
-form input[type='text'] {
-  display: block;
-  width: 584px;
-  padding: 6px;
-  font-size: 18px;
-  border: solid 2px #ccc;
-}
-form textarea {
-  display: block;
-  border: solid 2px #ccc;
-  width: 584px;
-  padding: 6px;
-  height: 200px;
-  font-size: 18px;
-  line-height: 24px;
-}
-form #submit {
-  text-align: center;
-}
-form #char_counter {
-  font-weight: bold;
-}
-form .disabled input {
-  color: #666;
-  background-color: #eee;
-}
 
 /* Settings
 ===================================*/

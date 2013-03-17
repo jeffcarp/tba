@@ -14,3 +14,4 @@
 //= require jquery_ujs
 //= require d3
 //= require main
+//= require compose 

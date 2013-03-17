@@ -1,0 +1,87 @@
+#wrap.posts.compose {
+  width: 800px;
+
+  h2 {
+    margin: 0 0 24px;
+  }
+
+  section.writing {
+    width: 500px;
+    float: left; 
+    
+    .uploaded_photo {
+      img {
+        width: 100%;
+      }
+    }
+    form .field {
+      margin: 0 0 18px;
+    }
+    .filepicker {
+      margin: 12px 0 24px;
+    }
+    .cancel_photo {
+      &:hover {
+        color: #888;
+        cursor: pointer;
+      }
+    }
+    form input[type='text'] {
+      display: block;
+      width: 90%;
+      padding: 6px;
+      font-size: 18px;
+      border: solid 2px #ccc;
+    }
+    form textarea {
+      display: block;
+      border: solid 2px #ccc;
+      width: 90%;
+      padding: 6px;
+      height: 200px;
+      font-size: 18px;
+      line-height: 24px;
+    }
+    form #submit {
+      text-align: center;
+    }
+    form #char_counter {
+      font-weight: bold;
+    }
+    form .disabled input {
+      color: #666;
+      background-color: #eee;
+    }
+  }
+  section.reading {
+    width: 290px;
+    float: right; 
+
+    .header {
+      font-size: 13px;
+      font-family: "Helvetica", "Arial", sans-serif;
+      font-weight: bold;
+      color: white;
+      margin: 0 0 8px;
+      background-color: #0DB5DB;
+      padding: 6px; 
+    }
+    .photo {
+      img {
+        border: solid 1px #ccc;
+      }
+    }
+    .title {
+      margin: 10px 0 0;
+      font-size: 18px;
+      font-family: "Georgia", serif;
+      color: #333;
+      font-weight: bold;
+    }
+    .body {
+      font-size: 14px;
+      font-family: "Helvetica", "Arial", sans-serif;
+      color: #444;
+    }
+  }
+}

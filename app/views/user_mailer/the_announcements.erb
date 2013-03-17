@@ -120,7 +120,8 @@
   <!-- note: add settings and compose links -->
 
     <p style="margin: 24px 0; text-align: center;">
-      <a style="color:#0DB5DB;" href="<%= @uri_prefix %>">Login to The Better Announcements.</a>
+      <a style="color:#0DB5DB;display:block;" href="<%= @uri_prefix %>">Login to The Better Announcements.</a>
+      <a style="color:#0DB5DB;display:block;" href="<%= @uri_prefix %>accounts/<%= @account.id %>/unsubscribe">Unsubscribe.</a>
     </p>
 
     <img src="<%= @uri_prefix %>stats/image/<%= @account.user.id %>/<%= @issue.id %>" />

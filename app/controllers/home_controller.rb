@@ -49,7 +49,7 @@ class HomeController < ApplicationController
   def settings
     @checkboxes = true
     @user = current_user
-    @votes = Vote.find(:all, joins: ['JOIN posts ON posts.id = votes.post_id'], conditions: ['posts.user_id = ?', current_user.id], order: "created_at DESC")
+    @posts_seen_times = ActiveRecord::Base.connection.execute("select count(s.id) from users u join posts p on p.user_id = u.id join issues i on p.issue_id = i.id join stats s on s.issue_id = i.id where u.id = #{current_user.id.to_s}")[0]['count']
     render 'home/settings'
   end
 
