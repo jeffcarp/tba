@@ -5,8 +5,9 @@ class StatsController < ApplicationController
   def index
     @upcoming_issue_posts_count = Issue.upcoming_issue.posts.count
     @users_count = User.count
-    @users_week_delta = User.count - User.where('created_at < ?', 1.week.ago).count
-    @users_month_delta = User.count - User.where('created_at < ?', 1.month.ago).count
+
+    @users_this_month = User.where('created_at > ?', 1.month.ago).count
+    @users_last_month = User.where('created_at > ? AND created_at < ?', 2.months.ago, 1.month.ago).count
   end
 
   def issues
