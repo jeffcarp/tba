@@ -8,96 +8,8 @@
      data-user-name="<%= current_user.name %>">
 </div>
 
-<script type="text/javascript">
-
-    var handleFP = function(event){
-      $('.filepicker').hide();
-
-      console.log("handleFP");
-
-
-      var file = event.fpfile;
-        console.log(file);
-        uploaded_photo = $('.uploaded_photo');
-        uploaded_photo.children('img').attr('src', file.url+"/convert?w=600");
-        uploaded_photo.show();
-
-        $('input.photo_url').val(file.url);
-    }
-
-    $(document).ready(function(){
-
-      // Cancel photo
-      $('.cancel_photo').on('click', function(){
-        $('.uploaded_photo').hide();
-        $('.filepicker').show();
-        $('.photo_drag_drop').html('Or drop files here');
-        var photo_url = $('input.photo_url');
-
-        // Remove file from filepicker (currently not doing this)
-        // filepicker.remove(photo_url.val(), function(){
-        //   console.log("Removed");
-        // });
-
-        photo_url.val('');
-      });
-
-    });
-
-//     });
-
-
-
-$(document).ready(function(){
-
-  var youtube_videos = [
-    {url: '7pdWAcK6Eh8', length: 8},
-    {url: '5hfYJsQAhl0', length: 27},
-    {url: 'Lty7RAHKT9E', length: 57},
-    {url: 'RH1ekuvSYzE', length: 40},
-    {url: 'tfboOt1bJcA', length: 17},
-    {url: 'Lmj9HnbdhTc', length: 30},
-    {url: 'N-LnP3uraDo', length: 21},
-    {url: 'tuHezFweJ40', length: 30},
-    {url: 'H_GMMD_GCTg', length: 23}
-    ];
-  var times_loud_noiseded = 0;
-  var this_video = youtube_videos[0];
-
-  // If the title contains more than 50% uppercase characters...
-  $('form #submit').on('click', function(event){
-    var post_title = $('#post_title').val();
-
-    if (post_title.replace(/[^A-Z]/g, "").length > post_title.replace(/[\s]/g, "").length / 2) {
-
-      event.preventDefault();
-
-      $('.filepicker').fadeOut(800);
-
-      $('form').fadeOut(800, function(){
-
-        if (times_loud_noiseded != 0) {
-          var key = Math.floor(Math.random()*youtube_videos.length) + 1;
-          this_video = youtube_videos[key];
-        }
-
-        var loud_noises = "<div style='font-size:36px;' class='loud_noises'>WE UNDERSTAND YOU WANT TO GET YOUR POINT ACROSS BUT YOU DON'T HAVE TO USE SO MANY CAPITAL LETTERS.<iframe id='ytplayer' width='560' height='315' src='http://www.youtube.com/embed/"+this_video.url+"?rel=0&autoplay=1' frameborder='0' allowfullscreen></iframe></div>";
-        $('form').before(loud_noises);
-
-        // times_loud_noiseded += 1;
-
-      }).delay(this_video.length*1000+1000).fadeIn(200, function(){
-        $('.filepicker').fadeIn(200);
-        $('.loud_noises').remove();
-      });
-    }
-  });
-});
-
-</script>
-
 <section class="writing">
-  <div class="filepicker" <%= "style='display:none;'" if @post.photo_url != nil && @post.photo_url != "" %>>
+  <div class="filepicker ">
     <input type="filepicker-dragdrop"
       data-fp-apikey="AjrSNotOQnu3ABsDzPEBKz"
       data-fp-mimetypes="image/*"
@@ -178,13 +90,3 @@ $(document).ready(function(){
   </div>
 
 </section>
-
-
-
-<script type="text/javascript">
-// Load non-blocking filepicker API
-(function(a){if(window.filepicker){return}var b=a.createElement("script");b.type="text/javascript";b.async=!0;b.src=("https:"===a.location.protocol?"https:":"http:")+"//api.filepicker.io/v1/filepicker.js";var c=a.getElementsByTagName("script")[0];c.parentNode.insertBefore(b,c);var d={};d._queue=[];var e="pick,pickMultiple,read,write,writeUrl,export,convert,store,storeUrl,remove,stat,setKey,constructWidget,makeDropPane".split(",");var f=function(a,b){return function(){b.push([a,arguments])}};for(var g=0;g<e.length;g++){d[e[g]]=f(e[g],d._queue)}window.filepicker=d})(document);
-</script>
-
-
-

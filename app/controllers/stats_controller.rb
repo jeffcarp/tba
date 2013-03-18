@@ -54,41 +54,34 @@ puts @posts_per_issue
 
   def email
 
-    # User.all.each do |user|
-    #   user.created_at = user.created_at.to_formatted_s(:db)
-    #   user.updated_at = user.updated_at.to_formatted_s(:db)
-    #   user.save
-    # end
-
     @opens = Stat.where('action = ?', 'open_email').order('created_at DESC').limit(20)
-    # @opens_grouped = Stat.where('action = ?', 'open_email').group('date(created_at)').order('created_at DESC').count
-    @opens_grouped = Stat.count(:conditions => ["action = ?", 'open_email'], :order => 'DATE(created_at) DESC', :group => ["DATE(created_at)"])
-    # @votes_grouped = Vote.where('action = ?', 'open_email').group('date(created_at)').order('created_at DESC').count
-# User.find_by_sql
+
+    @opens_by_issue = Issue.count('stats.id', joins: [:stats], group: 'stats.issue_id', limit: 20, order: 'stats.issue_id desc')
 
     opens_data = []
     x_axis_labels = [0]
     index = 0
     min = 1000000
     max = 0
-    @opens_grouped.each do |k,v|
-      x_axis_labels << Date.parse(k).strftime("%-m/%-d") #if index % 2 == 0
-      opens_data << v
+    @opens_by_issue.each_with_index do |open, index|
+      # this is quick and dirty and terrible, please forgive me
+      x_axis_labels << Issue.find(open[0]).publish_date.strftime("%-m/%-d") #if index % 2 == 0
+      opens_data << open[1]
       index += 1
-      min = v if v < min
-      max = v if v > max
+      min = open[1] if open[1] < min
+      max = open[1] if open[1] > max
     end
     x_axis_labels.reverse!
-    # opens_data.reverse!
+    opens_data.reverse!
 
     @opens_chart = Gchart.bar(:size => '600x200',
       :axis_with_labels => 'x,y',
-      :axis_labels => [x_axis_labels.join('|'), "0|#{min}|#{(max+min)/4}|#{(max+min)/2}|#{((max+min)*(0.75)).to_i}|#{max}"],
+      :axis_labels => [x_axis_labels.join('|'), "0|#{((max+min)*(0.25)).to_i}|#{((max+min)*(0.50)).to_i}|#{((max+min)*(0.75)).to_i}|#{max}"],
       :bg => '00000000',
       :data => opens_data)
 
     # Users who have opened today's issue
-    opens_today = Stat.where('action = ? AND created_at > ?', 'open_email', Date.today.beginning_of_day).count
+    opens_today = Stat.where('action = ? AND issue_id = ?', 'open_email', Issue.current_issue).count
     receiving_accounts = Account.where('receive = ?', true).count
     opens_pie_data = [opens_today, receiving_accounts]
     @opens_pie = Gchart.pie(:size => '600x200',
@@ -96,8 +89,6 @@ puts @posts_per_issue
       :bg => '00000000',
       :labels => 'opened|have not opened',
       :data => [opens_today, receiving_accounts])
-
-    # @todays_opens_chart = 
   end
 
   def users
