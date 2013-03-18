@@ -7,14 +7,8 @@ class HomeController < ApplicationController
   end
 
   def guide
-    # Users with the most posts?
-    if Rails.cache.read(:colby_percentage)
-      @colby_percentage = Rails.cache.read(:colby_percentage)
-    else
-      @colby_emails_count = Account.where("email LIKE ?", "%@colby.edu").count
-      @colby_percentage = ((@colby_emails_count.to_f / 1825) * 100).to_i
-      Rails.cache.write(:colby_percentage, @colby_percentage)
-    end
+    @colby_emails_count = Account.where("email LIKE ?", "%@colby.edu").count
+    @colby_percentage = ((@colby_emails_count.to_f / 1825) * 100).to_i
   end
 
   def dashboard
@@ -23,27 +17,6 @@ class HomeController < ApplicationController
       @issue = Issue.upcoming_issue
     end
     @posts = Post.find(:all, joins: [:issue, :user], conditions: ['issue_id = ?', @issue.id], order: 'users.karma DESC')
-  end
-
-  def stats
-    @users_count = User.all.count
-    @accounts_count = Account.all.count
-    @colby_emails_count = Account.where("email LIKE ?", "%@colby.edu").count
-    @colby_accounts_ratio = ((@colby_emails_count.to_f / @accounts_count.to_f) * 100).to_i
-    @colby_population_ratio = ((@colby_emails_count.to_f / 1825) * 100).to_i
-    @accounts_receive_count = Account.find(:all, conditions: ['receive=?', true]).count
-    @accounts_receive_ratio = ((@accounts_receive_count.to_f / @accounts_count.to_f) * 100).to_i
-
-    # if Rails.cache.read(:loud_mouths)
-      # @loud_mouths = Rails.cache.read(:loud_mouths)
-    # else
-      @loud_mouths = User.all.sort_by(&:posts_count).reverse[0..10]
-      # Rails.cache.write(:loud_mouths, @loud_mouths)
-    # end
-
-    @likes_today = Vote.where('created_at > ? AND created_at < ?', (Time.zone.now).beginning_of_day, (Time.zone.now).end_of_day).count
-    @likes_yesterday = Vote.where('created_at > ? AND created_at < ?', (Time.zone.now - 1.day).beginning_of_day, (Time.zone.now - 1.day).end_of_day).count
-    @likes_ototoi = Vote.where('created_at > ? AND created_at < ?', (Time.zone.now - 2.day).beginning_of_day, (Time.zone.now - 2.day).end_of_day).count
   end
 
   def settings
@@ -105,5 +78,3 @@ class HomeController < ApplicationController
   end
 
 end
-
-# Wu Tang!
