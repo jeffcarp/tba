@@ -5,11 +5,11 @@ class AccountsController < ApplicationController
   # GET /accounts/:id/unsubscribe
   def unsubscribe
 
-    if !current_user
+    if !current_user 
       # you must be logged in
     else
       @account = Account.find(params[:id])
-      if @account
+      if @account && @account.user == current_user
         @account.receive = false
         @account.save
       end
