@@ -28,6 +28,7 @@ gem 'omniauth'
 gem 'omniauth-google-oauth2'
 
 gem 'google-analytics-rails'
+gem 'fastimage'
 
 gem 'maruku'
 

@@ -69,6 +69,7 @@ GEM
       railties (>= 3.0.0)
     faraday (0.8.6)
       multipart-post (~> 1.1)
+    fastimage (1.2.14)
     ffi (1.4.0)
     google-analytics-rails (0.0.3)
     googlecharts (1.6.8)
@@ -223,6 +224,7 @@ DEPENDENCIES
   dalli
   delayed_job_active_record
   factory_girl_rails
+  fastimage
   google-analytics-rails
   googlecharts
   guard-rspec
