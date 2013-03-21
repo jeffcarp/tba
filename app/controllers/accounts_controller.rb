@@ -5,16 +5,14 @@ class AccountsController < ApplicationController
   # GET /accounts/:id/unsubscribe
   def unsubscribe
 
-    if !current_user 
-      # you must be logged in
+    @account = Account.find(params[:id])
+    if @account && @account.user == current_user
+      @account.receive = false
+      @account.save
+      render :unsubscribe
     else
-      @account = Account.find(params[:id])
-      if @account && @account.user == current_user
-        @account.receive = false
-        @account.save
-      end
+      redirect_to '/', notice: "You aren't authorized to do that."
     end
-    render :unsubscribe
   end
 
   # PUT /accounts/1
