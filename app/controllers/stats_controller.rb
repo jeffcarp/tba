@@ -6,8 +6,8 @@ class StatsController < ApplicationController
     @upcoming_issue_posts_count = Issue.upcoming_issue.posts.count
     @users_count = User.count
 
-    @users_this_month = User.where('created_at > ?', 1.month.ago).count
-    @users_last_month = User.where('created_at > ? AND created_at < ?', 2.months.ago, 1.month.ago).count
+    @users_this_month = User.where('created_at > ?', Date.today.beginning_of_month).count
+    @users_last_month = User.where('created_at > ? AND created_at < ?', Date.today.ago(1.month).beginning_of_month, Date.today.beginning_of_month).count
   end
 
   def issues
