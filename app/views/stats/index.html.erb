@@ -19,6 +19,10 @@
     <td>New users in <%= (Time.now() - 1.month).strftime('%B') %></td>
     <td><%= @users_last_month %></td>
   </tr>
+  <tr>
+    <td>Unsubscribes in <%= Time.now().strftime('%B') %> so far</td>
+    <td><%= @unsubscribes_this_month %></td>
+  </tr>
 
 </table>
 

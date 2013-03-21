@@ -8,6 +8,8 @@ class StatsController < ApplicationController
 
     @users_this_month = User.where('created_at > ?', Date.today.beginning_of_month).count
     @users_last_month = User.where('created_at > ? AND created_at < ?', Date.today.ago(1.month).beginning_of_month, Date.today.beginning_of_month).count
+
+    @unsubscribes_this_month = Stat.where('action = ? AND created_at > ?', 'unsubscribe', Date.today.beginning_of_month).count
   end
 
   def issues

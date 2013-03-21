@@ -10,9 +10,14 @@ class AccountsController < ApplicationController
       @account.receive = false
       @account.save
       render :unsubscribe
+
+      # Log action
+      stat = Stat.new user_id: @account.user.id, action: 'unsubscribe'
+      stat.save
     else
       redirect_to '/', notice: "You aren't authorized to do that."
     end
+
   end
 
   # PUT /accounts/1
