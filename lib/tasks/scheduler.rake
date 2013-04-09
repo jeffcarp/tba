@@ -4,6 +4,10 @@ task :send_announcements => :environment do
   Issue.send_announcements
 end
 
+task :mark_as_published_without_sending => :environment do
+  Issue.upcoming_issue.mark_as_published
+end
+
 task :create_next_issue => :environment do
   issue = Issue.create_next
   puts "Created next issue publishing " + issue.publish_date.strftime('%F')
