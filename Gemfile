@@ -11,6 +11,8 @@ group :development, :test do
   gem 'guard-rspec'
 end
 
+gem 'capistrano'
+
 gem 'googlecharts'
 
 gem 'thin'
