@@ -10,7 +10,7 @@ set :use_sudo, true
 
 set :scm, "git"
 set :repository, "git@github.com:jeffcarp/tba"
-set :branch, "master"
+set :branch, "edge"
 
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
