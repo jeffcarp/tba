@@ -3,7 +3,7 @@ require "bundler/capistrano"
 server "tba.colby.io", :web, :app, :db, primary: true
 
 set :application, "tba"
-set :user,  ""
+set :user, "jeff"
 set :deploy_to,  "/var/www/tba.colby.io/"
 set :deploy_via, :remote_cache
 set :use_sudo, true

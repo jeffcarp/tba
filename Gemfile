@@ -11,6 +11,11 @@ group :development, :test do
   gem 'guard-rspec'
 end
 
+group :production do
+  gem 'execjs'
+  gem 'therubyracer'
+end
+
 gem 'capistrano'
 
 gem 'googlecharts'
