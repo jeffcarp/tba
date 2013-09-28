@@ -6,7 +6,7 @@ set :application, "tba"
 set :user, "jeff"
 set :deploy_to,  "/var/www/tba.colby.io/"
 set :deploy_via, :remote_cache
-set :use_sudo, false 
+set :use_sudo, true 
 
 set :scm, "git"
 set :repository, "git@github.com:jeffcarp/tba"
