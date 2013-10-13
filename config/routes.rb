@@ -10,6 +10,14 @@ end
 
 Shanghai::Application.routes.draw do
 
+  resources :users do 
+    resources :posts
+  end
+  resources :posts
+  resources :issues
+  resources :votes
+  resources :accounts
+
   # Stats
   match 'stats/image/:user_id/:issue_id', :to => 'stats#image'
   match 'stats/email',                    :to => 'stats#email'
@@ -32,12 +40,6 @@ Shanghai::Application.routes.draw do
   get "mobile/foss"      => "mobile#foss"
   get "mobile/dana"      => "mobile#dana"
   get "mobile/bobs"      => "mobile#bobs"
-
-  resources :users
-  resources :posts
-  resources :issues
-  resources :votes
-  resources :accounts
 
   get "accounts/:id/unsubscribe" => "accounts#unsubscribe", :as => "unsubscribe"
   get "logout" => "sessions#destroy", :as => "logout"

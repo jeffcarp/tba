@@ -1,0 +1,48 @@
+<%= form_for(@post) do |f| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% @post.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <p class="cancel_photo <%= 'hidden' if !@post.photo_url || @post.photo_url == "" %>">&#x2716; cancel photo</p>
+
+  <div class="field">
+    <%= f.text_field :title, :placeholder => "Title (required)", :maxlength => 80 %>
+  </div>
+  <div class="field">
+    <%= f.text_area :content, :placeholder => "Your post", :maxlength => 500, :id => 'post_content' %>
+  </div>
+  <% if @post.content %>
+    <% char_count = 500 - @post.content.length %>
+    <% if (char_count <= 150) %>
+      <div id="char_counter"><p style="color: hsl(0, 100%, <%= ((150 - char_count)/3) %>%)"><%= char_count %></p></div>
+    <% else %>
+      <div id="char_counter"><%= char_count %></div>
+    <% end %>
+  <% else %>
+    <div id="char_counter">500</div>
+  <% end %>
+  <div class="field">
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+    <%= f.hidden_field :photo_url, :value => @post.photo_url, :class => "photo_url" %>
+  </div>
+  <div class="field">
+    <%= f.label :anon, "Make Anonymous" %>
+    <%= f.check_box :anon, :value => false %>
+  </div>
+  <div class="field" id="submit">
+    <%= f.submit "Save announcement" %>
+  </div>
+  <% if @already %>
+    <div class="field">
+      <%= link_to('Delete and start over', @post, :method => :delete, :confirm => 'Are you sure?') %>
+    </div>
+  <% end %>
+<% end %>

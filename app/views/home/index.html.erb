@@ -1,14 +1,18 @@
 <div style="padding-bottom:10em;">
   <% @posts.each do |p| %>
-    <h2><%= p.title %></h2>
-    <div>
-      <%= p.content %>
+    <div style="float:left; width:49%;">
+      <h2><%= p.title %></h2>
+      <div>
+        <%= p.content %>
+      </div>
     </div>
   <% end %>
 </div>
 
-<div class="google_button">
-  <a href="/auth/google_oauth2/" class="google_login">
-    Login with Google
-  </a>
-</div>
+<% if !current_user %>
+  <div class="google_button">
+    <a href="/auth/google_oauth2/" class="google_login">
+      Login with Google
+    </a>
+  </div>
+<% end %>
