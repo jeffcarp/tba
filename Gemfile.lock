@@ -76,7 +76,7 @@ GEM
       multipart-post (~> 1.1)
     fastimage (1.2.14)
     ffi (1.4.0)
-    fungible-rails (0.0.5)
+    fungible-rails (0.0.6)
     google-analytics-rails (0.0.3)
     googlecharts (1.6.8)
     guard (1.6.2)
@@ -243,7 +243,7 @@ DEPENDENCIES
   execjs
   factory_girl_rails
   fastimage
-  fungible-rails (= 0.0.5)
+  fungible-rails (= 0.0.6)
   google-analytics-rails
   googlecharts
   guard-rspec
