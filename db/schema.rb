@@ -14,53 +14,53 @@
 ActiveRecord::Schema.define(:version => 20121205170107) do
 
   create_table "accounts", :force => true do |t|
-    t.string    "provider"
-    t.string    "uid"
-    t.integer   "user_id"
-    t.timestamp "created_at",                   :null => false
-    t.timestamp "updated_at",                   :null => false
-    t.string    "email"
-    t.boolean   "receive",    :default => true
+    t.string   "provider"
+    t.string   "uid"
+    t.integer  "user_id"
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+    t.string   "email"
+    t.boolean  "receive",    :default => true
   end
 
   create_table "delayed_jobs", :force => true do |t|
-    t.integer   "priority",   :default => 0
-    t.integer   "attempts",   :default => 0
-    t.text      "handler"
-    t.text      "last_error"
-    t.timestamp "run_at"
-    t.timestamp "locked_at"
-    t.timestamp "failed_at"
-    t.string    "locked_by"
-    t.string    "queue"
-    t.timestamp "created_at",                :null => false
-    t.timestamp "updated_at",                :null => false
+    t.integer  "priority",   :default => 0
+    t.integer  "attempts",   :default => 0
+    t.text     "handler"
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
   create_table "issues", :force => true do |t|
-    t.date      "publish_date"
-    t.timestamp "created_at",                      :null => false
-    t.timestamp "updated_at",                      :null => false
-    t.boolean   "published",    :default => false
-    t.text      "foss"
-    t.text      "dana"
-    t.text      "bobs"
-    t.text      "foss_dinner"
-    t.text      "dana_dinner"
-    t.text      "bobs_dinner"
+    t.date     "publish_date"
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+    t.boolean  "published",    :default => false
+    t.text     "foss"
+    t.text     "dana"
+    t.text     "bobs"
+    t.text     "foss_dinner"
+    t.text     "dana_dinner"
+    t.text     "bobs_dinner"
   end
 
   create_table "posts", :force => true do |t|
-    t.string    "title"
-    t.text      "content"
-    t.integer   "user_id"
-    t.timestamp "created_at",                    :null => false
-    t.timestamp "updated_at",                    :null => false
-    t.integer   "issue_id"
-    t.string    "photo_url"
-    t.boolean   "anon",       :default => false
+    t.string   "title"
+    t.text     "content"
+    t.integer  "user_id"
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.integer  "issue_id"
+    t.string   "photo_url"
+    t.boolean  "anon",       :default => false
   end
 
   create_table "stats", :force => true do |t|
@@ -85,11 +85,11 @@ ActiveRecord::Schema.define(:version => 20121205170107) do
   end
 
   create_table "votes", :force => true do |t|
-    t.integer   "user_id"
-    t.integer   "post_id"
-    t.boolean   "up"
-    t.timestamp "created_at", :null => false
-    t.timestamp "updated_at", :null => false
+    t.integer  "user_id"
+    t.integer  "post_id"
+    t.boolean  "up"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end

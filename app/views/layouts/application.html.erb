@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <title>The Better Announcements</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>TBA</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
 
@@ -18,22 +18,38 @@
 
   <%= analytics_init local: Rails.env.development? %>
 
-  <link href='http://fonts.googleapis.com/css?family=Open+Sans:800' rel='stylesheet' type='text/css'>
-  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,800' 
+        rel='stylesheet' 
+        type='text/css'>
 
-  <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0" />
+  <meta name="viewport" 
+        content="initial-scale=1.0, maximum-scale=1.0" />
   <%= csrf_meta_tags %>
 </head>
 <body>
   <header>
-    <h1 style="z-index=1;position:relative;"><%= link_to 'The Better Announcements', :root %></a></h1>
+    <h1><%= link_to 'TBA', :root %></h1>
 
-    <nav style="z-index=1;position:relative;">
+    <nav>
+      <a href="/" class="<%= underline '/' %>">Home</a>
+      <a href="/compose" class="<%= underline '/compose' %>">Compose</a>
+      <a href="/level" class="<%= underline '/level' %>">Level</a>
+      <a href="/settings" class="<%= underline '/settings' %>"><%= current_user ? current_user.name : "Settings" %></a>
+      <a href="/guide" 
+         class="<%= underline '/guide' %>"
+        >Guide</a>
       <% if current_user %>
-        <%= render partial: 'layouts/nav' %>
-      <% else %>
-        <span>An alternative to the general announcements for Colby kids.</span>
+        <a href="/logout"   
+           class="admin"
+          >Log out</a>
       <% end %>
+
+      <div class="global_search" style="display:none;">
+        <input type="text" placeholder="Search..." />
+        <div class="results">
+
+        </div>
+      </div>
     </nav>
   </header>
   <div id="wrap" class="<%= params[:action] %> <%= params[:controller] %> clearfix">
@@ -44,7 +60,7 @@
       <%= yield %>
     </div>
     <footer>
-      <p><strong>The Better Announcements</strong> are made by Jeff Carpenter '12, John Kalin '14, Mike Loginoff '16, and you. You can reach all of us at <a href="mailto:hello@announcements.io">hello@announcements.io</a>.</p>
+      <p><strong>TBA</strong> is you. You can reach all of us at <a href="mailto:hello@announcements.io">hello@announcements.io</a>.</p>
     </footer>
   </div>
 </body>

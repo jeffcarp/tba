@@ -8,6 +8,7 @@ class PostsController < ApplicationController
 
   def compose
     # If they don't have a name, tell them to make one
+=begin
     if !current_user.name
       redirect_to :settings, notice: "Hey, you need to fill in your name before you post anything."
       return
@@ -17,6 +18,7 @@ class PostsController < ApplicationController
       redirect_to :settings, notice: "Sorry, you must have a colby.edu email address to post."
       return
     end
+=end
 
     # Get upcoming edition
     @issue = Issue.upcoming_issue

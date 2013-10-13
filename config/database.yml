@@ -1,9 +1,9 @@
 development:
   adapter: postgresql 
-  database: shanghai
+  database: tba 
   host: localhost
 
 test:
   adapter: postgresql 
-  database: shanghai-test
+  database: tba-test
   host: localhost

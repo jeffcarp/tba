@@ -1,9 +1,10 @@
 class HomeController < ApplicationController
 
   before_filter :authenticate, :only => [:stats, :settings]
-  caches_page [:index, :guide, :dashboard], :expires_in => 10.minutes
+  #caches_page [:index, :guide, :dashboard], :expires_in => 10.minutes
 
   def index
+    @posts = Post.limit(10).order('created_at DESC')
   end
 
   def guide

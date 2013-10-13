@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.11'
+gem 'rails', '3.2.14'
 
 gem 'pg'
 
@@ -30,21 +30,11 @@ end
 
 gem 'jquery-rails'
 gem 'd3-rails'
-
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
-
 gem 'google-analytics-rails'
 gem 'fastimage'
-
 gem 'maruku'
-
-gem 'newrelic_rpm'
 gem 'delayed_job_active_record'
-
-gem 'dalli'
-
 gem 'wunderground'
 gem 'rails_autolink'
-
-gem 'nokogiri'

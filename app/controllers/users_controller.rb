@@ -2,6 +2,9 @@ class UsersController < ApplicationController
 
   before_filter :authenticate, :only => [:index]
 
+  def level
+  end
+
   def index
     if params[:order] == 'karma'
       @users = User.order('karma DESC')

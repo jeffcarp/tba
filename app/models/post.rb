@@ -6,11 +6,10 @@ class Post < ActiveRecord::Base
 
   validates_length_of :content, maximum: 600
   validates_presence_of :user_id
-  validates_presence_of :issue_id
   validates_presence_of :title, message: "Title cannot be blank. Post not saved."
 
   def content_html
-      Maruku.new(self.content).to_html
+    Maruku.new(self.content).to_html
   end
 
   # def content_html_with_links

@@ -19,6 +19,7 @@ Shanghai::Application.routes.draw do
   match 'stats',			                    :to => 'stats#index'
 
   get "accounts/update"
+  get "level" => "users#level"
 
   get "search" => "home#search"
 
@@ -53,8 +54,8 @@ Shanghai::Application.routes.draw do
 
 #   get '/auth' => 'home#auth', :constraints => lambda{ |req| !req.params[:l].blank? }
 
-  root :to => "home#index", :constraints => LoggedInConstraint.new(false)
-  root :to => "home#dashboard", :constraints => LoggedInConstraint.new(true)
+  root :to => "home#index" #, :constraints => LoggedInConstraint.new(false)
+  #root :to => "home#dashboard", :constraints => LoggedInConstraint.new(true)
 
   # root :to => 'home#index'
 end

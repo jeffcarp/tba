@@ -2,7 +2,7 @@
 ===================================*/
 body {
   background: url(image_path('bg2.png'));
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: "Open Sans", sans-serif;
   color: #444;
 }
 ul {
@@ -45,12 +45,10 @@ header {
   border-bottom: solid 1px white;
   h1 {
     font-weight: 800;
-    font-size: 36px;
+    font-size: 24px;
     letter-spacing: -1px;
-    text-transform: uppercase;
     margin: 0 0 12px;
     text-shadow: 0 3px 2px #333;
-    font-family: "Open Sans", sans-serif;
     a {
       color: #fff;
       &:hover {
