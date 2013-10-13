@@ -31,6 +31,8 @@ Shanghai::Application.routes.draw do
 
   get "search" => "home#search"
 
+  get "new" => "posts#recent"
+
   match '/auth/:provider/callback', :to => 'sessions#create'
   match "/logout" => "sessions#destroy", :as => :signout
 
@@ -50,6 +52,7 @@ Shanghai::Application.routes.draw do
   get '/settings'    => 'home#settings', :as => 'settings'
   get '/compose'     => 'posts#compose', :as => 'compose'
   get '/guide'       => 'home#guide',    :as => 'guide'
+  get 'history'      => 'home#history',  :as => 'history'
   get '/help'        => 'home#help',     :as => 'help'
 
   post '/' => 'users#create', :as => 'home'

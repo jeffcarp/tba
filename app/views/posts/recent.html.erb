@@ -1,0 +1,7 @@
+<% @posts.each do |p| %>
+  <div style="margin-bottom:1em;">
+    <div style="font-size:14px; margin-bottom:0.2em;"><%= link_to p.title, p %></div>
+    <span><%= p.user.name %></span>
+    <span style="float:right;">votes</span>
+  </div>
+<% end %>

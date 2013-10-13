@@ -4,6 +4,8 @@ class Post < ActiveRecord::Base
   belongs_to :issue
   has_many :votes
 
+  default_scope order('created_at DESC')
+
   validates_length_of :content, maximum: 600
   validates_presence_of :user_id
   validates_presence_of :title, message: "Title cannot be blank. Post not saved."

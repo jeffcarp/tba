@@ -1,5 +1,23 @@
-#wrap.posts.compose {
-  width: 800px;
+form {
+
+  input[type='text'] {
+    display: block;
+    width: 97%;
+    margin: 0 0 1em;
+    padding: 6px;
+    font-size: 18px;
+    border: solid 2px #ccc;
+  }
+  textarea {
+    display: block;
+    border: solid 2px #ccc;
+    width: 97%;
+    padding: 6px;
+    margin: 0 0 1em;
+    height: 200px;
+    font-size: 18px;
+    line-height: 24px;
+  }
 
   h2 {
     margin: 0 0 24px;
@@ -9,7 +27,7 @@
     width: 500px;
     float: left; 
     
-    form .field {
+    .field {
       margin: 0 0 18px;
     }
     .filepicker {
@@ -21,29 +39,13 @@
         cursor: pointer;
       }
     }
-    form input[type='text'] {
-      display: block;
-      width: 90%;
-      padding: 6px;
-      font-size: 18px;
-      border: solid 2px #ccc;
-    }
-    form textarea {
-      display: block;
-      border: solid 2px #ccc;
-      width: 90%;
-      padding: 6px;
-      height: 200px;
-      font-size: 18px;
-      line-height: 24px;
-    }
-    form #submit {
+    #submit {
       text-align: center;
     }
-    form #char_counter {
+    #char_counter {
       font-weight: bold;
     }
-    form .disabled input {
+    .disabled input {
       color: #666;
       background-color: #eee;
     }

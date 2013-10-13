@@ -12,6 +12,10 @@ class PostsController < ApplicationController
     end
   end
 
+  def recent 
+    @posts = Post.limit(25)
+  end
+
   def show
     @post = Post.find(params[:id])
   end
