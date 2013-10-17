@@ -7,7 +7,6 @@ gem 'pg'
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
-  gem 'capybara'
   gem 'guard-rspec'
 end
 
@@ -38,5 +37,3 @@ gem 'dalli'
 
 gem 'wunderground'
 gem 'rails_autolink'
-
-gem 'nokogiri'
