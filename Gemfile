@@ -1,8 +1,15 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.11'
-
 gem 'pg'
+gem 'thin'
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+gem 'google-analytics-rails'
+gem 'maruku'
+gem 'delayed_job_active_record'
+gem 'wunderground'
+gem 'rails_autolink'
 
 group :development, :test do
   gem 'rspec-rails'
@@ -10,31 +17,14 @@ group :development, :test do
   gem 'guard-rspec'
 end
 
-gem 'googlecharts'
-
-gem 'thin'
+group :production do
+  gem 'therubyracer'
+  gem 'execjs'
+end
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
+  gem 'jquery-rails'
 end
-
-gem 'jquery-rails'
-gem 'd3-rails'
-
-gem 'omniauth'
-gem 'omniauth-google-oauth2'
-
-gem 'google-analytics-rails'
-
-gem 'maruku'
-
-gem 'newrelic_rpm'
-gem 'delayed_job_active_record'
-
-gem 'wunderground'
-gem 'rails_autolink'
-
-gem 'therubyracer'
-gem 'execjs'
