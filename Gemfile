@@ -33,7 +33,8 @@ gem 'maruku'
 gem 'newrelic_rpm'
 gem 'delayed_job_active_record'
 
-gem 'dalli'
-
 gem 'wunderground'
 gem 'rails_autolink'
+
+gem 'therubyracer'
+gem 'execjs'
