@@ -10,6 +10,7 @@
  *
  *= require_self
  *= require reset
+ *= require fungible 
  *= require home
  *= require compose 
  *= require ios-checkboxes

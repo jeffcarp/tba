@@ -41,8 +41,6 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.3)
-    d3-rails (3.3.7)
-      railties (>= 3.1)
     daemons (1.1.9)
     delayed_job (4.0.0)
       activesupport (>= 3.0, < 4.1)
@@ -62,8 +60,8 @@ GEM
       multipart-post (~> 1.2.0)
     ffi (1.9.0)
     formatador (0.2.4)
+    fungible-rails (0.0.6)
     google-analytics-rails (0.0.4)
-    googlecharts (1.6.8)
     guard (2.1.0)
       formatador (>= 0.2.4)
       listen (~> 2.1)
@@ -103,7 +101,6 @@ GEM
     multi_json (1.8.2)
     multi_xml (0.5.5)
     multipart-post (1.2.0)
-    newrelic_rpm (3.6.8.164)
     oauth2 (0.8.1)
       faraday (~> 0.8)
       httpauth (~> 0.1)
@@ -209,16 +206,14 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
-  d3-rails
   delayed_job_active_record
   execjs
   factory_girl_rails
+  fungible-rails
   google-analytics-rails
-  googlecharts
   guard-rspec
   jquery-rails
   maruku
-  newrelic_rpm
   omniauth
   omniauth-google-oauth2
   pg
