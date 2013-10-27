@@ -7,3 +7,10 @@ test:
   adapter: postgresql 
   database: shanghai-test
   host: localhost
+
+production:
+  adapter: postgresql
+  database: tba
+  host: localhost
+  user: postgres
+  password: timanous
