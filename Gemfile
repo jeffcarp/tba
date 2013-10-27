@@ -10,6 +10,7 @@ gem 'maruku'
 gem 'delayed_job_active_record'
 gem 'wunderground'
 gem 'rails_autolink'
+gem 'googlecharts'
 
 group :development, :test do
   gem 'rspec-rails'

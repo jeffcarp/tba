@@ -6,17 +6,8 @@
 
 <a href="/guide" class="<%= underline '/guide' %>">Guide</a>
 
-<a href="#" class="fire_global_search">Search</a>
-
 <a href="/logout" class="admin">Log out</a>
 
 <% if current_user.admin %>
   <a href="/stats" class="admin <%= current_controller?('stats') %>">Stats</a>
 <% end %>
-
-<div class="global_search" style="display:none;">
-  <input type="text" placeholder="Search..." />
-  <div class="results">
-
-  </div>
-</div>

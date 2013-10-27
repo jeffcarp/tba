@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <title>The Better Announcements</title>
+  <title>TBA</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
 
@@ -26,9 +26,9 @@
 </head>
 <body>
   <header>
-    <h1 style="z-index=1;position:relative;"><%= link_to 'The Better Announcements', :root %></a></h1>
+    <h1><%= link_to 'TBA', :root %></a></h1>
 
-    <nav style="z-index=1;position:relative;">
+    <nav>
       <% if current_user %>
         <%= render partial: 'layouts/nav' %>
       <% else %>
@@ -37,15 +37,18 @@
     </nav>
   </header>
   <div id="wrap" class="<%= params[:action] %> <%= params[:controller] %> clearfix">
+
     <div id="content" class="clearfix">
       <% if flash[:notice] %>
         <div class="notice"><%= flash[:notice] %></div>
       <% end %>
       <%= yield %>
     </div>
+
     <footer>
-      <p><strong>The Better Announcements</strong> are made by Jeff Carpenter '12, John Kalin '14, Mike Loginoff '16, and you. You can reach all of us at <a href="mailto:hello@announcements.io">hello@announcements.io</a>.</p>
+      <p><strong>TBA</strong> is by John Kalin '14, and Jeff Carpenter '12. Contact us at hi@colby.io</p>
     </footer>
+
   </div>
 </body>
 </html>
