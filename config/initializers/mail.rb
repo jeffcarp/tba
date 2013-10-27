@@ -1,7 +1,7 @@
 ActionMailer::Base.smtp_settings = {
-  :user_name => "announcementsio",
+  :user_name => "colbyio",
   :password => "timanous",
-  :domain => "tba.colby.io",
+  :domain => "colby.io",
   :address => "smtp.sendgrid.net",
   :port => 587,
   :authentication => :plain,
