@@ -12,7 +12,7 @@ class UserMailer < ActionMailer::Base
       to = @account.email
     end
 
-    mail(to: to, from: "tba@colby.io", subject: "Welcome to TBA!")
+    mail(to: to, from: "hi@colby.io", subject: "Welcome to TBA!")
   end
 
   def the_announcements(account, issue)
@@ -30,7 +30,7 @@ class UserMailer < ActionMailer::Base
     end
 
     puts "Sending announcement to "+ @account.email
-    mail(to: to, from: "tba@colby.io", subject: "TBA, " + @issue.publish_date.strftime('%B %-d, %Y'))
+    mail(to: to, from: "hi@colby.io", subject: "TBA, " + @issue.publish_date.strftime('%B %-d, %Y'))
 
   end
 
