@@ -50,7 +50,7 @@ class Issue < ActiveRecord::Base
 
     @accounts.each do |account|
       if account.receive
-        UserMailer.the_announcements(account, @issue)
+        UserMailer.the_announcements(account, @issue).deliver
       end
     end
 

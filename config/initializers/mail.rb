@@ -1,3 +1,4 @@
+=begin
 ActionMailer::Base.smtp_settings = {
   :user_name => "colbyio",
   :password => "timanous",
@@ -8,3 +9,5 @@ ActionMailer::Base.smtp_settings = {
   :enable_starttls_auto => true 
 }
 ActionMailer::Base.delivery_method = :smtp
+=end
+
