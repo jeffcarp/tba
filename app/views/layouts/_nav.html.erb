@@ -1,3 +1,7 @@
+<a href="/" class="<%= underline '/' %>">Today</a>
+
+<a href="/tomorrow" class="<%= underline '/tomorrow' %>">Tomorrow</a>
+
 <% if current_user.canpost %>
   <a href="/compose" class="<%= underline '/compose' %>">Compose</a>
 <% end %>
