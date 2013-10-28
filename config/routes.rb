@@ -15,7 +15,6 @@ Shanghai::Application.routes.draw do
   match 'stats/email',                    :to => 'stats#email'
   match 'stats/issues',                   :to => 'stats#issues'
   match 'stats/users',                    :to => 'stats#users'
-  match 'stats/infrastructure',           :to => 'stats#infrastructure'
   match 'stats',			                    :to => 'stats#index'
 
   get "accounts/update"
@@ -48,6 +47,7 @@ Shanghai::Application.routes.draw do
   get '/compose'     => 'posts#compose', :as => 'compose'
   get '/guide'       => 'home#guide',    :as => 'guide'
   get '/help'        => 'home#help',     :as => 'help'
+  get '/tomorrow'    => 'home#tomorrow', :as => 'tomorrow'
 
   post '/' => 'users#create', :as => 'home'
 

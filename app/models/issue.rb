@@ -35,9 +35,6 @@ class Issue < ActiveRecord::Base
 
   def self.send_announcements
 
-    # fucking weather
-    Rails.cache.delete('weather')
-
     puts "Sending announcements..."
 
     @accounts = Account.all
@@ -49,11 +46,14 @@ class Issue < ActiveRecord::Base
       # return false
     # end
 
-    @issue.mark_as_published
+    # TODO: PUT BACK IN
+    # @issue.mark_as_published
 
     @accounts.each do |account|
       if account.receive
-        UserMailer.delay.the_announcements(account, @issue)
+        puts "Sending to #{account.email}"
+        Notifier.announcements(account, @issue).deliver
+        # UserMailer.the_announcements(account, @issue).deliver
       end
     end
 

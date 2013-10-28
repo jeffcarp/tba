@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.11'
+gem 'rails', '3.2.14'
 gem 'pg'
 gem 'thin'
 gem 'omniauth'
@@ -10,6 +10,7 @@ gem 'maruku'
 gem 'delayed_job_active_record'
 gem 'wunderground'
 gem 'rails_autolink'
+gem 'googlecharts'
 
 group :development, :test do
   gem 'rspec-rails'

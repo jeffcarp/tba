@@ -5,36 +5,12 @@
 <body style="font-family:'Helvetica-Neue','Helvetica','Arial',sans-serif;width:600px;margin:0 auto;">
 
   <div class="header" style="margin: 0 0 40px; padding: 10px;">
-    <h1 style="font-size: 36px; color: #222; text-align: center;">The Better Announcements</h1>
+    <h1 style="font-size: 36px; color: #222; text-align: center;">TBA</h1>
 
     <h2 style="font-size: 14px; color: #555; text-align: center; font-weight: normal;"><%= @issue.publish_date.strftime('%B %-d, %Y') %></h2>
-
-    <% if @forecast %>
-    <table style="margin: 0 auto 24px; width:60%;">
-      <tr>
-        <% @forecast['forecast']['simpleforecast']['forecastday'].each_with_index do |f, i| %>
-          <td style="text-align:center;width:100px;vertical-align:top;">
-            <div><%= image_tag f['icon_url'] %></div>
-            <div style="font-size:13px;color:#444;margin:0 0 10px;font-weight:bold;">
-              <%= (i == 0) ? 'Today' : f['date']['weekday'] %>
-            </div>
-            <div style="font-size:12px;color:#031C34;margin:0 0 2px;">
-              <strong><%= f['high']['fahrenheit'] %></strong> <span style="font-size:10px;color:#888;">F</span>
-              <span>&nbsp;</span>
-              <strong><%= f['low']['fahrenheit'] %></strong> <span style="font-size:10px;color:#888;">F</span>
-            </div>
-            <div style="font-size:11px;color:#888;">
-              <%= f['conditions'] %>
-            </div>
-          </td>
-          <% break if i == 1 %>
-        <% end %>
-      </tr>
-    </table>
-    <% end %>
   </div>
 
-  <div style="text-align:center;margin:0 0 12px;"><a style="color:#0DB5DB;" href="<%= @uri_prefix %>">Read on announcements.io &raquo;</a></div>
+  <div style="text-align:center;margin:0 0 12px;"><a style="color:#0DB5DB;" href="<%= @uri_prefix %>">Read on tba.colby.io &raquo;</a></div>
 
 <!-- The Announcements -->
 <div>
@@ -120,7 +96,7 @@
   <!-- note: add settings and compose links -->
 
     <p style="margin: 24px 0; text-align: center;">
-      <a style="color:#0DB5DB;display:block;" href="<%= @uri_prefix %>">Login to The Better Announcements.</a>
+      <a style="color:#0DB5DB;display:block;" href="<%= @uri_prefix %>">Login to TBA.</a>
       <a style="color:#0DB5DB;display:block;" href="<%= @uri_prefix %>accounts/<%= @account.id %>/unsubscribe">Unsubscribe.</a>
     </p>
 

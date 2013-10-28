@@ -19,26 +19,21 @@ class HomeController < ApplicationController
     @posts = Post.find(:all, joins: [:issue, :user], conditions: ['issue_id = ?', @issue.id], order: 'users.karma DESC')
   end
 
+  def tomorrow 
+    @issue = Issue.upcoming_issue
+    @posts = Post.find(:all, joins: [:issue, :user], conditions: ['issue_id = ?', @issue.id], order: 'users.karma DESC')
+  end
+
   def settings
     @checkboxes = true
     @user = current_user
-    @posts_seen_times = ActiveRecord::Base.connection.execute("select count(s.id) from users u join posts p on p.user_id = u.id join issues i on p.issue_id = i.id join stats s on s.issue_id = i.id where u.id = #{current_user.id.to_s}")[0]['count']
+    # @posts_seen_times = ActiveRecord::Base.connection.execute("select count(s.id) from users u join posts p on p.user_id = u.id join issues i on p.issue_id = i.id join stats s on s.issue_id = i.id where u.id = #{current_user.id.to_s}")[0]['count']
     render 'home/settings'
   end
 
   def debug_email
 
     @account = current_user.accounts.first
-    wuapi = Wunderground.new("ae554e13f3e3461e")
-
-    @forecast = Rails.cache.read('weather_debug', @forecast)
-    @hit = 'hit'
-    if !@forecast
-      @hit = 'miss'
-      wuapi = Wunderground.new("ae554e13f3e3461e")
-      @forecast = wuapi.forecast_and_conditions_for("ME", "Waterville")
-      Rails.cache.write('weather_debug', @forecast, expires_in: 12.hours)
-    end
 
     @issue = Issue.upcoming_issue
     if params[:current]
@@ -49,7 +44,7 @@ class HomeController < ApplicationController
 
     @uri_prefix = 'http://localhost:3000/'
     @user = User.find_by_email "gcarpenterv@gmail.com"
-    render :layout => false, :template => 'user_mailer/the_announcements'
+    render :layout => false, :template => 'notifier/announcements'
   end
 
   def search

@@ -1,10 +1,13 @@
+=begin
 ActionMailer::Base.smtp_settings = {
-  :user_name => "announcementsio",
+  :user_name => "colbyio",
   :password => "timanous",
-  :domain => "announcements.io",
+  :domain => "colby.io",
   :address => "smtp.sendgrid.net",
   :port => 587,
   :authentication => :plain,
-  :enable_starttls_auto => false
+  :enable_starttls_auto => true 
 }
 ActionMailer::Base.delivery_method = :smtp
+=end
+

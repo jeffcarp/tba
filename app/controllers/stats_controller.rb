@@ -105,13 +105,15 @@ puts @posts_per_issue
     @users.each do |k,v|
       x_axis_labels << Date.parse(k).strftime("%b %-d") if index % 10 == 0 && k
       cumulative_total += v
-      opens_data << cumulative_total
+      opens_data.push cumulative_total
       index += 1
       min = cumulative_total if cumulative_total < min
       max = cumulative_total if cumulative_total > max
     end
     x_axis_labels.reverse!
-    # opens_data.reverse!
+    opens_data.reverse!
+
+    opens_data.map! {|d| cumulative_total - d} 
 
     @users_chart = Gchart.line(:size => '600x300',
       :axis_with_labels => 'x,y',

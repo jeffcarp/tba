@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body style="font-family:'Helvetica-Neue','Helvetica','Arial',sans-serif;width:600px;margin:0 auto;">
+
+  <div class="header" style="margin: 0 0 40px; padding: 10px;">
+    <h1 style="font-size: 36px; color: #222; text-align: center;">TBA</h1>
+
+    <h2 style="font-size: 14px; color: #555; text-align: center; font-weight: normal;"><%= @issue.publish_date.strftime('%B %-d, %Y') %></h2>
+  </div>
+
+  <table>
+    <% @posts.each_with_index do |post, i| %>
+      <% if i.even? %>
+        <tr>
+      <% end %>
+
+        <td style="vertical-align:top;">
+          <% if post.photo_url && !post.photo_url.empty? %>
+            <a href="BASEURLWHATEVERITIS<%= post.id %>"><img src="<%= post.photo_url %>/convert?w=285" style="border:solid 1px #ccc;" /></a>
+          <% end %>
+           
+          <h3><%= post.title %></h3>
+
+          <div>
+            <%= post.content %> 
+          </div> 
+        </td> 
+        
+      <% if i.odd? || i+1 == @posts.count %>
+        </tr>
+      <% end %>
+    <% end %>
+  </table>
+
+  <div>
+    <%= @posts.inspect %>
+  </div>
+
+  </body>
+</html>
