@@ -1,20 +1,11 @@
 class User < ActiveRecord::Base
-  attr_accessible
 
   has_many :posts, :dependent => :destroy
   has_many :accounts, :dependent => :destroy
   has_many :votes, :dependent => :destroy
   has_many :stats
 
-  # validates_uniqueness_of :email, :message => "%{value} has already been registered. To log into your account, follow the login link in an email from us."
-  # validates_presence_of :email
   validates_length_of :name, maximum: 128
-
-  # validates :email,
-  #   :format => {
-  #     :with => /^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@colby.edu/,
-  #     :message => "must be @colby.edu."
-  #   }
 
   def primary_email
     self.accounts.first.email
@@ -51,22 +42,6 @@ class User < ActiveRecord::Base
         user.canpost = true
       end
 
-    end
-  end
-
-
-  def self.migrate_users_to_accounts()
-
-    @users = User.all
-    @users.each do |user|
-
-
-      account = user.accounts.create
-      account.provider = user.provider
-      account.uid = user.uid
-      account.email = user.email
-
-      account.save
     end
   end
 

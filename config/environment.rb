@@ -8,11 +8,10 @@ APP_VERSION = `git describe --always` unless defined? APP_VERSION
 
 ActionMailer::Base.smtp_settings = {
   :user_name => 'colbyio',
-  :password => 'timanous',
+  :password => ENV['SENDGRID_COLBYIO_PASS'],
   :domain => 'colby.io',
   :address => 'smtp.sendgrid.net',
   :port => 587,
   :authentication => :plain,
   :enable_starttls_auto => true
 }
-ActionMailer::Base.delivery_method = :smtp

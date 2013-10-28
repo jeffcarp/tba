@@ -41,7 +41,7 @@ class PostsController < ApplicationController
       if @post.save
         format.html { redirect_to :compose, notice: "Announcement was successfully created." }
       else
-        format.html { redirect_to :compose, notice: "Sorry, there was a problem saving your post. If you email us at hello@announcements.io we'll get back to you on the double." }
+        format.html { redirect_to :compose, notice: "Sorry, there was a problem saving your post. If you email us at hi@colby.io we'll get back to you on the double." }
       end
     end
   end
@@ -51,7 +51,7 @@ class PostsController < ApplicationController
     if @post.update_attributes(params[:post])
       redirect_to :compose, :notice => "Announcement was successfully updated."
     else
-      redirect_to :compose, :notice => "Sorry, there was a problem saving your post. If you email us at hello@announcements.io we'll get back to you on the double."
+      redirect_to :compose, :notice => "Sorry, there was a problem saving your post. If you email us at hi@colby.io we'll get back to you on the double."
     end
   end
 

@@ -28,10 +28,6 @@
         <td>Posts</td>
         <td><strong><%= @user.posts.count %></strong></td>
       </tr>
-      <tr>
-        <td>Number of times your posts have been viewed</td>
-        <td><strong><%= @posts_seen_times %></strong></td>
-      </tr>
   </table>
 
   <% if @user.admin %>
@@ -42,6 +38,6 @@
       <p>Since you have a non-colby.edu address, you can receive the announcements but cannot post to them.</p>
   <% end %>
 
-  <p>Currently names are not editable. If you need to change yours, <a href="mailto:hello@announcements.io">contact</a> us.</p>
+  <p>Currently names are not editable. If you need to change yours, <a href="mailto:hi@colby.io">contact</a> us.</p>
 
 </section>
