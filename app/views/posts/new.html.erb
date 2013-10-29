@@ -1,9 +1,3 @@
-<% if @already %>
-  <h2 class="green">Post scheduled for <%= @issue.publish_date.strftime('%B %-d, %Y') %></h2>
-<% else %>
-  <h2>Composing post for tomorrow, <%= @issue.publish_date.strftime('%B %-d, %Y') %></h2>
-<% end %>
-
 <div class="hidden user-info" 
      data-user-name="<%= current_user.name %>">
 </div>
@@ -52,7 +46,6 @@
     <% end %>
     <div class="field">
       <%= f.hidden_field :user_id, :value => current_user.id %>
-      <%= f.hidden_field :issue_id, :value => @issue.id %>
       <%= f.hidden_field :photo_url, :value => @post.photo_url, :class => "photo_url" %>
     </div>
     <div class="field">

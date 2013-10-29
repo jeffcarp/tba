@@ -12,11 +12,10 @@ class HomeController < ApplicationController
   end
 
   def dashboard
-    @issue = Issue.current_issue
-    if params[:upcoming]
-      @issue = Issue.upcoming_issue
-    end
-    @posts = Post.find(:all, joins: [:issue, :user], order: 'users.karma DESC', limit: 10)
+    @aside_title = "Home"
+    @posts = Post.find(:all, joins: [:user], order: 'users.karma DESC', limit: 10)
+    @post = @posts.first
+    render 'posts/show'
   end
 
   def tomorrow 

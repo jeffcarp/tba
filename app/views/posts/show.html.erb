@@ -1,59 +1,23 @@
-<!-- THIS IS COPIED FROM VIEWS/HOME/DASHBOARD -->
-<table>
-  <tr>
-    <td style="width:400px;">
+<% if @post.photo_url && !@post.photo_url.empty? %>
+  <div>
+    <img src="<%= @post.photo_url %>/convert?w=960" style="width:100%;" />
+  </div>
+<% end %>
 
-      <div class="pk badr">
-        <h2 class="fwn sj grey mcb">Home</h2>
+<div class="pk">
 
-          <% @posts.each_with_index do |post, i| %>
-            <div class="pfy sidepost <%= 'current' if @post.id == post.id %>">
-              <a href="/posts/<%= post.id.to_s %>">
+  <h2 class="sm mbb"><%= @post.title %></h2>
 
-                <% if post.photo_url && !post.photo_url.empty? %>
-                    <img src="<%= post.photo_url %>/convert?w=120" 
-                         style="width:120px;"
-                         class="right" />
-                <% end %>
-
-                <h3 class="sh mcb"><%= post.title %></h3>
-                <div class="fwb mdb"><%= post.public_user_name.upcase  %></div>
-
-                <div class="">
-                  <%= simple_format(auto_link(post.content)) %>
-                </div>
-
-              </a>
-            </div>
-          <% end %>
-      </div>
-
-    </td>
-    <td>
-
-      <% if @post.photo_url && !@post.photo_url.empty? %>
-        <div>
-          <img src="<%= @post.photo_url %>/convert?w=960" style="width:100%;" />
-        </div>
-      <% end %>
-
-      <h2>
-        <%= @post.title %>
-      </h2>
-      <div class="post_info">
-        <% if @post.anon %>
-          <span><strong>Anonymous</strong></span>
-        <% else %>
-          <span><%= link_to @post.user.name, @post.user %></strong></span>
-        <% end %>
-        <span><%= @post.issue.publish_date.strftime('%B %-d, %Y') %></span>
+  <div class="post_info">
+    <% if @post.anon %>
+      <span><strong>Anonymous</strong></span>
+    <% else %>
+      <span><%= link_to @post.user.name, @post.user %></strong></span>
+    <% end %>
 
 
-      </div>
+  </div>
 
-      <div><%= simple_format(auto_link(@post.content)) %></div>
+  <div><%= simple_format(auto_link(@post.content)) %></div>
 
-
-    </td>
-  </tr>
-</table>
+</div>
