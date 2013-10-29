@@ -15,3 +15,8 @@
  *= require compose 
  *= require ios-checkboxes
 */
+
+/* Add to fungible */
+.ligrey {
+  color: #ccc;
+}

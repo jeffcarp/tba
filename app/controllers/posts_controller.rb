@@ -4,6 +4,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @posts = Post.find(:all, joins: [:issue, :user], limit: 10)
   end
 
   def compose

@@ -1,20 +1,16 @@
 /* Global
 ===================================*/
 body {
-  background: url(image_path('bg2.png'));
   font-family: "Source Sans Pro", sans-serif;
-  color: #444;
+  color: #222;
 }
 ul {
   margin: 0;
   list-style: none;
 }
 a {
-  color: #0db5db;
-  font-weight: bold;
 }
 a:hover {
-  color: #0a8dab;
 }
 .notice {
   background-color: #ddd;
@@ -22,25 +18,35 @@ a:hover {
   margin: 0 0 18px;
 }
 
+/* New 
+===================================*/
+.sidepost {
+  a {
+    color: #888;
+    &:hover {
+      color: #444;
+    }
+  }
+  &.current a {
+    color: #444; 
+  }
+}
+
 /* Layout
 ===================================*/
 #wrap {
-  width: 600px;
-  margin: 64px auto 0;
+  # width: 960px;
 }
 #content {
-  img.full_width {
-    width: 100%;
-  }
 }
 
 /* Header
 ===================================*/
 header {
+  display: none;
   margin: 0 0 24px;
   text-align: center;
   color: #fff;
-  background-color: #031c34;
   padding: 24px 0;
   border-bottom: solid 1px white;
   h1 {
@@ -49,12 +55,10 @@ header {
     letter-spacing: -1px;
     text-transform: uppercase;
     margin: 0 0 12px;
-    text-shadow: 0 3px 2px #333;
-    font-family: "Open Sans", sans-serif;
     a {
-      color: #fff;
+      color: #333;
       &:hover {
-        color: #eee;
+        color: #555;
       }
     }
   }
@@ -122,50 +126,13 @@ header {
 /* Content
 ===================================*/
 #content {
-  h1, h2, h3, h4, h5 {
-    color: #444;
-    margin: 0 0 18px;
-  }
-  h1 {
-    font-size: 32px;
-  }
-  h2 {
-    font-size: 20px;
-    color: #555;
-  }
-  h3 {
-  }
-  p {
-    font-size: 14px;
-    line-height: 20px;
-    margin: 0 0 18px;
-  }
-  section {
-    margin: 0 0 48px;
-  }
   table {
     width: 100%;
-    margin: 0 0 24px;
+    border-collapse: collapse;
     tr {
-      background-color: #a9ebfa;
-      th {
-        padding: 18px;
-        font-size: 16px;
-      }
       td {
-        padding: 12px;
-        font-size: 14px;
+        vertical-align: top;
       }
-    }
-    a {
-      color: #333;
-      border-bottom: dotted 1px #777;
-      &:hover {
-        color: #555;
-      }
-    }
-    .weekend {
-      background-color: #69dcf6;
     }
   }
 }

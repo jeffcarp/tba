@@ -16,7 +16,7 @@ class HomeController < ApplicationController
     if params[:upcoming]
       @issue = Issue.upcoming_issue
     end
-    @posts = Post.find(:all, joins: [:issue, :user], conditions: ['issue_id = ?', @issue.id], order: 'users.karma DESC')
+    @posts = Post.find(:all, joins: [:issue, :user], order: 'users.karma DESC', limit: 10)
   end
 
   def tomorrow 

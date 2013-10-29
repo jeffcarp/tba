@@ -26,7 +26,7 @@
 </head>
 <body>
   <header>
-    <h1><%= link_to 'TBA', :root %></a></h1>
+    <h1 class="grey"><%= link_to 'TBA', :root %></a></h1>
 
     <nav>
       <% if current_user %>
@@ -44,10 +44,6 @@
       <% end %>
       <%= yield %>
     </div>
-
-    <footer>
-      <p><strong>TBA</strong> is by John Kalin '14, and Jeff Carpenter '12. Contact us at <a href="hi@colby.io">hi@colby.io</a></p>
-    </footer>
 
   </div>
 </body>
