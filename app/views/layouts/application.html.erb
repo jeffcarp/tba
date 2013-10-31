@@ -25,6 +25,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="pf" style="background-color:#f6fbd0;">
+    <strong>This is a pre-release version of TBA. Please do not share this with anyone yet.</strong> The only people on here are: <%= User.all.map{|u| u.name+" ("+u.accounts.first.email+")"}.join ', ' %>
+  </div>
   <header>
     <h1><%= link_to 'TBA', :root %></a></h1>
 
