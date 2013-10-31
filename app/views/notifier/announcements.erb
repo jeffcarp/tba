@@ -5,10 +5,9 @@
   </head>
   <body style="font-family:'Helvetica-Neue','Helvetica','Arial',sans-serif;width:600px;margin:0 auto;">
 
-  <div class="header" style="margin: 0 0 40px; padding: 10px;">
-    <h1 style="font-size: 36px; color: #222; text-align: center;">TBA</h1>
-
-    <h2 style="font-size: 14px; color: #555; text-align: center; font-weight: normal;"><%= @issue.publish_date.strftime('%B %-d, %Y') %></h2>
+  <div class="header" style="margin:0 0 40px; padding:10px; background-color:#031c34; text-align:center;">
+    <h1 style="font-size:32px; color:#fff; margin-bottom:12px;">TBA</h1>
+    <p style="font-size: 14px; color:#ccc;"><%= @issue.publish_date.strftime('%B %-d, %Y') %></p>
   </div>
 
   <table>
@@ -17,14 +16,18 @@
         <tr>
       <% end %>
 
-        <td style="vertical-align:top;">
+        <td style="vertical-align:top; padding:0 0.4em; width:299px;">
           <% if post.photo_url && !post.photo_url.empty? %>
-            <a href="BASEURLWHATEVERITIS<%= post.id %>"><img src="<%= post.photo_url %>/convert?w=285" style="border:solid 1px #ccc;" /></a>
+            <a href="<%= @base_url %>"><img src="<%= post.photo_url %>/convert?w=285" style="border:solid 1px #ccc; width:100%;" /></a>
           <% end %>
-           
-          <h3><%= post.title %></h3>
 
-          <div>
+          <div style="font-size:13px; color:#888; margin:0.4em 0;">
+            <%= post.name_str.upcase %>
+          </div>
+           
+          <h3 style="margin:0 0 0.5em;"><a href="<%= @base_url %>" style="text-decoration:none;font-size:24px; color:#333;"><%= post.title %></a></h3>
+
+          <div style="color:#555; font-size:14px; line-height:20px;">
             <%= post.content %> 
           </div> 
         </td> 
@@ -35,9 +38,12 @@
     <% end %>
   </table>
 
-  <div>
-    <%= @posts.inspect %>
-  </div>
+  <p style="margin:4em 0 0; padding:1em; text-align:center; font-size:14px; background-color:#eee;">
+    <a style="color:#0DB5DB;display:block;margin-bottom:0.4em; text-decoration:none;" href="<%= @base_url %>/">Go to TBA</a>
+    <a style="color:#0DB5DB;display:block; text-decoration:none;" href="<%= @base_url %>/accounts/<%= @account.id %>/unsubscribe">Unsubscribe</a>
+  </p>
+
+  <img src="<%= @uri_prefix %>stats/image/<%= @account.user.id %>/<%= @issue.id %>" />
 
   </body>
 </html>

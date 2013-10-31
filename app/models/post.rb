@@ -17,5 +17,9 @@ class Post < ActiveRecord::Base
     # self.content
     # Maruku.new(content).to_html
   # end
+  
+  def name_str
+    self.anon ? "Anonymous" : self.user.name
+  end
 
 end

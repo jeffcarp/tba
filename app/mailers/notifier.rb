@@ -1,5 +1,6 @@
 class Notifier < ActionMailer::Base
   default from: "hi@colby.io"
+  @base_url = "http://tba.colby.io"
 
   def send_signup_email(email)
     @email = email
