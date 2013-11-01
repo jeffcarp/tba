@@ -1,12 +1,11 @@
 <% @posts.each_with_index do |post, i| %>
-  <div class="pfy sidepost clearfix <%= 'current' if @post ? @post.id == post.id : i == 0 %>">
-    <a href="/posts/<%= post.id.to_s %>">
-
+  <div class="pf sidepost clearfix <%= 'current' if @post ? @post.id == post.id : i == 0 %>"
       <% if post.photo_url && !post.photo_url.empty? %>
-          <img src="<%= post.photo_url %>/convert?w=120" 
-               style="width:120px;"
-               class="right dib mdl mdb" />
+        style="background-image: url('<%= post.photo_url %>/convert?w=420');"
       <% end %>
+    >
+    <a href="/posts/<%= post.id.to_s %>" class="white">
+
 
       <h3 class="sh mcb"><%= post.title %></h3>
 

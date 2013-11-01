@@ -1,130 +1,44 @@
-/* Global
-===================================*/
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
 body {
   font-family: "Source Sans Pro", sans-serif;
   color: #222;
+  -webkit-font-smoothing: antialiased;
 }
+
 ul {
   margin: 0;
   list-style: none;
 }
 a {
+  text-decoration: none;
+  color: #888;
 }
 a:hover {
+  color: #444;
 }
+
 .notice {
   background-color: #ddd;
   padding: 12px;
   margin: 0 0 18px;
 }
 
-/* New 
-===================================*/
 .sidepost {
-  a {
-    color: #888;
-    &:hover {
-      color: #444;
-    }
-  }
+  background-size: cover;
   &.current a {
     color: #444; 
   }
 }
 
-/* Layout
-===================================*/
-#wrap {
-  # width: 960px;
-}
-#content {
-}
-
-/* Header
-===================================*/
-header {
-  display: none;
-  margin: 0 0 24px;
-  text-align: center;
-  color: #fff;
-  padding: 24px 0;
-  border-bottom: solid 1px white;
-  h1 {
-    font-weight: 800;
-    font-size: 36px;
-    letter-spacing: -1px;
-    text-transform: uppercase;
-    margin: 0 0 12px;
-    a {
-      color: #333;
-      &:hover {
-        color: #555;
-      }
-    }
-  }
-  nav {
-    font-size: 13px;
-    font-family: "Helvetica", "Arial", sans-serif;
-    a {
-      padding: 0 0 2px;
-      margin: 0 12px 0 0;
-    }
-    a.admin {
-      color: #888;
-      &:hover{
-        color: #bbb;
-      }
-    }
-    a.current {
-      border-bottom: solid 2px;
-    }
-  }
-  .global_search {
-    margin: 24px auto 0;
-    width: 600px;
-    input {
-      width: 400px;
-      font-size: 18px;
-      border: solid 2px #ccc;
-    }
-    .results {
-      color: white;
-      margin: 12px 0 0;
-      text-align: left;
-      h3 {
-        border-radius: 3px;
-        border: solid 1px #042544;
-        border-bottom: solid 1px #073f74;
-        background-color: #010b14;
-        padding: 5px;
-        margin: 4px 0;
-      }
-      > div {
-        padding: 5px;
-        border-radius: 3px;
-        &:hover {
-          cursor: pointer;
-          background-color: #052d54;
-        }
-      }
-      strong {
-        color: #0db5db;
-      }
-      h4 {
-        font-size: 16px;
-        margin: 0 0 4px;
-      }
-      h5 {
-        font-weight: normal;
-        color: #bbb;
-        margin: 0 0 4px;
-      }
-    }
-  }
-}
-
-/* Content
-===================================*/
 table {
   width: 100%;
   border-collapse: collapse;
@@ -134,302 +48,3 @@ table {
     }
   }
 }
-
-section {
-  margin: 0 0 24px;
-}
-section p {
-  font-size: 14px;
-}
-section ul {
-  margin: 0 0 12px 24px;
-  list-style-type: disc;
-  font-size: 14px;
-}
-section li {
-  margin: 0 0 6px;
-}
-
-.error_explanation {
-  padding: 12px 12px 0;
-  margin: 0 0 12px;
-  background-color: #f7384a;
-  color: white;
-  p {
-    display: block;
-    padding: 0 0 12px;
-  }
-}
-
-
-/* Settings
-===================================*/
-.setting {
-  background-color: #ddd;
-  padding: 18px;
-  label {
-    float: left;
-    font-size: 16px;
-    color: #222;
-    padding: 5px 0 0;
-  }
-  .checkbox {
-    float: right;
-  }
-}
-.setting:nth-child(even) {
-  background-color: #eee;
-}
-
-
-/* Random
-===================================*/
-.inset {
-  background-color: #333;
-  color: white;
-  padding: 12px;
-  margin: 0 0 12px;
-  border-top: solid 2px #ddd;
-  border-bottom: solid 2px #555;
-}
-
-/* Footer
-===================================*/
-footer {
-  font-family: "Helvetica", "Arial", sans-serif;
-  margin: 24px 0 0;
-  padding: 12px 0;
-  border-top: solid 1px #ccc;
-  font-size: 12px;
-  line-height: 17px;
-}
-
-/* Page Specific
-===================================*/
-#content .home_index {
-  text-align: center;
-  .hook {
-    font-size: 18px;
-    line-height: 24px;
-    margin: 0 0 64px;
-  }
-  h3 {
-    font-size: 26px;
-  }
-  h4 {
-    font-weight: normal;
-    font-size: 16px;
-  }
-  .to_guide {
-    margin: 42px 0 24px;
-  }
-  .elaboration {
-    font-size: 13px;
-  }
-}
-#content .home_dashboard {
-  .announcements {
-    .announcement {
-      table.title {
-        color: #333;
-        // background-color: #0DB5DB;
-        margin: 0 0 6px;
-        a {
-          color: #333;
-          padding: 2px;
-          font-weight: normal;
-          &:hover {
-            color: #555;
-            border-bottom: dotted 1px #a9ebfa;
-          }
-        }
-        tr {
-          // padding: 0px;
-          // margin: 0;
-          td {
-            // padding: 0;
-            // margin: 0;
-            font-size: 16px;
-            vertical-align: center;
-          }
-          td.like_count {
-            width: 5%;
-            text-align:center;
-          }
-          td.headline {
-            font-weight: bold;
-          }
-          td:first-child {
-            width: 25%;
-          }
-          td.vote_box {
-            width: 5%;
-            text-align: center;
-          }
-        }
-      }
-      .body {
-        padding: 10px;
-        font-size: 13px;
-        line-height: 18px;
-        p {
-          margin: 0 0 12px;
-        }
-      }
-    }
-  }
-}
-
-.voting {
-  span {
-    color: #333;
-  }
-  .upvote, .upvoted {
-    &:hover {
-      color: #ef7b85;
-      cursor: pointer;
-    }
-  }
-}
-
-#content .user_show,
-#content .post_show {
-  .inset {
-    margin: 0 0 48px;
-  }
-  .post {
-    margin: 0 0 48px;
-    h2 {
-      font-size: 22px;
-      margin: 0 0 4px;
-    }
-    .post_info {
-      margin: 0 0 8px;
-      span {
-        margin: 0 8px 0 0;
-      }
-    }
-  }
-}
-
-.stats_nav {
-  background: rgba(0, 0, 0, 0.1);
-  padding: 12px;
-  margin: 0 0 24px;
-  border-bottom: solid 1px #ccc;
-  a {
-    color: #444;
-    margin: 0 18px 0 0;
-    &:hover {
-      color: #777;
-    }
-  }
-}
-
-/* One-off
-===================================*/
-.google_login {
-box-sizing: border-box;
-margin: 0;
-text-decoration: none;
-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
--webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
-border-radius: 3px;
--webkit-border-radius: 3px;
-outline: 0;
-position: relative;
-padding: .4em .6em;
-font-size: 1.6em;
-border: 1px solid #4D90FE;
-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#5796fe',endColorstr='#3480fe',GradientType=0);
-background-color: #498DFE;
-background-image: -moz-linear-gradient(top,#5796FE,#3480FE);
-background-image: -ms-linear-gradient(top,#5796FE,#3480FE);
-background-image: -webkit-gradient(linear,0 0,0 100%,from(#5796FE),to(#3480FE));
-background-image: -webkit-linear-gradient(top,#5796FE,#3480FE);
-background-image: -o-linear-gradient(top,#5796FE,#3480FE);
-background-image: linear-gradient(top,#5796FE,#3480FE);
-background-repeat: repeat-x;
-border-color: #3480FE #3480FE #0157E4;
-color: white;
-text-shadow: 0 -1px 1px #013388;
-font-family: "PT Sans", sans-serif;
-  &:hover  {
-    color: white;
-    transition-delay: 0.5s;
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80b0fe',endColorstr='#3480fe',GradientType=0);
-background-color: #619DFE;
-background-image: -moz-linear-gradient(top,#80B0FE,#3480FE);
-background-image: -ms-linear-gradient(top,#80B0FE,#3480FE);
-background-image: -webkit-gradient(linear,0 0,0 100%,from(#80B0FE),to(#3480FE));
-background-image: -webkit-linear-gradient(top,#80B0FE,#3480FE);
-background-image: -o-linear-gradient(top,#80B0FE,#3480FE);
-background-image: linear-gradient(top,#80B0FE,#3480FE);
-background-repeat: repeat-x;
-border-color: #3480FE #3480FE #0157E4;
-  }
-}
-
-.iphone_app_photo {
-  float: right;
-  width: 200px;
-}
-.iphone_description {
-  width: 350px;
-}
-.download_app_store {
-  margin: 0 0 0 75px;
-}
-
-/* Responsive
-===================================*/
-@media screen and (max-width: 624px) {
-
-  #wrap {
-    width: 94%;
-    margin: 12px auto;
-  }
-  #content {
-    table {
-      tr {
-        th {
-          padding: 12px 0;
-          font-size: 12px;
-        }
-        td {
-          padding: 12px 4px;
-          font-size: 12px;
-        }
-      }
-    }
-  }
-  header {
-    h1 {
-      font-size: 24px;
-    }
-    nav {
-      font-size: 11px;
-    }
-  }
-  form input[type='text'] {
-    width: 90%;
-    margin: 0 auto;
-  }
-  form textarea {
-    width: 90%;
-    margin: 0 auto;
-  }
-  form #char_counter {
-    text-align: center;
-  }
-  #submit {
-    text-align: center;
-  }
-  .setting label {
-    font-size: 12px;
-  }
-  html {
-    -webkit-text-size-adjust:none;
-  }
-}
-

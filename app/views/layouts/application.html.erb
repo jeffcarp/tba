@@ -32,10 +32,27 @@
         <div class="notice"><%= flash[:notice] %></div>
       <% end %>
 
-      <div class="pk">
-        <h2 class="fwn sj grey mcb"><%= @aside_title %></h2>
+      <div class="pky">
+    
+        <div class="sf mfb">
+          <a href="/" class="dib mdr">Home</a>
+          <a href="/newest" class="dib mdr">Newest</a>
+          <% if current_user %>
+            <a href="/drafts" class="dib mdr">Drafts</a>
+          <% end %>
+        </div>
 
         <%= render 'shared/posts' %>
+    
+        <div class="mkt">
+          <span class="mfr"><a href="/compose">Compose</a></span>
+          <% if current_user %>
+            <span class="mfr"><a href="/settings"><%= current_user.name %></a></span>
+            <span class="mfr"><a href="/logout">Log out</a></span>
+          <% else %>
+            <span class="mfr"><a href="/auth/google_oauth2">Sign in</a></span>
+          <% end %>
+        </div>
 
       </div>
 

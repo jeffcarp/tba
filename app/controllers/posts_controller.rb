@@ -1,7 +1,5 @@
 class PostsController < ApplicationController
 
-  before_filter :authenticate
-
   def show
     @aside_title = "Popular"
     @post = Post.find(params[:id])

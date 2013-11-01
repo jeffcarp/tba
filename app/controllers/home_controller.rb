@@ -4,18 +4,15 @@ class HomeController < ApplicationController
   caches_page [:index, :guide, :dashboard], :expires_in => 10.minutes
 
   def index
+    @aside_title = "Home"
+    @posts = Post.find(:all, joins: [:user], order: 'users.karma DESC', limit: 10)
+    @post = @posts.first
+    render 'posts/show'
   end
 
   def guide
     @colby_emails_count = Account.where("email LIKE ?", "%@colby.edu").count
     @colby_percentage = ((@colby_emails_count.to_f / 1825) * 100).to_i
-  end
-
-  def dashboard
-    @aside_title = "Home"
-    @posts = Post.find(:all, joins: [:user], order: 'users.karma DESC', limit: 10)
-    @post = @posts.first
-    render 'posts/show'
   end
 
   def tomorrow 

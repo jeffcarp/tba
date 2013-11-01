@@ -5,12 +5,12 @@ development:
 
 test:
   adapter: postgresql 
-  database: shanghai-test
+  database: shanghaitest
   host: localhost
 
 production:
   adapter: postgresql
-  database: tba
+  database: tbawhite
   host: localhost
   user: postgres
   password: timanous
