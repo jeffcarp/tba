@@ -47,7 +47,7 @@ class Issue < ActiveRecord::Base
     # end
 
     # TODO: PUT BACK IN
-    # @issue.mark_as_published
+    @issue.mark_as_published
 
     @accounts.each do |account|
       if account.receive
