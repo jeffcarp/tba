@@ -1,24 +1,22 @@
-<% @posts.each_with_index do |post, i| %>
-  <% current = 'current' if @post ? @post.id == post.id : i == 0 %>
-  <div 
-      <% if post.photo_url && !post.photo_url.empty? %>
-        style="background: url('<%= post.photo_url %>/convert?w=420');"
-        class="pf sidepost white clearfix <%= current  %>"
-      <% else %>
-        class="pf sidepost clearfix <%= current  %>"
-      <% end %>
-    >
-    <a href="/posts/<%= post.id.to_s %>">
+ <% @posts.each_with_index do |post, i| %>
+  <div class="pf badb sidepost clearfix <%= 'current' if @post ? @post.id == post.id : i == 0 %>">
 
+    <% if post.photo_url && !post.photo_url.empty? %>
+      <a href="<%= post_path(post) %>"><img src="<%= post.photo_url %>/convert?w=120" 
+           style="width:120px;" 
+           class="right mdl mdb" /></a>
+    <% end %>
 
-      <h3 class="sh mcb"><%= post.title %></h3>
+    <h3 class="sh mcb"><%= link_to post.title, post %></h3>
+    <p>points: <%= post.score %></p>
+    <p><a href="/posts/<%= post.id %>/upvote">upvote</a></p>
+    <p><a href="/posts/<%= post.id %>/downvote">downvote</a></p>
 
-      <div class="fwb mdb"><%= post.public_user_name.upcase  %></div>
+    <div class="fwb mdb"><%= post.public_user_name.upcase  %></div>
 
-      <div class="">
-        <%= simple_format(auto_link(truncate(post.content, length: 140)))%>
-      </div>
+    <div>
+      <%= link_to simple_format(auto_link(truncate(post.content, length: 140))), post %>
+    </div>
 
-    </a>
   </div>
 <% end %>

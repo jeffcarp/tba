@@ -5,7 +5,7 @@ class HomeController < ApplicationController
 
   def index
     @aside_title = "Home"
-    @posts = Post.find(:all, joins: [:user], order: 'users.karma DESC', limit: 10)
+    @posts = Post.popular
     @post = @posts.first
     render 'posts/show'
   end

@@ -3,11 +3,31 @@ class PostsController < ApplicationController
   def show
     @aside_title = "Popular"
     @post = Post.find(params[:id])
-    @posts = Post.find(:all, joins: [:user], limit: 10)
+    @posts = Post.popular
+  end
+
+  def upvote
+    if current_user
+      @post = Post.find(params[:id])
+      @post.upvote(current_user) if @post
+    end
+    redirect_to :root 
+  end
+
+  def downvote
+    if current_user
+      @post = Post.find(params[:id])
+      @post.downvote(current_user) if @post
+    end
+    redirect_to :root 
   end
 
   def new 
     # Check if user has already made a post for this edition
+    if !current_user
+      redirect_to :root
+    end
+
     @aside_title = "Your drafts"
     @posts = current_user.posts
     @post = Post.new
