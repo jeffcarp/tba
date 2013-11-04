@@ -1,5 +1,11 @@
 class PostsController < ApplicationController
 
+  def newest
+    @posts = Post.order('created_at DESC').limit(10)
+    @post = @posts.first
+    render 'posts/show'
+  end
+
   def show
     @aside_title = "Popular"
     @post = Post.find(params[:id])

@@ -24,14 +24,6 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @posts = @user.posts.order('created_at DESC').where('anon = ?', false)
-    if @posts.count == 0
-      # if Rails.cache.read(:loud_mouths)
-        # @loud_mouths = Rails.cache.read(:loud_mouths)
-      # else
-        @loud_mouths = User.all.sort_by(&:posts_count).reverse[0..10]
-        # Rails.cache.write(:loud_mouths, @loud_mouths)
-      # end
-    end
   end
 
   def edit

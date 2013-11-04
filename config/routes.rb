@@ -25,6 +25,8 @@ Shanghai::Application.routes.draw do
   get "posts/:id/upvote" => "posts#upvote"
   get "posts/:id/downvote" => "posts#downvote"
 
+  get "newest" => "posts#newest"
+
   get "accounts/:id/unsubscribe" => "accounts#unsubscribe", :as => "unsubscribe"
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"

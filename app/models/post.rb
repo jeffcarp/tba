@@ -16,13 +16,26 @@ class Post < ActiveRecord::Base
   end
 
   def upvote(user)
+    already = self.upvoted_by?(user)
     clear_votes(user)
-    self.votes << user.votes.new(up: true)
+    self.votes << user.votes.new(up: true) if !already
   end
 
   def downvote(user)
     clear_votes(user)
     self.votes << user.votes.new(up: false)
+  end
+
+  def upvotes
+    self.votes.where(up: true).count
+  end
+
+  def downvotes 
+    self.votes.where(up: true).count
+  end
+
+  def upvoted_by?(user)
+    Vote.where('user_id=? AND post_id=?', user.id, self.id).exists?
   end
 
   def clear_votes(user)
@@ -51,11 +64,8 @@ class Post < ActiveRecord::Base
     # G = Gravity, defaults to 1.8 in news.arc
     # http://amix.dk/blog/post/19574
 
-    upvotes = self.votes.where('up=?', true).count
-    downvotes = self.votes.where('up=?', false).count
-    votes = upvotes - downvotes
-
-    gravity = 1.8
+    votes = self.upvotes - self.downvotes
+    gravity = 1.8 
     hours = (Time.now.to_i - self.created_at.to_i) / 60
     points = (votes+1) / ((hours+2) ** gravity)
     points.round 6 

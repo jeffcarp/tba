@@ -1,23 +1,19 @@
 <% if @post.photo_url && !@post.photo_url.empty? %>
-  <div>
-    <img src="<%= @post.photo_url %>/convert?w=960" style="width:100%;" />
-  </div>
+  <div class="feature_photo"
+       style="background-image:url('<%= @post.photo_url %>/convert?w=1024');"
+    ></div>
 <% end %>
 
-<div class="pk">
+<div id="content">
+  <h2 class="sm mdt mbb"><%= @post.title %></h2>
 
-  <h2 class="sm mbb"><%= @post.title %></h2>
-
-  <div class="post_info">
+  <div class="post_info mdb">
     <% if @post.anon %>
       <span><strong>Anonymous</strong></span>
     <% else %>
       <span><%= link_to @post.user.name, @post.user %></strong></span>
     <% end %>
-
-
   </div>
 
   <div><%= simple_format(auto_link(@post.content)) %></div>
-
 </div>

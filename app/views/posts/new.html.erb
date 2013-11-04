@@ -29,10 +29,10 @@
     <p class="cancel_photo <%= 'hidden' if !@post.photo_url || @post.photo_url == "" %>">&#x2716; cancel photo</p>
 
     <div class="field">
-      <%= f.text_field :title, :placeholder => "Title (required)", :maxlength => 80 %>
+      <%= f.text_field :title, :placeholder => "Title (required)", :maxlength => 160 %>
     </div>
     <div class="field">
-      <%= f.text_area :content, :placeholder => "Your post", :maxlength => 500, :id => 'post_content' %>
+      <%= f.text_area :content, :placeholder => "Your post", :maxlength => 5000, :id => 'post_content' %>
     </div>
     <% if @post.content %>
       <% char_count = 500 - @post.content.length %>

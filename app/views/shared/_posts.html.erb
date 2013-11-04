@@ -8,14 +8,35 @@
     <% end %>
 
     <h3 class="sh mcb"><%= link_to post.title, post %></h3>
-    <p>points: <%= post.score %></p>
-    <p><a href="/posts/<%= post.id %>/upvote">upvote</a></p>
-    <p><a href="/posts/<%= post.id %>/downvote">downvote</a></p>
 
-    <div class="fwb mdb"><%= post.public_user_name.upcase  %></div>
+    <div class="mdb sd">
+      <span class="fwb pbr"><%= post.public_user_name.upcase %></span>
+      <span class="grey"><%= post.created_at.strftime('%-I%P %b %-d') %></span>
+    </div>
 
+<!--
     <div>
       <%= link_to simple_format(auto_link(truncate(post.content, length: 140))), post %>
+    </div>
+-->
+
+    <div class="mdt sd fwb">
+      <span class="mcr"><%= post.upvotes %></span>
+
+      <% if current_user %>
+        <a href="/posts/<%= post.id %>/upvote" 
+           class="mcr vote <%= 'voted' if post.upvoted_by?(current_user) %>"
+      <% else %>
+        <a href="/auth/google_oauth2" 
+           class="mcr vote"
+      <% end %>
+
+        >upvote <span class="sd">&#x25b4;</span></a>
+
+      <!--
+      <a href="/posts/<%= post.id %>/downvote" 
+         class="mcr">downvote <span class="sd">&#x25be;</span></a>
+      -->
     </div>
 
   </div>
