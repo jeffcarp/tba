@@ -45,11 +45,12 @@
         <%= render 'shared/posts' %>
     
         <div class="mkt">
-          <span class="mfr"><a href="/compose">Compose</a></span>
           <% if current_user %>
             <span class="mfr"><a href="/settings"><%= current_user.name %></a></span>
             <span class="mfr"><a href="/logout">Log out</a></span>
+            <span class="mfr"><a href="/compose">Compose</a></span>
           <% else %>
+            <span class="mfr"><a href="/auth/google_oauth2">Compose</a></span>
             <span class="mfr"><a href="/auth/google_oauth2">Sign in</a></span>
           <% end %>
         </div>
