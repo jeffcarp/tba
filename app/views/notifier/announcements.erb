@@ -16,7 +16,7 @@
         <tr>
       <% end %>
 
-        <td style="vertical-align:top; padding:0 0.4em; width:299px;">
+        <td style="vertical-align:top; padding:0 0.4em 2em; width:299px;">
           <% if post.photo_url && !post.photo_url.empty? %>
             <a href="<%= @base_url %>"><img src="<%= post.photo_url %>/convert?w=285" style="border:solid 1px #ccc; width:100%;" /></a>
           <% end %>
@@ -43,7 +43,7 @@
     <a style="color:#0DB5DB;display:block; text-decoration:none;" href="<%= @base_url %>/accounts/<%= @account.id %>/unsubscribe">Unsubscribe</a>
   </p>
 
-  <img src="<%= @uri_prefix %>stats/image/<%= @account.user.id %>/<%= @issue.id %>" />
+  <img src="<%= @base_url %>stats/image/<%= @account.user.id %>/<%= @issue.id %>" />
 
   </body>
 </html>

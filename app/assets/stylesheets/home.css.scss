@@ -75,46 +75,23 @@ header {
       border-bottom: solid 2px;
     }
   }
-  .global_search {
-    margin: 24px auto 0;
-    width: 600px;
-    input {
-      width: 400px;
-      font-size: 18px;
-      border: solid 2px #ccc;
-    }
-    .results {
-      color: white;
-      margin: 12px 0 0;
-      text-align: left;
-      h3 {
-        border-radius: 3px;
-        border: solid 1px #042544;
-        border-bottom: solid 1px #073f74;
-        background-color: #010b14;
-        padding: 5px;
-        margin: 4px 0;
-      }
-      > div {
-        padding: 5px;
-        border-radius: 3px;
-        &:hover {
-          cursor: pointer;
-          background-color: #052d54;
-        }
-      }
-      strong {
-        color: #0db5db;
-      }
-      h4 {
-        font-size: 16px;
-        margin: 0 0 4px;
-      }
-      h5 {
-        font-weight: normal;
-        color: #bbb;
-        margin: 0 0 4px;
-      }
+}
+
+/* New 
+===================================*/
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table.posts {
+  td {
+    vertical-align: top;
+    padding: 0 0.4em 4em;
+    div.body {
+      color: #555;
+      font-size: 15px;
+      line-height: 23px;
     }
   }
 }
@@ -142,31 +119,6 @@ header {
   }
   section {
     margin: 0 0 48px;
-  }
-  table {
-    width: 100%;
-    margin: 0 0 24px;
-    tr {
-      background-color: #a9ebfa;
-      th {
-        padding: 18px;
-        font-size: 16px;
-      }
-      td {
-        padding: 12px;
-        font-size: 14px;
-      }
-    }
-    a {
-      color: #333;
-      border-bottom: dotted 1px #777;
-      &:hover {
-        color: #555;
-      }
-    }
-    .weekend {
-      background-color: #69dcf6;
-    }
   }
 }
 
