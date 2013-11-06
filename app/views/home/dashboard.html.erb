@@ -22,6 +22,11 @@
           <%= post.content %> 
         </div> 
       </td> 
+
+    <% if @posts.count.odd? && i+1 == @posts.count %>
+      <td style="width:398px;">
+      </td> 
+    <% end %>
       
     <% if i.odd? || i+1 == @posts.count %>
       </tr>
