@@ -25,9 +25,7 @@
 </head>
 <body>
 
-<table>
-  <tr>
-    <td style="width:400px;" class="badr">
+    <div id="left" class="badr full-scroll">
       <% if flash[:notice] %>
         <div class="notice"><%= flash[:notice] %></div>
       <% end %>
@@ -57,12 +55,10 @@
 
       </div>
 
-    </td>
-    <td>
+    </div>
+    <div id="right">
       <%= yield %>
-    </td>
-  </tr>
-</table>
+    </div>
 
 </body>
 </html>
