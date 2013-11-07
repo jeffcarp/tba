@@ -31,7 +31,7 @@ class Post < ActiveRecord::Base
   end
 
   def downvotes 
-    self.votes.where(up: true).count
+    self.votes.where(up: false).count
   end
 
   def upvoted_by?(user)
@@ -69,7 +69,7 @@ class Post < ActiveRecord::Base
     # http://amix.dk/blog/post/19574
 
     votes = self.upvotes - self.downvotes
-    gravity = 1.8 
+    gravity = 0.4 
     hours = (Time.now.to_i - self.created_at.to_i) / 60
     points = (votes+1) / ((hours+2) ** gravity)
     points.round 6 
