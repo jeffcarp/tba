@@ -1,48 +1,51 @@
 class PostsController < ApplicationController
 
-  before_filter :authenticate
-
-  def show
-    @post = Post.find(params[:id])
+  def newest
+    @posts = Post.order('created_at DESC').limit(10)
+    @post = @posts.first
+    render 'posts/show'
   end
 
-  def compose
-    # If they don't have a name, tell them to make one
-    if !current_user.name
-      redirect_to :settings, notice: "Hey, you need to fill in your name before you post anything."
-      return
+  def show
+    @aside_title = "Popular"
+    @post = Post.find(params[:id])
+    @posts = Post.popular
+  end
+
+  def upvote
+    if current_user
+      @post = Post.find(params[:id])
+      @post.upvote(current_user) if @post
     end
+    redirect_to :root 
+  end
 
-    if !current_user.canpost
-      redirect_to :settings, notice: "Sorry, you must have a colby.edu email address to post."
-      return
+  def downvote
+    if current_user
+      @post = Post.find(params[:id])
+      @post.downvote(current_user) if @post
     end
+    redirect_to :root 
+  end
 
-    # Get upcoming edition
-    @issue = Issue.upcoming_issue
-
+  def new 
     # Check if user has already made a post for this edition
-    @post = Post.find(:first, :conditions => ['user_id=? AND issue_id=?', current_user.id, @issue.id])
-
-    if @post
-      @already = true
-      render :action => 'new', :template => 'posts/compose'
-    else
-      @post = Post.new
-      @post.anon = false
-      render :action => 'edit', :template => 'posts/compose'
+    if !current_user
+      redirect_to :root
     end
+
+    @aside_title = "Your drafts"
+    @posts = current_user.posts
+    @post = Post.new
   end
 
   def create
     @post = Post.new(params[:post])
 
-    respond_to do |format|
-      if @post.save
-        format.html { redirect_to :compose, notice: "Announcement was successfully created." }
-      else
-        format.html { redirect_to :compose, notice: "Sorry, there was a problem saving your post. If you email us at hi@colby.io we'll get back to you on the double." }
-      end
+    if @post.save
+      redirect_to :compose, notice: "Post was successfully created."
+    else
+      redirect_to :compose, notice: "Sorry, there was a problem saving your post."
     end
   end
 

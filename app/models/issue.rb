@@ -41,10 +41,10 @@ class Issue < ActiveRecord::Base
     @issue = Issue.upcoming_issue
 
     # Exed out for testing purposes.
-    # if @issue.publish_date != Date.today
-      # puts "Cannot publish another day's issue."
-      # return false
-    # end
+    if @issue.publish_date != Date.today
+      puts "Cannot publish another day's issue."
+      return false
+    end
 
     @issue.mark_as_published
 

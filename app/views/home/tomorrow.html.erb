@@ -1,35 +1,22 @@
-<h1>Tomorrow</h1>
+<div class="pkr badr" style="width:400px;">
+  <h2 class="fwn sj grey">Newest</h2>
 
-<table class="posts">
-  <% @posts.each_with_index do |post, i| %>
-    <% if i.even? %>
-      <tr>
-    <% end %>
+    <% @posts.each do |post| %>
+      <div class="pft sidepost">
 
-      <td style="width:398px;">
+        <h3 class="sh grey mcb"><%= post.title %></h3>
+        <div class="fwb grey mdb"><%= post.public_user_name.upcase  %></div>
+
         <% if post.photo_url && !post.photo_url.empty? %>
-          <img src="<%= post.photo_url %>/convert?w=400" 
-               style="border:solid 1px #ccc; width:100%;" />
+          <div class="mcb">
+            <img src="<%= post.photo_url %>/convert?w=580" style="width:100%;" />
+          </div>
         <% end %>
 
-        <div class="grey mdy fwb sd">
-          <%= post.name_str.upcase %>
+        <div class="grey">
+          <%= simple_format(auto_link(post.content)) %>
         </div>
-         
-        <h3 class="mdb si"><%= post.title %></h3>
 
-        <div class="body">
-          <%= post.content %> 
-        </div> 
-      </td> 
-
-    <% if @posts.count.odd? && i+1 == @posts.count %>
-      <td style="width:398px;">
-      </td> 
+      </div>
     <% end %>
-      
-    <% if i.odd? || i+1 == @posts.count %>
-      </tr>
-    <% end %>
-  <% end %>
-</table>
+</div>

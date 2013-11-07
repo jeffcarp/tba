@@ -4,19 +4,15 @@ class HomeController < ApplicationController
   caches_page [:index, :guide, :dashboard], :expires_in => 10.minutes
 
   def index
+    @aside_title = "Home"
+    @posts = Post.popular
+    @post = @posts.first
+    render 'posts/show'
   end
 
   def guide
     @colby_emails_count = Account.where("email LIKE ?", "%@colby.edu").count
     @colby_percentage = ((@colby_emails_count.to_f / 1825) * 100).to_i
-  end
-
-  def dashboard
-    @issue = Issue.current_issue
-    if params[:upcoming]
-      @issue = Issue.upcoming_issue
-    end
-    @posts = Post.find(:all, joins: [:issue, :user], conditions: ['issue_id = ?', @issue.id], order: 'users.karma DESC')
   end
 
   def tomorrow 
@@ -27,7 +23,7 @@ class HomeController < ApplicationController
   def settings
     @checkboxes = true
     @user = current_user
-    # @posts_seen_times = ActiveRecord::Base.connection.execute("select count(s.id) from users u join posts p on p.user_id = u.id join issues i on p.issue_id = i.id join stats s on s.issue_id = i.id where u.id = #{current_user.id.to_s}")[0]['count']
+    @posts = current_user.posts
     render 'home/settings'
   end
 

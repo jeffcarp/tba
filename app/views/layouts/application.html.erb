@@ -18,40 +18,39 @@
 
   <%= analytics_init local: Rails.env.development? %>
 
-  <link href='http://fonts.googleapis.com/css?family=Open+Sans:800' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css'>
 
   <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0" />
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div class="pf" style="background-color:#f6fbd0;">
-    <strong>This is a pre-release version of TBA. Please do not share this with anyone yet.</strong> The only people on here are: <%= User.all.map{|u| u.name+" ("+u.accounts.first.email+")"}.join ', ' %>
-  </div>
-  <header>
-    <h1><%= link_to 'TBA', :root %></a></h1>
+    <aside>
 
-    <nav>
-      <% if current_user %>
-        <%= render partial: 'layouts/nav' %>
-      <% else %>
-        <span>An alternative to the general announcements for Colby kids.</span>
-      <% end %>
-    </nav>
-  </header>
-  <div id="wrap" class="<%= params[:action] %> <%= params[:controller] %> clearfix">
+      <header class="bg-grey pf sd">
+        <a href="/">Home</a>
+        <a href="/newest">Newest</a>
+        <% if current_user %>
+          <!-- <a href="/settings"><%= current_user.name %></a> -->
+          <a href="/compose">Compose</a>
+          <a href="/logout">Log out</a>
+        <% else %>
+          <a href="/auth/google_oauth2">Compose</a>
+          <a href="/auth/google_oauth2">Sign in</a>
+        <% end %>
+      </header>
 
-    <div id="content" class="clearfix">
       <% if flash[:notice] %>
         <div class="notice"><%= flash[:notice] %></div>
       <% end %>
+
+      <div class="post-scroll">
+        <%= render 'shared/posts' %>
+      </div>
+
+    </aside>
+    <div id="detail">
       <%= yield %>
     </div>
 
-    <footer>
-      <p><strong>TBA</strong> is by John Kalin '14, and Jeff Carpenter '12. Contact us at <a href="hi@colby.io">hi@colby.io</a></p>
-    </footer>
-
-  </div>
 </body>
 </html>
