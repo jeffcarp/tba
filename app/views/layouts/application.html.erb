@@ -25,38 +25,31 @@
 </head>
 <body>
 
-    <div id="left" class="badr full-scroll">
+    <aside>
+
+      <header class="bg-grey pf sd">
+        <a href="/">Home</a>
+        <a href="/newest">Newest</a>
+        <% if current_user %>
+          <!-- <a href="/settings"><%= current_user.name %></a> -->
+          <a href="/compose">Compose</a>
+          <a href="/logout">Log out</a>
+        <% else %>
+          <a href="/auth/google_oauth2">Compose</a>
+          <a href="/auth/google_oauth2">Sign in</a>
+        <% end %>
+      </header>
+
       <% if flash[:notice] %>
         <div class="notice"><%= flash[:notice] %></div>
       <% end %>
 
-      <div class="pky">
-    
-        <div class="sf mfb">
-          <a href="/" class="dib mdr">Home</a>
-          <a href="/newest" class="dib mdr">Newest</a>
-          <% if current_user %>
-            <!--<a href="/drafts" class="dib mdr">Drafts</a>-->
-          <% end %>
-        </div>
-
+      <div class="post-scroll">
         <%= render 'shared/posts' %>
-    
-        <div class="mkt">
-          <% if current_user %>
-            <span class="mfr"><a href="/settings"><%= current_user.name %></a></span>
-            <span class="mfr"><a href="/logout">Log out</a></span>
-            <span class="mfr"><a href="/compose">Compose</a></span>
-          <% else %>
-            <span class="mfr"><a href="/auth/google_oauth2">Compose</a></span>
-            <span class="mfr"><a href="/auth/google_oauth2">Sign in</a></span>
-          <% end %>
-        </div>
-
       </div>
 
-    </div>
-    <div id="right">
+    </aside>
+    <div id="detail">
       <%= yield %>
     </div>
 

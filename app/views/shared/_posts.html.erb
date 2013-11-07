@@ -1,5 +1,5 @@
  <% @posts.each_with_index do |post, i| %>
-  <div class="pf badb sidepost clearfix <%= 'current' if @post ? @post.id == post.id : i == 0 %>">
+  <div class="pf baeb sidepost clearfix <%= 'current' if @post ? @post.id == post.id : i == 0 %>">
 
     <% if post.photo_url && !post.photo_url.empty? %>
       <a href="<%= post_path(post) %>"><img src="<%= post.photo_url %>/convert?w=120" 

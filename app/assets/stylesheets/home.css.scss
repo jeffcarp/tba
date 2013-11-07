@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 html, body {
@@ -14,23 +15,49 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-#left {
-  float: left;
-  width: 29%;
+$aside_width: 400px;
+aside {
+  position: absolute;
+  width: $aside_width;
+  overflow: hidden;
   height: 100%;
-  overflow-y: scroll;
-  border-right: solid 1px #ddd;
+  border-right: solid 1px #eee;
+  header {
+    position: absolute;
+    width: 100%;
+    z-index: 3;
+    background-color: rgba(0, 0, 0, 0.5);
+    a {
+      color: white;
+      margin-right: 0.4em;
+      &:hover {
+        color: #ddd;
+      }
+    }
+  }
+  .post-scroll {
+    z-index: 1;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    overflow-y: scroll;
+    width: 100%;
+    padding-top: 50px;
+    img {
+      z-index: 1;
+    }
+  }
 }
-#right {
-  float: left;
-  width: 70%;
+#detail {
+  position: absolute;
+  left: $aside_width;
   height: 100%;
+  right: 0;
+  top: 0;
+  bottom: 0;
   overflow-y: scroll;
-}
-
-#content {
-  max-width: 640px;
-  margin: 0 auto;
   padding-bottom: 10em;
 }
 
@@ -44,6 +71,11 @@ a {
 }
 a:hover {
   color: #444;
+}
+
+article {
+  max-width: 640px;
+  margin: 0 auto;
 }
 
 .notice {

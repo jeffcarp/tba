@@ -9,6 +9,10 @@
   color: #ccc;
 }
 
+.baeb {
+  border-bottom: solid 1px #eee;
+}
+
 .clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
 .clearfix { display: inline-block; }
 * html .clearfix { height: 1%; } /* Hides from IE-mac \*/
