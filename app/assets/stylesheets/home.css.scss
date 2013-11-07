@@ -117,6 +117,14 @@ article {
   height: 480px;  
 }
 
+.post_body {
+  font-size: 17px;
+  line-height: 24px;
+  p {
+    margin-bottom: 1em;
+  }
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
