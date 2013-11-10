@@ -7,7 +7,11 @@ class HomeController < ApplicationController
     @aside_title = "Home"
     @posts = Post.popular
     @post = @posts.first
-    render 'posts/show'
+    if @post
+      render 'posts/show'
+    else
+      render 'home/blank'
+    end
   end
 
   def guide
