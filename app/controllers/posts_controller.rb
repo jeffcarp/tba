@@ -6,10 +6,21 @@ class PostsController < ApplicationController
     render 'posts/show'
   end
 
+  def popular
+    render json: Post.popular
+  end
+
   def show
-    @aside_title = "Popular"
     @post = Post.find(params[:id])
-    @posts = Post.popular
+    respond_to do |format|
+      format.html do 
+        @aside_title = "Popular"
+        @posts = Post.popular
+      end 
+      format.json do
+        render json: @post 
+      end 
+    end
   end
 
   def upvote

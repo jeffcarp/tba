@@ -25,6 +25,9 @@ Shanghai::Application.routes.draw do
   get "posts/:id/upvote" => "posts#upvote"
   get "posts/:id/downvote" => "posts#downvote"
 
+  # API (access with .json)
+  get "popular" => "posts#popular"
+
   get "newest" => "posts#newest"
 
   get "accounts/:id/unsubscribe" => "accounts#unsubscribe", :as => "unsubscribe"
