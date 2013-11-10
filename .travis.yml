@@ -3,6 +3,7 @@ rvm:
   - 1.9.3
 env:
   - DB=postgresql
+  - secure: "ejDDQzKdA7z4TSuMPKSb5XmvZ/LgprtFgTOqhU6xXiEyvPM9J0SieHa4pgCopEDWjIyVVEgzIwD7+P13LgoKnYIc4Y0ExsF+MzM66e/Za9aqZXdHnuL1MG7cddU23NKqSSgd6ONBIWO+FhfGFpNChnQQ5pRUjPnFYoFDHXYk1p0="
 script: 
   - RAILS_ENV=test bundle exec rake db:migrate --trace
   - bundle exec rake db:test:prepare
@@ -11,4 +12,4 @@ before_script:
   - psql -c 'create database shanghaitest' -U postgres
 bundler_args: --binstubs=./bundler_stubs
 after_success: 
-  - secure: "DS6GcVKoXPexAyK6iwu/0CH19M+BM4tELLRy4hl6EJ8HouuvKSZwqzcBe/TOt+4D7Evb7PpMzfFd6URZZboy4009Ojtpjc8Iq57IBgcbuMzfDsQbh4D1OursyvrX1w9ktLxSTntbD4jnxooZ6PY7GxkmUxDjzvF6TVyl0H/fblU="
+  - secure: "curl http://deploy.jeff.is/colby.io?deploy_key=$DEPLOY_KEY"
