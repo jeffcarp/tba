@@ -21,7 +21,7 @@ aside {
   width: $aside_width;
   overflow: hidden;
   height: 100%;
-  border-right: solid 1px #eee;
+  # border-right: solid 1px #eee;
   header {
     position: absolute;
     width: 100%;
@@ -79,12 +79,16 @@ article {
 }
 
 .notice {
-  background-color: #ddd;
-  padding: 12px;
-  margin: 0 0 18px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  z-index: 6;
 }
 
 .sidepost {
+  position: relative;
   &.current a {
     color: #444; 
   }

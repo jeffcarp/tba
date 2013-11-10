@@ -39,13 +39,13 @@
         <% end %>
       </header>
 
-      <% if flash[:notice] %>
-        <div class="notice"><%= flash[:notice] %></div>
-      <% end %>
-
       <div class="post-scroll">
         <%= render 'shared/posts' %>
       </div>
+
+      <% if flash[:notice] %>
+        <div class="notice pf sd"><%= flash[:notice] %></div>
+      <% end %>
 
     </aside>
     <div id="detail">
