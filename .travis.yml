@@ -11,4 +11,4 @@ before_script:
   - psql -c 'create database shanghaitest' -U postgres
 bundler_args: --binstubs=./bundler_stubs
 after_success: 
-  - 'curl --data "" http://deploy.jeff.is/colby.io'
+  - secure: "DS6GcVKoXPexAyK6iwu/0CH19M+BM4tELLRy4hl6EJ8HouuvKSZwqzcBe/TOt+4D7Evb7PpMzfFd6URZZboy4009Ojtpjc8Iq57IBgcbuMzfDsQbh4D1OursyvrX1w9ktLxSTntbD4jnxooZ6PY7GxkmUxDjzvF6TVyl0H/fblU="
