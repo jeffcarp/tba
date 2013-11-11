@@ -27,16 +27,18 @@
     <aside>
 
       <header class="bg-grey pf sd">
-        <a href="/">Home</a>
+        <a href="/">Popular</a>
         <a href="/newest">Newest</a>
-        <% if current_user %>
-          <!-- <a href="/settings"><%= current_user.name %></a> -->
-          <a href="/compose">Compose</a>
-          <a href="/logout">Log out</a>
-        <% else %>
-          <a href="/auth/google_oauth2">Compose</a>
-          <a href="/auth/google_oauth2">Sign in</a>
-        <% end %>
+        <span class="right">
+          <% if current_user %>
+            <!-- <a href="/settings"><%= current_user.name %></a> -->
+            <a href="/compose">Compose</a>
+            <a href="/logout">Log out</a>
+          <% else %>
+            <a href="/auth/google_oauth2">Compose</a>
+            <a href="/auth/google_oauth2">Sign in</a>
+          <% end %>
+        </span>
       </header>
 
       <div class="post-scroll">
