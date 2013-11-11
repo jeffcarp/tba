@@ -21,7 +21,6 @@ aside {
   width: $aside_width;
   overflow: hidden;
   height: 100%;
-  # border-right: solid 1px #eee;
   header {
     position: absolute;
     width: 100%;
@@ -36,6 +35,7 @@ aside {
     }
   }
   .post-scroll {
+    border-right: solid 1px #ddd;
     z-index: 1;
     position: absolute;
     left: 0;
