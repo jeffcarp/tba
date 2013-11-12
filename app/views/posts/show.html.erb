@@ -15,12 +15,12 @@
 
   <!--  comments -->
   <% @post.comments.each do |c| %>
-    <div class="mkb">
+    <div class="mkb comment">
       <p class="mbb">
         <span class="fwb se mbr"><%= c.user.name %></span>
         <span class="grey sd"><%= c.created_at.strftime('%-I:%M%P %b %-d') %></span>
       </p>
-      <p><%= simple_format(auto_link(c.content)) %></p>
+      <div class="content"><%= simple_format(auto_link(c.content)) %></div>
     </div>
   <% end %>
 
