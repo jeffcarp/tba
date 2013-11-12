@@ -11,16 +11,21 @@
     <span><%= @post.name_str %></strong></span>
   </div>
 
-  <div class="post_body"><%= simple_format(auto_link(@post.content)) %></div>
+  <div class="post_body badb mkb pfb"><%= simple_format(auto_link(@post.content)) %></div>
 
   <!--  comments -->
   <% @post.comments.each do |c| %>
-    <p><%= c.user.name %></p>
-    <p><%= c.content %></p>
+    <div class="mkb">
+      <p class="mbb">
+        <span class="fwb se mbr"><%= c.user.name %></span>
+        <span class="grey sd"><%= c.created_at.strftime('%-I:%M%P %b %-d') %></span>
+      </p>
+      <p><%= c.content %></p>
+    </div>
   <% end %>
 
   <!-- comment box -->
-  <%= form_for(@comment) do |f| %>
+  <%= form_for(@comment, class: 'new-comment') do |f| %>
     <% if @comment.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this post from being saved:</h2>
@@ -31,7 +36,7 @@
         </ul>
       </div>
     <% end %>
-    <%= f.text_area :content %>
+    <%= f.text_area :content, placeholder: "Your comment", rows: 3 %>
     <%= f.hidden_field :post_id %>
     <%= f.submit %>
   <% end %>
