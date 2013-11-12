@@ -43,6 +43,7 @@ aside {
     top: 0;
     bottom: 0;
     overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
     width: 100%;
     padding-top: 50px;
     img {
@@ -58,6 +59,7 @@ aside {
   top: 0;
   bottom: 0;
   overflow-y: scroll;
+  -webkit-overflow-scrolling: touch; 
   padding-bottom: 10em;
 }
 
