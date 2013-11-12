@@ -3,6 +3,7 @@ class PostsController < ApplicationController
   def newest
     @posts = Post.order('created_at DESC').limit(10)
     @post = @posts.first
+    @comment = Comment.new({post_id: @post.id})
     render 'posts/show'
   end
 
@@ -12,6 +13,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @comment = Comment.new({post_id: @post.id})
     respond_to do |format|
       format.html do 
         @aside_title = "Popular"
@@ -46,7 +48,7 @@ class PostsController < ApplicationController
     end
 
     @aside_title = "Your drafts"
-    @posts = current_user.posts
+    @posts = current_user ? current_user.posts : []
     @post = Post.new
   end
 

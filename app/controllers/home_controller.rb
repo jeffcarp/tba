@@ -7,6 +7,7 @@ class HomeController < ApplicationController
     @aside_title = "Home"
     @posts = Post.popular
     @post = @posts.first
+    @comment = Comment.new({post_id: @post.id})
     if @post
       render 'posts/show'
     else

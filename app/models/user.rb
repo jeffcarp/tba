@@ -1,9 +1,12 @@
 class User < ActiveRecord::Base
 
+  attr_accessible :name
+
   has_many :posts, :dependent => :destroy
   has_many :accounts, :dependent => :destroy
   has_many :votes, :dependent => :destroy
   has_many :stats
+  has_many :comments
 
   validates_length_of :name, maximum: 128
 

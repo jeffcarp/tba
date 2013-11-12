@@ -3,6 +3,7 @@ class Post < ActiveRecord::Base
   belongs_to :user
   belongs_to :issue
   has_many :votes
+  has_many :comments
 
   #validates_length_of :content, maximum: 600
   validates_presence_of :user_id

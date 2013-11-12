@@ -1,5 +1,6 @@
 Shanghai::Application.routes.draw do
 
+
   # Stats
   match 'stats/image/:user_id/:issue_id', :to => 'stats#image'
   match 'stats/email',                    :to => 'stats#email'
@@ -21,6 +22,7 @@ Shanghai::Application.routes.draw do
   resources :issues
   resources :votes
   resources :accounts
+  resources :comments
 
   get "posts/:id/upvote" => "posts#upvote"
   get "posts/:id/downvote" => "posts#downvote"
