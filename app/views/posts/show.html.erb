@@ -20,7 +20,7 @@
         <span class="fwb se mbr"><%= c.user.name %></span>
         <span class="grey sd"><%= c.created_at.strftime('%-I:%M%P %b %-d') %></span>
       </p>
-      <p><%= c.content %></p>
+      <p><%= simple_format(auto_link(c.content)) %></p>
     </div>
   <% end %>
 
