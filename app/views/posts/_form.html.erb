@@ -1,38 +1,46 @@
-<%= form_for(@post, html: {class: 'post pf'}) do |f| %>
-  <% if @post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
-      <ul>
-      <% @post.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-  
-
-  <div class="field mfb">
-    <%= f.text_field :title, 
-          placeholder: "Title (required)", 
-          maxlength: 160, 
-          required: true %>
-  </div>
-
-  <div class="field">
-    <%= f.text_area :content, 
-          placeholder: "Your post",
-          maxlength: 5000,
-          id: 'post_content' %>
-  </div>
-
-  <div class="field">
-    <%= f.hidden_field :user_id, :value => current_user.id %>
-    <%= f.hidden_field :photo_url, :value => @post.photo_url, :class => "photo_url" %>
-  </div>
-
-  <div class="field">
-    <%= f.submit "Save post" %>
-  </div>
-
+<% if @post.photo_url && !@post.photo_url.empty? %>
+  <div class="feature_photo"
+       style="background-image:url('<%= @post.photo_url %>/convert?w=1024');"
+    ></div>
 <% end %>
+
+<article>
+  <%= form_for(@post, html: {class: 'post pf'}) do |f| %>
+    <% if @post.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+        <ul>
+        <% @post.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    
+
+    <div class="field mfb">
+      <%= f.text_field :title, 
+            placeholder: "Title (required)", 
+            maxlength: 160, 
+            required: true %>
+    </div>
+
+    <div class="field">
+      <%= f.text_area :content, 
+            placeholder: "Your post",
+            maxlength: 5000,
+            id: 'post_content' %>
+    </div>
+
+    <div class="field">
+      <%= f.hidden_field :user_id, :value => current_user.id %>
+      <%= f.hidden_field :photo_url, :value => @post.photo_url, :class => "photo_url" %>
+    </div>
+
+    <div class="field">
+      <%= f.submit "Save post" %>
+    </div>
+
+  <% end %>
+</article>
