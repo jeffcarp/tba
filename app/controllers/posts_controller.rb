@@ -63,8 +63,11 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @posts = Post.popular
     @post = Post.find(params[:id])
+    if current_user.id != @post.user.id
+      redirect_to :root, notice: "You're not allowed to edit that."
+    end
+    @posts = Post.popular
   end
 
   def update
