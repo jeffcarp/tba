@@ -62,18 +62,23 @@ class PostsController < ApplicationController
     end
   end
 
+  def edit
+    @posts = Post.popular
+    @post = Post.find(params[:id])
+  end
+
   def update
     @post = Post.find(params[:id])
     if @post.update_attributes(params[:post])
-      redirect_to :tomorrow, :notice => "Announcement was successfully updated."
+      redirect_to @post, :notice => "Announcement was successfully updated."
     else
-      redirect_to :compose, :notice => "Sorry, there was a problem saving your post. If you email us at hi@colby.io we'll get back to you on the double."
+      redirect_to :edit, :notice => "Sorry, there was a problem saving your post. If you email us at hi@colby.io we'll get back to you on the double."
     end
   end
 
   def destroy
     @post = Post.find(params[:id])
-    @post.destroy
-    redirect_to :compose
+    @post.destroy if @post.user.id == current_user.id
+    redirect_to :root
   end
 end

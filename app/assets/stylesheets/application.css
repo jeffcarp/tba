@@ -8,6 +8,9 @@
 .ligrey {
   color: #ccc;
 }
+.bg-ligrey {
+  background-color: #ccc;
+}
 
 .baeb {
   border-bottom: solid 1px #eee;

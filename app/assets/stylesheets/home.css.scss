@@ -74,6 +74,17 @@ a {
 a:hover {
   color: #444;
 }
+input[type="text"],
+input[type="password"],
+input[type="email"],
+textarea {
+  font-family: "Source Sans Pro", sans-serif;
+  border: solid 1px #ddd;
+  width: 96%;
+  padding: 0.2em;
+  font-size: 16px;
+}
+
 
 article {
   max-width: 680px;
@@ -142,12 +153,6 @@ table {
   }
 }
 
-textarea {
-  width: 100%;
-  padding: 0.4em;
-  font-size: 16px;
-}
-
 .new-comment {
 }
 
@@ -156,5 +161,12 @@ textarea {
     p {
       margin-bottom: 0.6em;
     }
+  }
+}
+
+form.post {
+  input#post_title {
+    font-size: 20px;
+    font-weight: bold;
   }
 }
