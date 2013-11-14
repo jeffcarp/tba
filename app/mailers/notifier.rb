@@ -8,6 +8,11 @@ class Notifier < ActionMailer::Base
     :subject => 'Thanks for signing up for our amazing app' )
   end
 
+  def someone_signed_up(user)
+    @user = user
+    mail(to: "hi@colby.io", subject: "#{@user.name} just signed up on colby.io")
+  end
+
   def announcements(account, issue)
     @account = account
     @issue = issue

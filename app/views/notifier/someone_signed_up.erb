@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1><%= @user.name %> just signed up for an account on colby.io.</h1>
+    <p>Created: <%= @user.created_at.strftime("%c") %></p>
+    <p>Email: <%= @user.primary_email %></p>
+  </body>
+</html>

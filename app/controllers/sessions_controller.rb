@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
 
       @account = @user.accounts.create_with_omniauth(auth)
 
-      UserMailer.welcome_email(@account).deliver
+      Notifier.someone_signed_up(@user).deliver
     end
 
     session[:account_id] = @account.id
