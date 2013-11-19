@@ -1,17 +1,30 @@
+
 <% if @post.photo_url && !@post.photo_url.empty? %>
-  <div class="feature_photo"
-       style="background-image:url('<%= @post.photo_url %>/convert?w=1024');"
-    ></div>
+  <div class="contain">
+    <img class="full"
+         src="<%= @post.photo_url %>/convert?w=720" />
+  </div>
 <% end %>
 
 <article>
-  <h2 class="sm mdt mbb"><%= @post.title %></h2>
+
+  <h2 class="sm mct mbb"><%= @post.title %></h2>
 
   <div class="post_info mdb">
     <span><%= @post.name_str %></strong></span>
   </div>
 
   <div class="post_body badb mkb pfb"><%= simple_format(auto_link(@post.content)) %></div>
+
+  <div class="badb mkb pkb">
+    <span class="mcr"><%= @post.upvotes %> upvotes</span>
+    <% if current_user %>
+      <a href="/posts/<%= @post.id %>/upvote" 
+         class="mcr vote fwb <%= 'voted' if @post.upvoted_by?(current_user) %>"
+      >upvote <span class="sd">&#x25b4;</span></a>
+    <% end %>
+  </div>
+
 
   <% if current_user && @post.user.id == current_user.id %>
     <div class="pkb mkb badb">
