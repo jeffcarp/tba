@@ -25,7 +25,7 @@ class Comment < ActiveRecord::Base
     # Send email to post owner
     # Send email to all previous commenters except this guy
     people.each do |u|
-      Notifier.comment_created(user, self).deliver
+      Notifier.comment_created(u, self).deliver
     end
   end
 end
