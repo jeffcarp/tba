@@ -85,6 +85,10 @@ textarea {
   font-size: 16px;
 }
 
+.contain {
+  max-width: 720px;
+  margin: 0 auto;
+}
 
 article {
   max-width: 680px;
@@ -115,16 +119,17 @@ article {
       }
     }
   }
-  a.vote {
-    padding: 2px 6px;
-    border-radius: 3px;
-    &:hover {
-      background-color: #deebfd;
-    }
-    &.voted {
-      color: #eef5fe;
-      background-color: #6ea9f6;
-    }
+}
+
+a.vote {
+  padding: 2px 6px;
+  border-radius: 3px;
+  &:hover {
+    background-color: #deebfd;
+  }
+  &.voted {
+    color: #eef5fe;
+    background-color: #6ea9f6;
   }
 }
 
