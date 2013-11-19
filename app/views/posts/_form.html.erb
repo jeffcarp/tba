@@ -1,7 +1,7 @@
 <% if @post.photo_url && !@post.photo_url.empty? %>
   <div class="contain">
     <img class="full feature_photo"
-         src="<%= @post.photo_url %>/convert?w=720" />
+         src="<%= @post.photo_url %>/convert?w=680" />
   </div>
 <% else %>
   <div class="contain">
@@ -74,7 +74,7 @@
       $('input.photo_url').val('');
     } else {
       console.log();
-      feature_photo.attr('src', event.fpfile.url+"/convert?w=720");
+      feature_photo.attr('src', event.fpfile.url+"/convert?w=680");
       feature_photo.show();
       $('input.photo_url').val(event.fpfile.url);
     }
