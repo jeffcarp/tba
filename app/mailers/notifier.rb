@@ -1,6 +1,15 @@
 class Notifier < ActionMailer::Base
   default from: "hi@colby.io"
-  @base_url = "http://tba.colby.io"
+  @base_url = "http://colby.io"
+
+  def comment_created(user, comment)
+    @base_url = "http://colby.io" # For now
+    @user = user
+    @comment = comment
+    @post_url = @base_url+'/posts/'+@comment.post.id.to_s
+    subject = 'New comment on colby.io'
+    mail(to: @user.primary_email, subject: subject)
+  end
 
   def send_signup_email(email)
     @email = email

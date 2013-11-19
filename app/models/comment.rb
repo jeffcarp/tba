@@ -11,4 +11,21 @@ class Comment < ActiveRecord::Base
   validates :content, {
     presence: true
   }
+
+  def send_created_email
+    people = [self.post.user]
+    self.post.comments.each do |c|
+      people << c.user
+    end
+    people.uniq!
+    people.delete self.user
+
+    puts people.inspect
+
+    # Send email to post owner
+    # Send email to all previous commenters except this guy
+    people.each do |u|
+      Notifier.comment_created(user, self).deliver
+    end
+  end
 end

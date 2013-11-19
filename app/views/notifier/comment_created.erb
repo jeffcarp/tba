@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>Hey <%= @user.name %>,</p>
+    <p><b><%= @comment.user.name %></b> just commented on <b><a href="<%= @post_url %>"><%= @comment.post.title %></a></b></p>
+    <p>Have a good one,</p>
+    <p>colby.io</p>
+  </body>
+</html>
