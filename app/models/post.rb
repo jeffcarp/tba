@@ -76,4 +76,11 @@ class Post < ActiveRecord::Base
     points.round 6 
   end
 
+  def as_json(options = {})
+    self.attributes.merge({
+      user_name: self.user.name,
+      upvotes: self.upvotes
+    })
+  end
+
 end
