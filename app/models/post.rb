@@ -70,7 +70,7 @@ class Post < ActiveRecord::Base
     # http://amix.dk/blog/post/19574
 
     votes = self.upvotes - self.downvotes
-    gravity = 0.4 
+    gravity = 1.0 
     hours = (Time.now.to_i - self.created_at.to_i) / 60
     points = (votes+1) / ((hours+2) ** gravity)
     points.round 6 
