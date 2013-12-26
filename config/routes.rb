@@ -25,6 +25,8 @@ Shanghai::Application.routes.draw do
   get "posts/:id/upvote" => "posts#upvote"
   get "posts/:id/downvote" => "posts#downvote"
 
+  get "about" => "home#about"
+
   # API (access with .json)
   get "popular" => "posts#popular"
 
