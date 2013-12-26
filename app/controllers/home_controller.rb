@@ -20,6 +20,10 @@ class HomeController < ApplicationController
     @colby_percentage = ((@colby_emails_count.to_f / 1825) * 100).to_i
   end
 
+  def about 
+    @posts = Post.popular
+  end
+
   def tomorrow 
     @issue = Issue.upcoming_issue
     @posts = Post.find(:all, joins: [:issue, :user], conditions: ['issue_id = ?', @issue.id], order: 'users.karma DESC')
